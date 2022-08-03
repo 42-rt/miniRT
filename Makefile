@@ -26,6 +26,10 @@ HEADER_LIBFT = libft.h
 SOURCE_LIBFT = libft_memory.c libft_string.c
 OBJECT_LIBFT = $(addprefix $(OBJECTS_DIR), $(SOURCE_LIBFT:.c=.o))
 
+HEADER_GNL = get_next_line.h
+SOURCE_GNL = get_next_line.c get_next_line_utils.c
+OBJECT_GNL = $(addprefix $(OBJECTS_DIR), $(SOURCE_GNL:.c=.o))
+
 SOURCE_GENERAL = util_flag.c safe_io.c safe_io_utils.c safe_mem.c \
 					util_try_atoi.c util_try_atof.c
 OBJECT_GENERAL = $(addprefix $(OBJECTS_DIR), $(SOURCE_GENERAL:.c=.o))
@@ -35,7 +39,8 @@ SOURCE_PARSER = parser.c parser_entry.c parser_lex.c parser_reduce.c \
 OBJECT_PARSER = $(addprefix $(OBJECTS_DIR), $(SOURCE_PARSER:.c=.o))
 
 TARGET = miniRT
-OBJS = $(OBJECT) $(OBJECT_LIBFT) $(OBJECT_GENERAL) $(OBJECT_PARSER)
+OBJS = $(OBJECT) $(OBJECT_LIBFT) $(OBJECT_GNL) \
+		$(OBJECT_GENERAL) $(OBJECT_PARSER)
 
 MLX = mlx
 ifeq ($(shell uname), Linux)
@@ -80,9 +85,10 @@ $(addprefix $(OBJECTS_DIR), %.o): %.c
 $(TARGET): $(OBJS) | $(MLX_NAME)
 	$(CC) -o $@ $^ $(LDFLAGS)
 
-$(SOURCE): $(HEADER)
+$(OBJECT): $(HEADER)
 
-$(SOURCE_LIBFT): $(HEADER_LIBFT)
+$(OBJECT_LIBFT): $(HEADER_LIBFT)
+$(OBJECT_GNL): $(HEADER_GNL)
 
 $(OBJECT_PARSER): parser.h
 $(addprefix $(OBJECTS_DIR), util_flag.o): util_flag.h
