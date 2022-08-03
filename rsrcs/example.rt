@@ -1,0 +1,21 @@
+#
+# Comment
+#
+
+scene { # inner comment
+	name { scene_name_or_title }
+
+	camera {
+		origin { 200.0 0.0 0.0 }
+	}
+	render {
+		mlx_all_objects { 1080 800 }
+	}
+
+	object { name { sphere }
+		inter { sphere { 100.0 } }
+		color { rgb { 0xFF00 0x0000 0x0000 } }
+	}
+}
+
+# end Comment

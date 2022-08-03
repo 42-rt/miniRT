@@ -1,0 +1,27 @@
+# VS Code configuration
+.vscode
+
+# MacOS Temporary files
+.DS_Store
+
+# Prerequisites
+*.d
+
+# Object files
+*.o
+
+# Precompiled Headers
+*.gch
+
+# Debug files
+*.dSYM/
+
+# Executable, Libraries
+*.a
+*.dylib
+/miniRT
+
+# Dependancies Temporary files
+*.swiftdoc
+*.swiftmodule
+*.swiftsourceinfo
