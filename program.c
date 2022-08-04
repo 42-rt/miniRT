@@ -6,7 +6,7 @@
 /*   By: jkong <jkong@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 15:15:51 by jkong             #+#    #+#             */
-/*   Updated: 2022/08/04 13:53:32 by jkong            ###   ########.fr       */
+/*   Updated: 2022/08/04 15:46:28 by jkong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,13 +34,10 @@ int	try_eval(int fd, t_entry **out)
 	while (str && (success || pst.error == PE_AGAIN))
 	{
 		str = get_next_line(fd);
-		if (!(str && str[0] == '#'))
-		{
-			pst.str = str;
-			pst.begin = pst.str;
-			pst.error = PE_SUCCESS;
-			success = parse(&pst);
-		}
+		pst.str = str;
+		pst.begin = pst.str;
+		pst.error = PE_SUCCESS;
+		success = parse(&pst);
 		free(str);
 	}
 	ft_memset(*out, 0, sizeof(**out));
@@ -61,7 +58,9 @@ int	main0(int argc, char *argv[])
 	fd = open(argv[1], O_RDONLY);
 	ptr = calloc_safe(1, sizeof(*ptr));
 	if (try_eval(fd, &ptr))
+	{
 		printf("parse success\n");
+	}
 	else
 		printf("parse failed\n");
 	dispose_entry(ptr);
@@ -69,10 +68,10 @@ int	main0(int argc, char *argv[])
 	return (0);
 }
 
-int main(int argc, char *argv[])
+int	main(int argc, char *argv[])
 {
 	const int	result = main0(argc, argv);
 
-	//system("leaks miniRT");
+	system("leaks miniRT");
 	return (result);
 }

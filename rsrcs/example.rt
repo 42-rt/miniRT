@@ -3,18 +3,15 @@
 #
 
 name { scene_name_or_title }
-
-ambient_lighting {
+window_size { 1080 800 }
+ambient_lighting { # Inner comment
 	ratio { 0.2 }
-	color { 0 255 255 255 }
+	color { 255 255 255 }
 }
 camera {
 	origin { 200.0 0.0 0.0 }
 	direction { 0 0 -1.0 }
 	fov { 70 }
-}
-render {
-	mlx_all_objects { 1080 800 }
 }
 
 lights {
@@ -33,40 +30,40 @@ objects {
 	sphere1 {
 		type { sphere }
 		origin { 0.0 0.0 20.6 }
-		radius { 100.0 }
-		color { 0 0xFF00 0x0000 0x0000 }
+		width { 100.0 } # radius
+		color { 255 0 0 }
 	}
 	sphere2 {
 		type { sphere }
 		origin { 20.6 0.0 0.0 }
-		radius { 50.0 }
-		color { 0 0x0000 0x0000 0xFF00 }
+		width { 50.0 } # radius
+		color { 0 0 255 }
 	}
 	plane {
 		type { plane }
 		origin { 0.0 0.0 -10.0 }
 		direction { 0 0 1.0 }
-		color { 0 0 0 255 }
+		color { 0 0 255 }
 	}
 	cylinder {
 		type { cylinder }
 		origin { 50.0 0.0 20.6 }
 		direction { 0 0 1.0 }
-		radius { 14.2 }
-		height { 21.42}
-		color { 10 0 0 255 }
+		width { 14.2 } # radius
+		height { 21.42 }
+		color { 10 0 255 }
 	}
 	cone {
 		type { second }
-#		...
+		#...
 	}
 	hyperboloid {
 		type { second }
-#		...
+		#...
 	}
 	paraboloid {
 		type { second }
-#		...
+		#...
 	}
 }
 

@@ -6,7 +6,7 @@
 /*   By: jkong <jkong@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/20 20:36:15 by jkong             #+#    #+#             */
-/*   Updated: 2022/08/04 14:02:21 by jkong            ###   ########.fr       */
+/*   Updated: 2022/08/04 17:16:45 by jkong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,14 @@
 # include <stdint.h>
 # include <stddef.h>
 
-typedef struct s_entry
+typedef struct s_entry	t_entry;
+
+struct s_entry
 {
-	char			*value;
-	struct s_entry	*child;
-	struct s_entry	*next;
-}	t_entry;
+	char	*value;
+	t_entry	*child;
+	t_entry	*next;
+};
 
 enum	e_char_flag_index
 {
