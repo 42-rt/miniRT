@@ -6,7 +6,7 @@
 /*   By: jkong <jkong@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 15:15:51 by jkong             #+#    #+#             */
-/*   Updated: 2022/08/03 22:24:57 by jkong            ###   ########.fr       */
+/*   Updated: 2022/08/04 13:53:32 by jkong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,16 +29,16 @@ int	try_eval(int fd, t_entry **out)
 
 	ft_memset(&pst, 0, sizeof(pst));
 	parser_stack_reserve(&pst, 1);
-	pst.error = PE_SUCCESS;
 	str = "";
 	success = 1;
-	while (str)
+	while (str && (success || pst.error == PE_AGAIN))
 	{
 		str = get_next_line(fd);
 		if (!(str && str[0] == '#'))
 		{
 			pst.str = str;
 			pst.begin = pst.str;
+			pst.error = PE_SUCCESS;
 			success = parse(&pst);
 		}
 		free(str);
@@ -61,12 +61,10 @@ int	main0(int argc, char *argv[])
 	fd = open(argv[1], O_RDONLY);
 	ptr = calloc_safe(1, sizeof(*ptr));
 	if (try_eval(fd, &ptr))
-	{
 		printf("parse success\n");
-		dispose_entry(ptr);
-	}
 	else
 		printf("parse failed\n");
+	dispose_entry(ptr);
 	close(fd);
 	return (0);
 }
@@ -75,6 +73,6 @@ int main(int argc, char *argv[])
 {
 	const int	result = main0(argc, argv);
 
-	system("leaks miniRT");
+	//system("leaks miniRT");
 	return (result);
 }

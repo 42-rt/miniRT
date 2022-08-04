@@ -6,7 +6,7 @@
 /*   By: jkong <jkong@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/22 02:18:56 by jkong             #+#    #+#             */
-/*   Updated: 2022/08/03 22:08:15 by jkong            ###   ########.fr       */
+/*   Updated: 2022/08/04 14:05:16 by jkong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ static void	_parse_on_error(t_parser *pst, t_token_kind token)
 {
 	char *const	tok = get_token_str(token);
 
-	if (pst->str && token == TK_EOF)
+	if (token == TK_AGAIN)
 	{
 		pst->error = PE_AGAIN;
 		return ;
@@ -65,10 +65,8 @@ int	parse(t_parser *pst)
 	t_parser_state	state;
 	t_token_kind	token;
 
-	state = 0;
+	state = pst->now->state;
 	token = TK_AGAIN;
-	pst->now->state = state;
-	pst->now->kind = token;
 	while (pst->error == PE_SUCCESS)
 	{
 		if (token == TK_AGAIN)
