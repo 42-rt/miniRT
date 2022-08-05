@@ -19,7 +19,7 @@ RM = rm -f
 OBJECTS_DIR = objs/
 
 HEADER = rt.h
-SOURCE = program.c
+SOURCE = program.c rt_format.c rt_format_vector.c
 OBJECT = $(addprefix $(OBJECTS_DIR), $(SOURCE:.c=.o))
 
 HEADER_LIBFT = libft.h
@@ -31,11 +31,12 @@ SOURCE_GNL = get_next_line.c get_next_line_utils.c
 OBJECT_GNL = $(addprefix $(OBJECTS_DIR), $(SOURCE_GNL:.c=.o))
 
 SOURCE_GENERAL = util_flag.c safe_io.c safe_io_utils.c safe_mem.c \
-					util_try_atoi.c util_try_atof.c
+					util_try_atoi.c util_try_atof.c \
+					generic_list.c
 OBJECT_GENERAL = $(addprefix $(OBJECTS_DIR), $(SOURCE_GENERAL:.c=.o))
 
-SOURCE_PARSER = parser.c parser_entry.c parser_lex.c parser_reduce.c \
-					parser_state.c parser_syntax.c parser_utils.c
+SOURCE_PARSER = parser.c parser_utils.c parser_reduce.c parser_state.c \
+					parser_lex.c parser_syntax.c parser_entry.c parser_format.c
 OBJECT_PARSER = $(addprefix $(OBJECTS_DIR), $(SOURCE_PARSER:.c=.o))
 
 TARGET = miniRT
@@ -96,6 +97,7 @@ $(addprefix $(OBJECTS_DIR), util_try_atoi.o): util_try_atoi.h
 $(addprefix $(OBJECTS_DIR), util_try_atof.o): util_try_atof.h
 $(addprefix $(OBJECTS_DIR), safe_io.o safe_io_utils.o): safe_io.h
 $(addprefix $(OBJECTS_DIR), safe_mem.o): safe_mem.h
+$(addprefix $(OBJECTS_DIR), generic_list.o): generic_list.h
 
 dclean:
 	$(RM) $(MLX_NAME)

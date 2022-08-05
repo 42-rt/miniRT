@@ -6,20 +6,18 @@
 /*   By: jkong <jkong@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 15:15:51 by jkong             #+#    #+#             */
-/*   Updated: 2022/08/04 15:46:28 by jkong            ###   ########.fr       */
+/*   Updated: 2022/08/05 20:26:02 by jkong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rt.h"
-#include "util_try_atof.h"
-#include "parser.h"
 #include "libft.h"
 #include "safe_mem.h"
-#include <stdio.h>
-#include <stdlib.h>
-#include <unistd.h>
 #include <fcntl.h>
 #include "get_next_line.h"
+#include "generic_list.h"
+
+#include <stdio.h>
 
 int	try_eval(int fd, t_entry **out)
 {
@@ -50,8 +48,9 @@ int	try_eval(int fd, t_entry **out)
 
 int	main0(int argc, char *argv[])
 {
-	int		fd;
-	t_entry	*ptr;
+	int			fd;
+	t_entry		*ptr;
+	t_rt_conf	conf;
 
 	(void)&argc;
 	(void)&argv;
@@ -60,6 +59,13 @@ int	main0(int argc, char *argv[])
 	if (try_eval(fd, &ptr))
 	{
 		printf("parse success\n");
+		ft_memset(&conf, 0, sizeof(conf));
+		if (get_conf(ptr, &conf))
+			printf("getconf success\n");
+		else
+			printf("getconf failed\n");
+		list_walk((void *)conf.lights, free_safe);
+		list_walk((void *)conf.objects, free_safe);
 	}
 	else
 		printf("parse failed\n");

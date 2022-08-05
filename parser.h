@@ -6,7 +6,7 @@
 /*   By: jkong <jkong@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/20 20:36:15 by jkong             #+#    #+#             */
-/*   Updated: 2022/08/04 17:16:45 by jkong            ###   ########.fr       */
+/*   Updated: 2022/08/05 19:37:45 by jkong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,13 +110,18 @@ t_token_kind	parser_reduce_2(t_parser *pst);
 t_token_kind	parser_reduce_3(t_parser *pst);
 t_token_kind	parser_reduce_4(t_parser *pst);
 
-t_entry			*make_entry(void);
-void			dispose_entry(t_entry *item);
-
 char			*get_token_str(t_token_kind token);
 void			swap_ptr(void *a, void *b);
 void			clear_parser_stack_item(t_parser_stack *item);
 void			parser_stack_reserve(t_parser *pst, size_t n);
 void			parser_stack_remove_all(t_parser *pst);
+
+void			dispose_entry(t_entry *item);
+t_entry			*make_entry(void);
+
+t_entry			*get_child(t_entry *parent, const char *key, t_entry **out);
+int				get_string(t_entry *ent, const char *key, char **out);
+int				get_int(t_entry *ent, const char *key, int *out);
+int				get_double(t_entry *ent, const char *key, double *out);
 
 #endif

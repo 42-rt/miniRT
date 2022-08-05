@@ -54,15 +54,15 @@ objects {
 		color { 10 0 255 }
 	}
 	cone {
-		type { second }
+		type { second-cone }
 		#...
 	}
 	hyperboloid {
-		type { second }
+		type { second-hyperboloid }
 		#...
 	}
 	paraboloid {
-		type { second }
+		type { second-paraboloid }
 		#...
 	}
 }
