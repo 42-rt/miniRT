@@ -6,7 +6,7 @@
 /*   By: jkong <jkong@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/04 15:51:39 by jkong             #+#    #+#             */
-/*   Updated: 2022/08/05 20:21:29 by jkong            ###   ########.fr       */
+/*   Updated: 2022/08/08 20:06:34 by jkong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,4 +106,10 @@ int	get_conf(t_entry *ent, t_rt_conf *out)
 	if (!_get_objects(ent, "objects", &out->objects))
 		return (0);
 	return (1);
+}
+
+void	dispose_conf(t_rt_conf *in)
+{
+	list_walk((void *)in->lights, free_safe);
+	list_walk((void *)in->objects, free_safe);
 }

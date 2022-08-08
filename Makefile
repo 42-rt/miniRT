@@ -19,7 +19,9 @@ RM = rm -f
 OBJECTS_DIR = objs/
 
 HEADER = rt.h
-SOURCE = program.c rt_format.c rt_format_vector.c
+SOURCE = program.c \
+			rt_parse.c rt_format.c rt_format_vector.c \
+			rt_input.c rt_input_key.c rt_input_mouse.c rt_input_move.c
 OBJECT = $(addprefix $(OBJECTS_DIR), $(SOURCE:.c=.o))
 
 HEADER_LIBFT = libft.h

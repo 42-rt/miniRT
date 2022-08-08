@@ -6,7 +6,7 @@
 /*   By: jkong <jkong@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 15:16:26 by jkong             #+#    #+#             */
-/*   Updated: 2022/08/05 20:16:54 by jkong            ###   ########.fr       */
+/*   Updated: 2022/08/08 21:05:10 by jkong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,9 +82,35 @@ typedef struct s_rt_conf
 	t_list_object	*objects;
 }	t_rt_conf;
 
-int	get_vec2(t_entry *ent, const char *key, t_vec2 *out);
-int	get_vec3(t_entry *ent, const char *key, t_vec3 *out);
+typedef struct s_input_sys
+{
+	int		pressed;
+	t_vec2	latest;
+}	t_input_sys;
 
-int	get_conf(t_entry *ent, t_rt_conf *out);
+typedef struct s_rt
+{
+	void		*mlx_ptr;
+	char		*path;
+	t_entry		*entry;
+	t_rt_conf	conf;
+	int			win_size_x;
+	int			win_size_y;
+	char		*title_str;
+	void		*win_ptr;
+	void		*img_ptr;
+	t_input_sys	input;
+	int			update_posted;
+}	t_rt;
+
+int		try_eval(char *path, t_entry **out);
+
+int		get_vec2(t_entry *ent, const char *key, t_vec2 *out);
+int		get_vec3(t_entry *ent, const char *key, t_vec3 *out);
+
+int		get_conf(t_entry *ent, t_rt_conf *out);
+void	dispose_conf(t_rt_conf *in);
+
+void	set_hook(t_rt *unit);
 
 #endif

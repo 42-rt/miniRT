@@ -6,72 +6,96 @@
 /*   By: jkong <jkong@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 15:15:51 by jkong             #+#    #+#             */
-/*   Updated: 2022/08/05 20:26:02 by jkong            ###   ########.fr       */
+/*   Updated: 2022/08/09 07:47:22 by jkong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rt.h"
 #include "libft.h"
 #include "safe_mem.h"
-#include <fcntl.h>
-#include "get_next_line.h"
+#include "safe_io.h"
 #include "generic_list.h"
+
+#include "mlx.h"
+#include <math.h>
 
 #include <stdio.h>
 
-int	try_eval(int fd, t_entry **out)
+static int	_create_window(void *mlx_ptr, t_rt *unit)
 {
-	t_parser	pst;
-	char		*str;
-	int			success;
+	const int	width = unit->win_size_x;
+	const int	height = unit->win_size_y;
+	char *const	title = unit->title_str;
 
-	ft_memset(&pst, 0, sizeof(pst));
-	parser_stack_reserve(&pst, 1);
-	str = "";
-	success = 1;
-	while (str && (success || pst.error == PE_AGAIN))
+	unit->mlx_ptr = mlx_ptr;
+	unit->win_ptr = mlx_new_window(unit->mlx_ptr, width, height, title);
+	if (!unit->win_ptr)
+		return (0);
+	unit->img_ptr = mlx_new_image(unit->mlx_ptr, width, height);
+	if (!unit->img_ptr)
+		return (0);
+	set_hook(unit);
+	return (1);
+}
+
+static int	_rt(void *mlx_ptr, t_rt *unit, char *path)
+{
+	unit->entry = calloc_safe(1, sizeof(*unit->entry));
+	if (try_eval(path, &unit->entry) && get_conf(unit->entry, &unit->conf))
 	{
-		str = get_next_line(fd);
-		pst.str = str;
-		pst.begin = pst.str;
-		pst.error = PE_SUCCESS;
-		success = parse(&pst);
-		free(str);
+		unit->title_str = unit->conf.name;
+		unit->win_size_x = (int)unit->conf.window_size.x;
+		unit->win_size_y = (int)unit->conf.window_size.y;
+		if (_create_window(mlx_ptr, unit))
+			return (1);
+		else
+			puterr_safe("MLX Error\n");
 	}
-	ft_memset(*out, 0, sizeof(**out));
-	if (success)
-		swap_ptr(out, &pst.now->entry);
-	parser_stack_remove_all(&pst);
-	free(pst.stack_base);
-	return (success);
+	else
+		puterr_safe("Error\n");
+	return (0);
+}
+
+static void	_rt_multiple(void *mlx_ptr, int argc, int begin, char *argv[])
+{
+	t_rt	*rt_arr;
+	int		i;
+	int		loop;
+
+	rt_arr = calloc_safe(argc - begin, sizeof(*rt_arr));
+	i = 0;
+	loop = 0;
+	while (i < argc - begin)
+	{
+		loop |= _rt(mlx_ptr, &rt_arr[i], argv[begin + i]);
+		i++;
+	}
+	if (loop)
+		mlx_loop(mlx_ptr);
+	while (--i >= 0)
+	{
+		if (rt_arr[i].img_ptr)
+			mlx_destroy_image(rt_arr[i].mlx_ptr, rt_arr[i].img_ptr);
+		dispose_conf(&rt_arr[i].conf);
+		dispose_entry(rt_arr[i].entry);
+	}
+	free(rt_arr);
 }
 
 int	main0(int argc, char *argv[])
 {
-	int			fd;
-	t_entry		*ptr;
-	t_rt_conf	conf;
+	void		*mlx_ptr;
 
-	(void)&argc;
-	(void)&argv;
-	fd = open(argv[1], O_RDONLY);
-	ptr = calloc_safe(1, sizeof(*ptr));
-	if (try_eval(fd, &ptr))
+	if (argc < 2)
 	{
-		printf("parse success\n");
-		ft_memset(&conf, 0, sizeof(conf));
-		if (get_conf(ptr, &conf))
-			printf("getconf success\n");
-		else
-			printf("getconf failed\n");
-		list_walk((void *)conf.lights, free_safe);
-		list_walk((void *)conf.objects, free_safe);
+		putstr_safe("No Map Filename\n");
+		return (EXIT_FAILURE);
 	}
-	else
-		printf("parse failed\n");
-	dispose_entry(ptr);
-	close(fd);
-	return (0);
+	mlx_ptr = mlx_init();
+	if (!mlx_ptr)
+		return (EXIT_FAILURE);
+	_rt_multiple(mlx_ptr, argc, 1, argv);
+	return (EXIT_SUCCESS);
 }
 
 int	main(int argc, char *argv[])
