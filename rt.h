@@ -6,7 +6,7 @@
 /*   By: jkong <jkong@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 15:16:26 by jkong             #+#    #+#             */
-/*   Updated: 2022/08/09 16:53:46 by jkong            ###   ########.fr       */
+/*   Updated: 2022/08/09 17:31:03 by jkong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,6 @@
 
 # include <unistd.h>
 # include "parser.h"
-
-typedef struct s_vec2
-{
-	double	x;
-	double	y;
-}	t_vec2;
 
 typedef struct s_vec3
 {
@@ -82,7 +76,7 @@ typedef struct s_list_object
 typedef struct s_rt_conf
 {
 	char			*name;
-	t_vec2			window_size;
+	t_vec3			window_size;
 	t_ambient_conf	ambient;
 	t_camera_conf	camera;
 	t_list_light	*lights;
@@ -91,8 +85,9 @@ typedef struct s_rt_conf
 
 typedef struct s_input_sys
 {
-	int		pressed;
-	t_vec2	latest;
+	int	pressed;
+	int	latest_x;
+	int	latest_y;
 }	t_input_sys;
 
 typedef struct s_rt
@@ -101,8 +96,8 @@ typedef struct s_rt
 	char		*path;
 	t_entry		*entry;
 	t_rt_conf	conf;
-	long		win_size_x;
-	long		win_size_y;
+	int			win_size_x;
+	int			win_size_y;
 	void		*win_ptr;
 	void		*img_ptr;
 	t_input_sys	input;
@@ -122,13 +117,13 @@ typedef struct s_ray
 }	t_ray;
 
 void	fill_image(t_rt *unit, unsigned char byte);
-void	put_pixel(t_rt *unit, long x, long y, int color);
+void	put_pixel(t_rt *unit, int x, int y, int color);
 void	refresh_window(t_rt *unit);
 
 void	set_hook(t_rt *unit);
 
 t_vec3	vec3_neg(t_vec3 vec);
-double	vec3_length(t_vec3 lhs, t_vec3 rhs);
+double	vec3_length_sq(t_vec3 lhs, t_vec3 rhs);
 t_vec3	vec3_add(t_vec3 lhs, t_vec3 rhs);
 t_vec3	vec3_multiple(double lhs, t_vec3 rhs);
 double	vec3_product(t_vec3 lhs, t_vec3 rhs);
@@ -140,7 +135,7 @@ t_vec3	vec3_rotate_roll(t_vec3 vec, double roll);
 
 int		try_eval(char *path, t_entry **out);
 
-int		get_vec2(t_entry *ent, const char *key, t_vec2 *out);
+int		get_vec2(t_entry *ent, const char *key, t_vec3 *out);
 int		get_vec3(t_entry *ent, const char *key, t_vec3 *out);
 
 int		get_conf(t_entry *ent, t_rt_conf *out);

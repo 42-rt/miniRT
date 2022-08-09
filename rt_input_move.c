@@ -43,20 +43,22 @@ static int	_on_mouse_right(t_rt *unit, int delta_x, int delta_y)
 
 static int	_mouse_move_hook(int x, int y, void *param)
 {
-	t_rt *const		unit = param;
-	const t_vec2	latest = unit->input.latest;
-	int				re;
+	t_rt *const	unit = param;
+	const int	latest_x = unit->input.latest_x;
+	const int	latest_y = unit->input.latest_y;
+	int			re;
 
 	re = 0;
 	if (has_flag(unit->input.pressed, MLX_MOD_MOUSE_LEFT))
-		re |= _on_mouse_left(unit, x - latest.x, y - latest.y);
+		re |= _on_mouse_left(unit, x - latest_x, y - latest_y);
 	if (has_flag(unit->input.pressed, MLX_MOD_MOUSE_OTHER))
-		re |= _on_mouse_other(unit, x - latest.x, y - latest.y);
+		re |= _on_mouse_other(unit, x - latest_x, y - latest_y);
 	if (has_flag(unit->input.pressed, MLX_MOD_MOUSE_RIGHT))
-		re |= _on_mouse_right(unit, x - latest.x, y - latest.y);
+		re |= _on_mouse_right(unit, x - latest_x, y - latest_y);
 	if (re)
 		unit->update_posted = 1;
-	unit->input.latest = (t_vec2){x, y};
+	unit->input.latest_x = x;
+	unit->input.latest_y = y;
 	return (0);
 }
 

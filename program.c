@@ -6,7 +6,7 @@
 /*   By: jkong <jkong@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 15:15:51 by jkong             #+#    #+#             */
-/*   Updated: 2022/08/09 16:55:16 by jkong            ###   ########.fr       */
+/*   Updated: 2022/08/09 17:35:12 by jkong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,15 +18,15 @@
 
 static void	_draw_test(t_rt *unit)
 {
-	const long	width = unit->win_size_x;
-	const long	height = unit->win_size_y;
+	const int	width = unit->win_size_x;
+	const int	height = unit->win_size_y;
 
 	fill_image(unit, 0x42);
-	for (long x = 0; x < width; x++)
-	for (long y = 0; y < height; y++)
+	for (int x = 0; x < width; x++)
+	for (int y = 0; y < height; y++)
 	{
-		int color = 0x00FF00 | ((255 * x / width) << 16) | (255 * y / height);
-		if ((x - width / 2) * (x - width / 2) + (y - height / 2) * (y - height / 2) < 100 * 100)
+		int color = 0x00FF00 | ((256 * x / width) << 16) | (256 * y / height);
+		if (vec3_length_sq((t_vec3){x, y, 0.}, (t_vec3){width / 2, height / 2, 0.}) < 100 * 100)
 			color = 0;
 		put_pixel(unit, x, y, color);
 	}
@@ -35,8 +35,8 @@ static void	_draw_test(t_rt *unit)
 
 static int	_create_window(t_rt *unit)
 {
-	const long	width = unit->win_size_x;
-	const long	height = unit->win_size_y;
+	const int	width = unit->win_size_x;
+	const int	height = unit->win_size_y;
 	char *const	title = unit->conf.name;
 
 	unit->win_ptr = mlx_new_window(unit->mlx_ptr, width, height, title);
@@ -56,8 +56,8 @@ static int	_rt(void *mlx_ptr, t_rt *unit, char *path)
 	unit->entry = calloc_safe(1, sizeof(*unit->entry));
 	if (try_eval(path, &unit->entry) && get_conf(unit->entry, &unit->conf))
 	{
-		unit->win_size_x = (long)unit->conf.window_size.x;
-		unit->win_size_y = (long)unit->conf.window_size.y;
+		unit->win_size_x = (int)unit->conf.window_size.x;
+		unit->win_size_y = (int)unit->conf.window_size.y;
 		if (_create_window(unit))
 			return (1);
 		else

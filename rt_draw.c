@@ -6,7 +6,7 @@
 /*   By: jkong <jkong@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/09 14:16:07 by jkong             #+#    #+#             */
-/*   Updated: 2022/08/09 15:24:41 by jkong            ###   ########.fr       */
+/*   Updated: 2022/08/09 17:31:27 by jkong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 #include "mlx.h"
 
-static t_pixel	*_get_data_pos(char *ptr, long x, long y, long size_of_line)
+static t_pixel	*_get_data_pos(char *ptr, int x, int y, int size_of_line)
 {
 	return (&((t_pixel *)ptr)[x + y * (size_of_line / sizeof(t_pixel))]);
 }
@@ -59,7 +59,7 @@ void	fill_image(t_rt *unit, unsigned char byte)
 	ft_memset(ptr, byte, size_of_line * unit->win_size_y);
 }
 
-void	put_pixel(t_rt *unit, long x, long y, int color)
+void	put_pixel(t_rt *unit, int x, int y, int color)
 {
 	char	*ptr;
 	int		bpp;
