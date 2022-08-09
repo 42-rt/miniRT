@@ -6,7 +6,7 @@
 /*   By: jkong <jkong@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 15:16:26 by jkong             #+#    #+#             */
-/*   Updated: 2022/08/08 21:05:10 by jkong            ###   ########.fr       */
+/*   Updated: 2022/08/09 16:53:46 by jkong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,13 @@ typedef struct s_vec3
 	double	y;
 	double	z;
 }	t_vec3;
+
+typedef unsigned int	t_pixel;
+
+enum e_bit_map_constant
+{
+	BIT_COUNT = 8
+};
 
 typedef struct s_ambient_conf
 {
@@ -94,14 +101,42 @@ typedef struct s_rt
 	char		*path;
 	t_entry		*entry;
 	t_rt_conf	conf;
-	int			win_size_x;
-	int			win_size_y;
-	char		*title_str;
+	long		win_size_x;
+	long		win_size_y;
 	void		*win_ptr;
 	void		*img_ptr;
 	t_input_sys	input;
 	int			update_posted;
 }	t_rt;
+
+typedef struct s_camera
+{
+	t_vec3	origin;
+	t_vec3	direction;
+}	t_camera;
+
+typedef struct s_ray
+{
+	t_vec3	origin;
+	t_vec3	direction;
+}	t_ray;
+
+void	fill_image(t_rt *unit, unsigned char byte);
+void	put_pixel(t_rt *unit, long x, long y, int color);
+void	refresh_window(t_rt *unit);
+
+void	set_hook(t_rt *unit);
+
+t_vec3	vec3_neg(t_vec3 vec);
+double	vec3_length(t_vec3 lhs, t_vec3 rhs);
+t_vec3	vec3_add(t_vec3 lhs, t_vec3 rhs);
+t_vec3	vec3_multiple(double lhs, t_vec3 rhs);
+double	vec3_product(t_vec3 lhs, t_vec3 rhs);
+
+t_vec3	vec3_cross(t_vec3 lhs, t_vec3 rhs);
+t_vec3	vec3_rotate_yaw(t_vec3 vec, double yaw);
+t_vec3	vec3_rotate_pitch(t_vec3 vec, double pitch);
+t_vec3	vec3_rotate_roll(t_vec3 vec, double roll);
 
 int		try_eval(char *path, t_entry **out);
 
@@ -110,7 +145,5 @@ int		get_vec3(t_entry *ent, const char *key, t_vec3 *out);
 
 int		get_conf(t_entry *ent, t_rt_conf *out);
 void	dispose_conf(t_rt_conf *in);
-
-void	set_hook(t_rt *unit);
 
 #endif
