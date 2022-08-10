@@ -6,7 +6,7 @@
 /*   By: jkong <jkong@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/04 15:51:39 by jkong             #+#    #+#             */
-/*   Updated: 2022/08/08 20:06:34 by jkong            ###   ########.fr       */
+/*   Updated: 2022/08/10 21:38:33 by jkong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 #include "libft.h"
 #include "safe_mem.h"
 #include "generic_list.h"
+
+t_ray_hit_func	*on_hit_func(enum e_object_type type);
 
 static int	_get_lights(t_entry *ent, const char *key, t_list_light **out)
 {
@@ -68,6 +70,7 @@ static int	_get_objects(t_entry *ent, const char *key, t_list_object **out)
 			return (0);
 		elem = calloc_safe(1, sizeof(*elem));
 		elem->type = type;
+		elem->on_hit = on_hit_func(type);
 		get_vec3(ent->child, "origin", &elem->origin);
 		get_vec3(ent->child, "direction", &elem->direction);
 		get_double(ent->child, "width", &elem->width);

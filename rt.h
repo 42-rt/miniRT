@@ -6,7 +6,7 @@
 /*   By: jkong <jkong@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 15:16:26 by jkong             #+#    #+#             */
-/*   Updated: 2022/08/09 17:31:03 by jkong            ###   ########.fr       */
+/*   Updated: 2022/08/10 21:38:14 by jkong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,29 @@ enum e_bit_map_constant
 {
 	BIT_COUNT = 8
 };
+
+typedef struct s_camera
+{
+	t_vec3	origin;
+	t_vec3	direction;
+}	t_camera;
+
+typedef struct s_ray
+{
+	t_vec3	origin;
+	t_vec3	direction;
+	double	t_min;
+	double	t_max;
+}	t_ray;
+
+typedef struct s_hit
+{
+	t_vec3	collision;
+	t_vec3	next_direction;
+	double	t;
+}	t_hit;
+
+typedef int				t_ray_hit_func(void *self, t_ray *r, t_hit *out);
 
 typedef struct s_ambient_conf
 {
@@ -71,6 +94,7 @@ typedef struct s_list_object
 	double					width;
 	double					height;
 	t_vec3					color;
+	t_ray_hit_func			*on_hit;
 }	t_list_object;
 
 typedef struct s_rt_conf
@@ -103,18 +127,6 @@ typedef struct s_rt
 	t_input_sys	input;
 	int			update_posted;
 }	t_rt;
-
-typedef struct s_camera
-{
-	t_vec3	origin;
-	t_vec3	direction;
-}	t_camera;
-
-typedef struct s_ray
-{
-	t_vec3	origin;
-	t_vec3	direction;
-}	t_ray;
 
 void	fill_image(t_rt *unit, unsigned char byte);
 void	put_pixel(t_rt *unit, int x, int y, int color);
