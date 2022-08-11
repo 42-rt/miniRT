@@ -6,7 +6,7 @@
 /*   By: jkong <jkong@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 15:16:26 by jkong             #+#    #+#             */
-/*   Updated: 2022/08/10 21:38:14 by jkong            ###   ########.fr       */
+/*   Updated: 2022/08/11 22:12:27 by jkong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ typedef struct s_hit
 	double	t;
 }	t_hit;
 
-typedef int				t_ray_hit_func(void *self, t_ray *r, t_hit *out);
+typedef int				t_ray_hit_func(void *self, t_ray *ray, t_hit *out);
 
 typedef struct s_ambient_conf
 {
@@ -134,12 +134,18 @@ void	refresh_window(t_rt *unit);
 
 void	set_hook(t_rt *unit);
 
+double	second_df(double a, double b, double c);
+double	second_df_half(double a, double half_b, double c);
+double	second_qe(double a, double b, double c, double d);
+double	second_qe_half(double a, double half_b, double c, double quarter_d);
+
 t_vec3	vec3_neg(t_vec3 vec);
-double	vec3_length_sq(t_vec3 lhs, t_vec3 rhs);
 t_vec3	vec3_add(t_vec3 lhs, t_vec3 rhs);
 t_vec3	vec3_multiple(double lhs, t_vec3 rhs);
+t_vec3	vec3_multiple_v(t_vec3 lhs, t_vec3 rhs);
 double	vec3_product(t_vec3 lhs, t_vec3 rhs);
 
+double	vec3_length_sq(t_vec3 lhs, t_vec3 rhs);
 t_vec3	vec3_cross(t_vec3 lhs, t_vec3 rhs);
 t_vec3	vec3_rotate_yaw(t_vec3 vec, double yaw);
 t_vec3	vec3_rotate_pitch(t_vec3 vec, double pitch);

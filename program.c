@@ -6,7 +6,7 @@
 /*   By: jkong <jkong@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 15:15:51 by jkong             #+#    #+#             */
-/*   Updated: 2022/08/09 17:35:12 by jkong            ###   ########.fr       */
+/*   Updated: 2022/08/11 22:22:18 by jkong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,31 @@
 #include "safe_io.h"
 
 #include "mlx.h"
+
+int	world_hit(t_list_object *world, t_ray *ray, t_hit *hit)
+{
+	while (world)
+	{
+		if (world->on_hit(world, ray, hit))
+			return (1);
+		world = world->next;
+	}
+	return (0);
+}
+
+t_vec3	ray_color(t_rt *unit, t_ray *ray, int depth)
+{
+	t_list_object	*it;
+	t_hit			hit;
+
+	if (depth <= 0)
+		return (t_vec3){0, 0, 0};
+	if (world_hit(unit->conf.objects, ray, &hit))
+	{
+		return (t_vec3){1.0, .0, .0};
+	}
+	return (t_vec3){.5, .6, .8};
+}
 
 static void	_draw_test(t_rt *unit)
 {

@@ -6,7 +6,7 @@
 /*   By: jkong <jkong@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/09 07:56:32 by jkong             #+#    #+#             */
-/*   Updated: 2022/08/09 17:27:49 by jkong            ###   ########.fr       */
+/*   Updated: 2022/08/11 18:44:18 by jkong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,15 +18,6 @@ t_vec3	vec3_neg(t_vec3 vec)
 	return ((t_vec3){-vec.x, -vec.y, -vec.z});
 }
 
-double	vec3_length_sq(t_vec3 lhs, t_vec3 rhs)
-{
-	const double	dx = lhs.x - rhs.x;
-	const double	dy = lhs.y - rhs.y;
-	const double	dz = lhs.z - rhs.z;
-
-	return (dx * dx + dy * dy + dz * dz);
-}
-
 t_vec3	vec3_add(t_vec3 lhs, t_vec3 rhs)
 {
 	return ((t_vec3){lhs.x + rhs.x, lhs.y + rhs.y, lhs.z + rhs.z});
@@ -35,6 +26,11 @@ t_vec3	vec3_add(t_vec3 lhs, t_vec3 rhs)
 t_vec3	vec3_multiple(double lhs, t_vec3 rhs)
 {
 	return ((t_vec3){lhs * rhs.x, lhs * rhs.y, lhs * rhs.z});
+}
+
+t_vec3	vec3_multiple_v(t_vec3 lhs, t_vec3 rhs)
+{
+	return ((t_vec3){lhs.x * rhs.x, lhs.y * rhs.y, lhs.z * rhs.z});
 }
 
 double	vec3_product(t_vec3 lhs, t_vec3 rhs)
