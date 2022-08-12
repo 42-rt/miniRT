@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   program.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jkong <jkong@student.42seoul.kr>           +#+  +:+       +#+        */
+/*   By: schoe <schoe@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 15:15:51 by jkong             #+#    #+#             */
-/*   Updated: 2022/08/09 17:35:12 by jkong            ###   ########.fr       */
+/*   Updated: 2022/08/12 12:40:09 by schoe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,14 +20,18 @@ static void	_draw_test(t_rt *unit)
 {
 	const int	width = unit->win_size_x;
 	const int	height = unit->win_size_y;
+	t_ray	ray;
+	int		color;
 
 	fill_image(unit, 0x42);
 	for (int x = 0; x < width; x++)
 	for (int y = 0; y < height; y++)
 	{
-		int color = 0x00FF00 | ((256 * x / width) << 16) | (256 * y / height);
-		if (vec3_length_sq((t_vec3){x, y, 0.}, (t_vec3){width / 2, height / 2, 0.}) < 100 * 100)
-			color = 0;
+		ray = get_viewport_ray(unit->conf.camera, x, y);
+		if (wolrd_draw(unit->conf, &ray, 0))
+			color = create_trgb(0, ray.rec.fin_color.x, ray.rec.fin_color.y, ray.rec.fin_color.z);
+		else
+			color = 0xfffacd;
 		put_pixel(unit, x, y, color);
 	}
 	refresh_window(unit);
@@ -45,6 +49,7 @@ static int	_create_window(t_rt *unit)
 	unit->img_ptr = mlx_new_image(unit->mlx_ptr, width, height);
 	if (!unit->img_ptr)
 		return (0);
+	cam_init(&(unit->conf.camera));
 	_draw_test(unit); //TODO: 
 	set_hook(unit);
 	return (1);
