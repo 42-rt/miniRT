@@ -6,52 +6,50 @@
 /*   By: jkong <jkong@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/11 18:52:19 by jkong             #+#    #+#             */
-/*   Updated: 2022/08/11 22:04:44 by jkong            ###   ########.fr       */
+/*   Updated: 2022/08/15 00:53:03 by jkong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "rt.h"
 
 #include <math.h>
 
 // Discriminant Function
-double	second_df(double a, double b, double c)
+double	second_df(t_vec3 vec)
 {
-	return (b * b - 4 * a * c);
+	return (vec.y * vec.y - 4 * vec.x * vec.z);
 }
 
 // Discriminant Function for half b
-double	second_df_half(double a, double half_b, double c)
+double	second_df_half(t_vec3 vec)
 {
-	return (half_b * half_b - a * c);
+	return (vec.y * vec.y - vec.x * vec.z);
 }
 
 // Quadratic Equation
-double	second_qe(double a, double b, double c, double d)
+double	second_qe(t_vec3 vec, double d)
 {
 	double	x;
 
-	x = -b;
+	x = -vec.y;
 	if (d < 0)
 		x -= sqrt(-d);
 	else if (d > 0)
 		x += sqrt(d);
-	if (a != 1.)
-		x /= 2. * a;
-	else
-		x /= 2.;
+	x /= 2. * vec.x;
 	return (x);
 }
 
 // Quadratic Equation for half b
-double	second_qe_half(double a, double half_b, double c, double quarter_d)
+double	second_qe_half(t_vec3 vec, double quarter_d)
 {
 	double	x;
 
-	x = -half_b;
+	x = -vec.y;
 	if (quarter_d < 0)
 		x -= sqrt(-quarter_d);
 	else if (quarter_d > 0)
 		x += sqrt(quarter_d);
-	if (a != 1.)
-		x /= a;
+	x /= vec.x;
 	return (x);
 }

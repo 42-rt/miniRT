@@ -6,7 +6,7 @@
 /*   By: jkong <jkong@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 15:15:51 by jkong             #+#    #+#             */
-/*   Updated: 2022/08/11 22:22:18 by jkong            ###   ########.fr       */
+/*   Updated: 2022/08/16 06:35:49 by jkong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,43 +16,59 @@
 
 #include "mlx.h"
 
-int	world_hit(t_list_object *world, t_ray *ray, t_hit *hit)
+static int	_rgb_to_int(t_rgb rgb)
 {
-	while (world)
-	{
-		if (world->on_hit(world, ray, hit))
-			return (1);
-		world = world->next;
-	}
-	return (0);
+	int	r;
+
+	r = 0;
+	r <<= 8;
+	r |= (int)rgb.x & 0xFF;
+	r <<= 8;
+	r |= (int)rgb.y & 0xFF;
+	r <<= 8;
+	r |= (int)rgb.z & 0xFF;
+	return (r);
 }
 
-t_vec3	ray_color(t_rt *unit, t_ray *ray, int depth)
+int	ray_color(t_rt *unit, t_ray *ray, int depth)
 {
-	t_list_object	*it;
-	t_hit			hit;
+	t_hit	hit;
 
 	if (depth <= 0)
-		return (t_vec3){0, 0, 0};
-	if (world_hit(unit->conf.objects, ray, &hit))
+		return (0);
+	if (ray_try_doing_hit(unit->conf.objects, ray, &hit))
 	{
-		return (t_vec3){1.0, .0, .0};
+		//Ambient
+		//Indirect (Reflection, Refraction)
+		for (t_list_light *l = unit->conf.lights; l != NULL; l = l->next)
+		{
+			t_ray	shadow;
+			t_hit	shadow_hit;
+
+			ray_to_light(hit.collision, l, &shadow);
+			if (!ray_try_doing_hit(unit->conf.objects, &shadow, &shadow_hit))
+			{
+				//Diffuse
+				//Specular
+			}
+		}
+		return (_rgb_to_int(hit.obj->color));
 	}
-	return (t_vec3){.5, .6, .8};
+	return (0x00AACCDD);
 }
 
 static void	_draw_test(t_rt *unit)
 {
 	const int	width = unit->win_size_x;
 	const int	height = unit->win_size_y;
+	t_ray		ray;
 
 	fill_image(unit, 0x42);
 	for (int x = 0; x < width; x++)
 	for (int y = 0; y < height; y++)
 	{
-		int color = 0x00FF00 | ((256 * x / width) << 16) | (256 * y / height);
-		if (vec3_length_sq((t_vec3){x, y, 0.}, (t_vec3){width / 2, height / 2, 0.}) < 100 * 100)
-			color = 0;
+		ray_from_camera(&unit->camera, x, y, &ray);
+		int color = ray_color(unit, &ray, 10);
 		put_pixel(unit, x, y, color);
 	}
 	refresh_window(unit);
@@ -70,6 +86,7 @@ static int	_create_window(t_rt *unit)
 	unit->img_ptr = mlx_new_image(unit->mlx_ptr, width, height);
 	if (!unit->img_ptr)
 		return (0);
+	camera_init(&unit->conf, &unit->camera);
 	_draw_test(unit); //TODO: 
 	set_hook(unit);
 	return (1);
@@ -93,10 +110,10 @@ static int	_rt(void *mlx_ptr, t_rt *unit, char *path)
 	return (0);
 }
 
-static void	_rt_multiple(void *mlx_ptr, size_t argc, size_t begin, char *argv[])
+static void	_rt_multiple(void *mlx_ptr, int argc, int begin, char *argv[])
 {
 	t_rt	*rt_arr;
-	size_t	i;
+	int		i;
 	int		loop;
 
 	rt_arr = calloc_safe(argc - begin, sizeof(*rt_arr));
@@ -139,6 +156,6 @@ int	main(int argc, char *argv[])
 {
 	const int	result = main0(argc, argv);
 
-	system("leaks miniRT");
+	// system("leaks miniRT");
 	return (result);
 }

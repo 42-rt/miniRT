@@ -6,28 +6,25 @@
 /*   By: jkong <jkong@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/09 07:56:32 by jkong             #+#    #+#             */
-/*   Updated: 2022/08/11 18:43:02 by jkong            ###   ########.fr       */
+/*   Updated: 2022/08/15 00:58:22 by jkong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rt.h"
+
 #include <math.h>
 
-double	vec3_length_sq(t_vec3 lhs, t_vec3 rhs)
+double	vec3_dot(t_vec3 lhs, t_vec3 rhs)
 {
-	const double	dx = lhs.x - rhs.x;
-	const double	dy = lhs.y - rhs.y;
-	const double	dz = lhs.z - rhs.z;
-
-	return (dx * dx + dy * dy + dz * dz);
+	return (lhs.x * rhs.x + lhs.y * rhs.y + lhs.z * rhs.z);
 }
 
 t_vec3	vec3_cross(t_vec3 lhs, t_vec3 rhs)
 {
 	return ((t_vec3){
-		lhs.x + rhs.x,
-		lhs.y + rhs.y,
-		lhs.z + rhs.z
+		lhs.y * rhs.z - lhs.z * rhs.y,
+		lhs.z * rhs.x - lhs.x * rhs.z,
+		lhs.x * rhs.y - lhs.y * rhs.x
 	});
 }
 
