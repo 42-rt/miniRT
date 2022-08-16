@@ -6,7 +6,7 @@
 /*   By: jkong <jkong@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 15:15:51 by jkong             #+#    #+#             */
-/*   Updated: 2022/08/16 06:35:49 by jkong            ###   ########.fr       */
+/*   Updated: 2022/08/16 16:21:42 by jkong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #include "safe_mem.h"
 #include "safe_io.h"
 
+#include <math.h>
 #include "mlx.h"
 
 static int	_rgb_to_int(t_rgb rgb)
@@ -33,13 +34,17 @@ static int	_rgb_to_int(t_rgb rgb)
 int	ray_color(t_rt *unit, t_ray *ray, int depth)
 {
 	t_hit	hit;
+	t_rgb	color;
 
 	if (depth <= 0)
 		return (0);
 	if (ray_try_doing_hit(unit->conf.objects, ray, &hit))
 	{
+		color = hit.obj->color;
 		//Ambient
+		color = vec3_mul_v(vec3_div(255 / unit->conf.ambient.ratio, unit->conf.ambient.color), color);
 		//Indirect (Reflection, Refraction)
+		//TODO: 
 		for (t_list_light *l = unit->conf.lights; l != NULL; l = l->next)
 		{
 			t_ray	shadow;
@@ -49,10 +54,32 @@ int	ray_color(t_rt *unit, t_ray *ray, int depth)
 			if (!ray_try_doing_hit(unit->conf.objects, &shadow, &shadow_hit))
 			{
 				//Diffuse
+				double	diffuse;
+
+				diffuse = vec3_dot(shadow.direction, hit.normal);
+				if (diffuse > 0)
+					color = vec3_add(color, vec3_mul(l->bright * diffuse, l->color));
+
 				//Specular
+				double	specular;
+				t_vec3	reflect;
+
+				reflect = vec3_sub(vec3_mul(2 * vec3_dot(shadow.direction, hit.normal), hit.normal), shadow.direction);
+				specular = vec3_dot(reflect, vec3_neg(ray->direction));
+				if (specular > 0)
+				{
+					specular = pow(specular, 32);
+					color = vec3_add(color, vec3_mul(l->bright * specular, l->color));
+				}
 			}
 		}
-		return (_rgb_to_int(hit.obj->color));
+		if (color.x > 255)
+			color.x = 255;
+		if (color.y > 255)
+			color.y = 255;
+		if (color.z > 255)
+			color.z = 255;
+		return (_rgb_to_int(color));
 	}
 	return (0x00AACCDD);
 }

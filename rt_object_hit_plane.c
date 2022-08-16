@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rt_object_hit_sphere.c                             :+:      :+:    :+:   */
+/*   rt_object_hit_plane.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jkong <jkong@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/10 21:08:50 by jkong             #+#    #+#             */
-/*   Updated: 2022/08/16 08:07:50 by jkong            ###   ########.fr       */
+/*   Updated: 2022/08/16 15:16:40 by jkong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,32 +14,22 @@
 
 static int	_find_solution(t_list_object *self, t_ray *ray, double *out)
 {
+	double	cosine;
 	t_vec3	vec;
-	t_vec3	second;
-	double	discriminant;
 	double	x;
 
-	vec = vec3_sub(ray->origin, self->origin);
-	second = (t_vec3){
-		vec3_dot(ray->direction, ray->direction),
-		vec3_dot(ray->direction, vec),
-		vec3_dot(vec, vec) - self->width * self->width
-	};
-	discriminant = second_df_half(second);
-	if (discriminant < 0)
+	cosine = vec3_dot(self->direction, ray->direction);
+	if (cosine == 0)
 		return (0);
-	x = second_qe_half(second, -discriminant);
+	vec = vec3_sub(self->origin, ray->origin);
+	x = vec3_dot(self->direction, vec) / cosine;
 	if (x < ray->t_min || x >= ray->t_max)
-	{
-		x = second_qe_half(second, +discriminant);
-		if (x < ray->t_min || x >= ray->t_max)
-			return (0);
-	}
+		return (0);
 	*out = x;
 	return (1);
 }
 
-int	sphere_hit(void *this_ptr, t_ray *ray, t_hit *out)
+int	plane_hit(void *this_ptr, t_ray *ray, t_hit *out)
 {
 	t_list_object *const	self = this_ptr;
 	double					t;
@@ -48,7 +38,7 @@ int	sphere_hit(void *this_ptr, t_ray *ray, t_hit *out)
 		return (0);
 	out->t = t;
 	out->collision = vec3_add(ray->origin, vec3_mul(t, ray->direction));
-	out->normal = vec3_div(self->width, vec3_sub(out->collision, self->origin));
+	out->normal = self->direction;
 	if (!(vec3_dot(ray->direction, out->normal) < 0))
 		out->normal = vec3_neg(out->normal);
 	out->obj = self;

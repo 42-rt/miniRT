@@ -6,7 +6,7 @@
 /*   By: jkong <jkong@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/12 23:15:02 by jkong             #+#    #+#             */
-/*   Updated: 2022/08/16 06:08:37 by jkong            ###   ########.fr       */
+/*   Updated: 2022/08/16 15:03:42 by jkong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	camera_init(t_rt_conf *conf, t_camera *out)
 	horiz = vec3_cross(orientation, (t_vec3){0, 1, 0});
 	if (vec3_len_sq(horiz) == .0)
 		horiz = vec3_cross(orientation, (t_vec3){0, 0, -1});
-	vert = vec3_cross(orientation, horiz);
+	vert = vec3_cross(horiz, orientation);
 	fd = conf->window_size.x / tan((conf->camera.fov / 180. * M_PI) / 2);
 	orientation = vec3_unit(orientation);
 	horiz = vec3_unit(horiz);

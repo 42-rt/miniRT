@@ -23,7 +23,7 @@ SOURCE = program.c rt_ray.c rt_draw.c \
 			rt_parse.c rt_format.c rt_format_vector.c \
 			rt_input.c rt_input_key.c rt_input_mouse.c rt_input_move.c \
 			rt_vector.c rt_vector_utils.c rt_vector3.c rt_second.c \
-			rt_object_hit.c rt_object_hit_sphere.c
+			rt_object_hit.c rt_object_hit_sphere.c rt_object_hit_plane.c
 OBJECT = $(addprefix $(OBJECTS_DIR), $(SOURCE:.c=.o))
 
 HEADER_LIBFT = libft.h

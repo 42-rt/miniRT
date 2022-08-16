@@ -6,7 +6,7 @@
 /*   By: jkong <jkong@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 15:16:26 by jkong             #+#    #+#             */
-/*   Updated: 2022/08/16 06:08:43 by jkong            ###   ########.fr       */
+/*   Updated: 2022/08/16 15:50:32 by jkong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define RT_H
 
 # ifndef MIN_RAY_LENGTH
-#  define MIN_RAY_LENGTH 0.
+#  define MIN_RAY_LENGTH 1
 # endif
 
 # ifndef MAX_RAY_LENGTH
@@ -68,7 +68,11 @@ typedef struct s_hit
 	t_list_object	*obj;
 }	t_hit;
 
-typedef int				t_ray_hit_func(void *self, t_ray *ray, t_hit *out);
+typedef int						t_ray_hit_func(
+	void *self,
+	t_ray *ray,
+	t_hit *out
+);
 
 typedef struct s_ambient_conf
 {
