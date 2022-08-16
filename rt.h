@@ -6,7 +6,7 @@
 /*   By: schoe <schoe@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 15:16:26 by jkong             #+#    #+#             */
-/*   Updated: 2022/08/12 17:06:51 by schoe            ###   ########.fr       */
+/*   Updated: 2022/08/16 12:39:49 by schoe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,12 +51,13 @@ typedef struct s_hit
 	t_point3	intersec_point;
 	t_vec3		intersec_normal;
 	int			in_out_check;
-	int			hit_flag;//필요한가?
+	int			hit_flag;
 	double		root;
 	t_point3	light_dir;
 	t_color3	Diffuse;
 	t_color3	Specular;
 	t_color3	fin_color;
+	t_color3	bump_color;
 }	t_hit;
 
 typedef struct s_ray
@@ -66,6 +67,8 @@ typedef struct s_ray
 	double	root_min;
 	double	root_max;
 	t_hit	rec;
+	double	x;
+	double	y;
 }	t_ray;
 
 typedef int				t_ray_hit_func(void *self, t_ray *r, t_hit *out);
@@ -80,6 +83,8 @@ typedef struct s_camera_conf
 {
 	t_vec3		origin;
 	t_vec3		direction;
+
+
 	t_vec3		r_normal;
 	t_vec3		up_normal;
 	t_point3	leftdown_coner;
@@ -118,6 +123,23 @@ typedef struct s_list_object
 	t_ray_hit_func			*on_hit;
 }	t_list_object;
 
+enum e_texture_type
+{
+	Checker_board,
+	Earth,
+	moon,
+	circuit,
+};
+
+typedef	struct s_texture
+{
+	int		**texture_data;
+	int		width;
+	int		height;
+	int		size_line;
+	void	*img_ptr;
+} t_texture;
+
 typedef struct s_rt_conf
 {
 	char			*name;
@@ -126,6 +148,7 @@ typedef struct s_rt_conf
 	t_camera_conf	camera;
 	t_list_light	*lights;
 	t_list_object	*objects;
+	t_texture		*texture;
 }	t_rt_conf;
 
 typedef struct s_input_sys
@@ -185,8 +208,21 @@ int	hit_sphere(t_ray *ray, t_rt_conf conf, t_list_object sp, int deep);
 int	wolrd_draw(t_rt_conf conf, t_ray *ray, int deep);
 int	hit_check_sp(t_ray *ray, t_list_object sp);
 int	world_hit_check(t_rt_conf conf, t_ray *ray);
+void	shadow_check_sp(t_rt_conf conf, t_ray *ray);
+void	mirror_ray(t_ray *ray);
+t_ray	shadow_check_ray(t_ray *ray, t_list_light *light);
+//plane
+int	hit_check_pl(t_ray *ray, t_list_object pl);
+int	hit_plane(t_ray *ray, t_rt_conf conf, t_list_object pl, int deep);
+//texture
+void	texture_img_call(t_texture *texture, char *path, void *mlx_ptr);
+void	texture_arr_init(t_rt *unit);
+void	get_texture_img(t_ray *ray, t_rt_conf conf, enum e_texture_type type);
 //color
 int	create_trgb(int t, int r, int g, int b);
+int	get_r(int trgb);
+int	get_g(int trgb);
+int	get_b(int trgb);
 t_color3    ray_color(double r);
 //temp_vector
 double		vlength2(t_vec3 vec);

@@ -1,11 +1,7 @@
 #include "rt.h"
 #include <math.h>
 #include "libft.h"
-
-int	create_trgb(int t, int r, int g, int b)
-{
-	return (t << 24 | r << 16 | g << 8 | b);
-}
+#include "mlx.h"
 
 int	distance_check(t_ray *ray,	double min_ans, double max_ans)
 {
@@ -103,13 +99,16 @@ int	hit_sphere(t_ray *ray, t_rt_conf conf, t_list_object sp, int deep)
 		return (0);
 	ray->rec.hit_flag = 1;
 	ray->rec.intersec_point = vplus(ray->origin, vmult(ray->direction, ray->rec.root));
-	ray->rec.intersec_normal = vunit(vminus(ray->rec.intersec_point, sp.origin));
 	if (deep == 0)
+		get_texture_img(ray, conf, circuit);
+	else
+		ray->rec.intersec_normal = vunit(vminus(ray->rec.intersec_point, sp.origin));
+	/*if (deep == 0)
 	{
 		mirror_ray(ray);
 		wolrd_draw(conf, ray, 1);
 		return (1);
-	}
+	}*/
 	shadow_check_sp(conf, ray);
 	ambient = vmult(conf.ambient.color, conf.ambient.ratio);
 	ray->rec.fin_color = vmin(vplus(sp.color, vplus(vplus(ambient, ray->rec.Diffuse), \
@@ -126,8 +125,8 @@ int	wolrd_draw(t_rt_conf conf, t_ray *ray, int deep)
 	{
 		if (temp->type == OBJ_SPHERE)
 			hit_sphere(ray, conf, *temp, 1);
-	/*	else if (conf->objects->type == OBJ_PLANE &&)
-			return (OBJ_PLANE);
+	/*	else if (temp->type == OBJ_PLANE)
+			hit_plane(ray, conf, *temp, 1);
 		else if (conf->objects->type == OBJ_CYLINDER &&)
 			return (OBJ_CYLINDER);
 		else if (conf->objects->type == OBJ_CONE &&)
@@ -170,7 +169,7 @@ int	world_hit_check(t_rt_conf conf, t_ray *ray)
 	{
 		if ((conf.objects->type == OBJ_SPHERE || conf.objects->type == OBJ_CONE) && hit_check_sp(ray, *temp))
 			return (OBJ_SPHERE);
-	/*	else if (conf->objects->type == OBJ_PLANE &&)
+	/*	else if (conf.objects->type == OBJ_PLANE && hit_check_pl(ray, *temp))
 			return (OBJ_PLANE);
 		else if (conf->objects->type == OBJ_CYLINDER &&)
 			return (OBJ_CYLINDER);
@@ -192,6 +191,8 @@ t_ray	get_viewport_ray(t_camera_conf cam, double x, double y)
 	t_vec3	h;
 	t_point3	view_vec;
 
+	ray.x = x;
+	ray.y = y;
 	ray.origin = cam.origin;
 	w = vmult(cam.r_normal, x);
 	h = vmult(cam.up_normal, y);

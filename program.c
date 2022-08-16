@@ -6,7 +6,7 @@
 /*   By: schoe <schoe@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 15:15:51 by jkong             #+#    #+#             */
-/*   Updated: 2022/08/12 12:40:09 by schoe            ###   ########.fr       */
+/*   Updated: 2022/08/15 21:33:35 by schoe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,14 +24,18 @@ static void	_draw_test(t_rt *unit)
 	int		color;
 
 	fill_image(unit, 0x42);
+	texture_arr_init(unit);
 	for (int x = 0; x < width; x++)
 	for (int y = 0; y < height; y++)
 	{
 		ray = get_viewport_ray(unit->conf.camera, x, y);
 		if (wolrd_draw(unit->conf, &ray, 0))
 			color = create_trgb(0, ray.rec.fin_color.x, ray.rec.fin_color.y, ray.rec.fin_color.z);
+	//	else
+	//		color = unit->texture[2].texture_data[(x % unit->texture[2].width) + \
+	//		(y % unit->texture[2].height) * unit->texture[2].width];
 		else
-			color = 0xfffacd;
+			color =  0xadd8e6;
 		put_pixel(unit, x, y, color);
 	}
 	refresh_window(unit);
