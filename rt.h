@@ -6,7 +6,7 @@
 /*   By: schoe <schoe@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 15:16:26 by jkong             #+#    #+#             */
-/*   Updated: 2022/08/16 12:39:49 by schoe            ###   ########.fr       */
+/*   Updated: 2022/08/17 16:07:01 by schoe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -138,6 +138,7 @@ typedef	struct s_texture
 	int		height;
 	int		size_line;
 	void	*img_ptr;
+	int		texture_max_count;
 } t_texture;
 
 typedef struct s_rt_conf
@@ -211,6 +212,7 @@ int	world_hit_check(t_rt_conf conf, t_ray *ray);
 void	shadow_check_sp(t_rt_conf conf, t_ray *ray);
 void	mirror_ray(t_ray *ray);
 t_ray	shadow_check_ray(t_ray *ray, t_list_light *light);
+t_vec3	get_refractive_ray(t_vec3 dir, t_vec3 normal, double ratio);
 //plane
 int	hit_check_pl(t_ray *ray, t_list_object pl);
 int	hit_plane(t_ray *ray, t_rt_conf conf, t_list_object pl, int deep);
@@ -218,6 +220,7 @@ int	hit_plane(t_ray *ray, t_rt_conf conf, t_list_object pl, int deep);
 void	texture_img_call(t_texture *texture, char *path, void *mlx_ptr);
 void	texture_arr_init(t_rt *unit);
 void	get_texture_img(t_ray *ray, t_rt_conf conf, enum e_texture_type type);
+void	texture_free(t_rt *unit);
 //color
 int	create_trgb(int t, int r, int g, int b);
 int	get_r(int trgb);

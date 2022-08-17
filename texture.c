@@ -35,6 +35,7 @@ void	texture_arr_init(t_rt *unit)
 
 	texture_count = 4;
 	unit->conf.texture = (t_texture *)malloc(sizeof(t_texture) * texture_count);
+	unit->conf.texture[0].texture_max_count = texture_count;
 	texture_img_call(&unit->conf.texture[0], "./texture/Checkerboard.xpm", unit->mlx_ptr);
 	texture_img_call(&unit->conf.texture[1], "./texture/earthmap.xpm", unit->mlx_ptr);
 	texture_img_call(&unit->conf.texture[2], "./texture/1000.xpm", unit->mlx_ptr);
@@ -51,8 +52,20 @@ void	get_texture_img(t_ray *ray, t_rt_conf conf, enum e_texture_type type)
 	ray->rec.bump_color.z = get_b(color) / 255.9900 * 0.8;
 	ray->rec.intersec_normal = (t_vec3)ray->rec.bump_color;
 }
-/*
-void	texture_free()
-{
 
+void	texture_free(t_rt *unit)
+{
+	int	i;
+	int	free_index;
+
+	i = 0;
+	while (i < unit->conf.texture[0].texture_max_count)
+	{
+		free_index = 0;
+		while (free_index < unit->conf.texture[i].height)
+			free(unit->conf.texture[i].texture_data[free_index++]);
+		free(unit->conf.texture[i].texture_data);
+		i++;
+	}
+	free(unit->conf.texture);
 }

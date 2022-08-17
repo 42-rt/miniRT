@@ -45,8 +45,25 @@ t_ray	shadow_check_ray(t_ray *ray, t_list_light *light)
 	return (temp);
 }
 
+t_vec3	get_refractive_ray(t_vec3 dir, t_vec3 normal, double ratio)
+{
+	double	cos_e;
+	double	sin_e;
+	t_vec3	parallel;
+	t_vec3	perp;
+
+	cos_e = vdot(vmult(dir, -1), normal);
+	sin_e = sqrt(1.0 - pow(cos_e, 2.0));
+	if (sin_e * ratio > 1.00000)
+		return (dir);
+	perp = vmult(vplus(dir, vmult(normal, cos_e)), ratio);
+	parallel = vmult(normal, -sqrt(1 - pow(vlength(perp), 2.0)));
+	return (vunit(vplus(perp, parallel)));
+}
+
 void	mirror_ray(t_ray *ray)
 {
+	ray->direction = get_refractive_ray(ray->direction, ray->rec.intersec_normal, 1.0 /2.4);
 	ray->origin = vplus(ray->rec.intersec_point, ray->rec.intersec_normal);
 	ray->direction = vmult(ray->direction, -1);
 	ray->direction = vminus(vmult(vmult(ray->rec.intersec_normal, \
@@ -99,16 +116,16 @@ int	hit_sphere(t_ray *ray, t_rt_conf conf, t_list_object sp, int deep)
 		return (0);
 	ray->rec.hit_flag = 1;
 	ray->rec.intersec_point = vplus(ray->origin, vmult(ray->direction, ray->rec.root));
-	if (deep == 0)
+/*	if (deep == 0)
 		get_texture_img(ray, conf, circuit);
-	else
+	else*/
 		ray->rec.intersec_normal = vunit(vminus(ray->rec.intersec_point, sp.origin));
-	/*if (deep == 0)
+	if (deep == 0)
 	{
 		mirror_ray(ray);
 		wolrd_draw(conf, ray, 1);
 		return (1);
-	}*/
+	}
 	shadow_check_sp(conf, ray);
 	ambient = vmult(conf.ambient.color, conf.ambient.ratio);
 	ray->rec.fin_color = vmin(vplus(sp.color, vplus(vplus(ambient, ray->rec.Diffuse), \
