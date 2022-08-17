@@ -6,12 +6,16 @@
 /*   By: jkong <jkong@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 15:16:26 by jkong             #+#    #+#             */
-/*   Updated: 2022/08/17 16:27:37 by jkong            ###   ########.fr       */
+/*   Updated: 2022/08/17 22:33:58 by jkong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef RT_H
 # define RT_H
+
+# ifndef RAY_DEPTH
+#  define RAY_DEPTH 10
+# endif
 
 # ifndef MIN_RAY_LENGTH
 #  define MIN_RAY_LENGTH 1.0e-8
@@ -106,6 +110,19 @@ enum e_object_type
 	OBJ_PARABOLOID,
 };
 
+typedef struct s_material
+{
+	double	ra;
+	double	rd;
+	double	rs;
+	double	s;
+	int		mirror;
+	t_rgb	am;
+	int		lens;
+	t_rgb	al;
+	double	e;
+}	t_material;
+
 struct s_list_object
 {
 	t_list_object		*next;
@@ -116,6 +133,7 @@ struct s_list_object
 	double				height;
 	t_rgb				color;
 	t_ray_hit_func		*on_hit;
+	t_material			material;
 };
 
 typedef struct s_rt_conf
@@ -153,6 +171,7 @@ typedef struct s_rt
 void	camera_init(t_rt_conf *conf, t_camera *out);
 void	ray_from_camera(t_camera *cam, double x, double y, t_ray *out);
 void	ray_to_light(t_pt3 pt, t_list_light *light, t_ray *out);
+void	ray_next(t_pt3 pt, t_vec3 vec, t_ray *out);
 int		ray_try_doing_hit(t_list_object *world, t_ray *ray, t_hit *hit);
 
 t_vec3	ray_color(t_rt *unit, t_ray *ray, int depth);

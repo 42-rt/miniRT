@@ -6,7 +6,7 @@
 /*   By: jkong <jkong@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 15:15:51 by jkong             #+#    #+#             */
-/*   Updated: 2022/08/17 16:26:39 by jkong            ###   ########.fr       */
+/*   Updated: 2022/08/17 22:31:21 by jkong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,48 +16,7 @@
 
 #include "mlx.h"
 
-static int	_rgb_to_int(t_rgb rgb)
-{
-	int	r;
-
-	if (rgb.x < 0)
-		rgb.x = 0;
-	if (rgb.y < 0)
-		rgb.y = 0;
-	if (rgb.z < 0)
-		rgb.z = 0;
-	if (rgb.x > 255)
-		rgb.x = 255;
-	if (rgb.y > 255)
-		rgb.y = 255;
-	if (rgb.z > 255)
-		rgb.z = 255;
-	r = 0;
-	r <<= 8;
-	r |= (int)rgb.x & 0xFF;
-	r <<= 8;
-	r |= (int)rgb.y & 0xFF;
-	r <<= 8;
-	r |= (int)rgb.z & 0xFF;
-	return (r);
-}
-
-static void	_draw_test(t_rt *unit)
-{
-	const int	width = unit->win_size_x;
-	const int	height = unit->win_size_y;
-	t_ray		ray;
-
-	fill_image(unit, 0x42);
-	for (int x = 0; x < width; x++)
-	for (int y = 0; y < height; y++)
-	{
-		ray_from_camera(&unit->camera, x, y, &ray);
-		int color = _rgb_to_int(ray_color(unit, &ray, 10));
-		put_pixel(unit, x, y, color);
-	}
-	refresh_window(unit);
-}
+void	draw_test(t_rt *unit);
 
 static int	_create_window(t_rt *unit)
 {
@@ -72,7 +31,7 @@ static int	_create_window(t_rt *unit)
 	if (!unit->img_ptr)
 		return (0);
 	camera_init(&unit->conf, &unit->camera);
-	_draw_test(unit); //TODO: 
+	draw_test(unit);
 	set_hook(unit);
 	return (1);
 }
@@ -141,6 +100,6 @@ int	main(int argc, char *argv[])
 {
 	const int	result = main0(argc, argv);
 
-	// system("leaks miniRT");
+	system("leaks miniRT");
 	return (result);
 }

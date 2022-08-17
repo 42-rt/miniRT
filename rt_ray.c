@@ -6,7 +6,7 @@
 /*   By: jkong <jkong@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/12 23:15:02 by jkong             #+#    #+#             */
-/*   Updated: 2022/08/17 12:36:53 by jkong            ###   ########.fr       */
+/*   Updated: 2022/08/17 22:00:10 by jkong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,14 @@ void	ray_to_light(t_pt3 pt, t_list_light *light, t_ray *out)
 	out->t_max = vec3_len(orientation);
 }
 
+void	ray_next(t_pt3 pt, t_vec3 vec, t_ray *out)
+{
+	out->origin = pt;
+	out->direction = vec3_unit(vec);
+	out->t_min = MIN_RAY_LENGTH;
+	out->t_max = MAX_RAY_LENGTH;
+}
+
 int	ray_try_doing_hit(t_list_object *world, t_ray *ray, t_hit *hit)
 {
 	t_list_object	*it;
@@ -78,7 +86,8 @@ int	ray_try_doing_hit(t_list_object *world, t_ray *ray, t_hit *hit)
 		if (it->on_hit(it, ray, &hit_internal))
 		{
 			found = 1;
-			*hit = hit_internal;
+			if (hit)
+				*hit = hit_internal;
 			ray->t_max = hit_internal.t;
 		}
 		it = it->next;
