@@ -108,6 +108,15 @@ void	shadow_check_sp(t_rt_conf conf, t_ray *ray)
 	}
 }
 
+void	in_object_check(t_ray *ray)
+{
+	double	cos_e;
+
+	cos_e = vdot(ray->rec.intersec_normal, ray->direction);
+	if (cos_e > 0.0)
+		ray->rec.intersec_normal = vmult(ray->rec.intersec_normal, -1);
+}
+
 int	hit_sphere(t_ray *ray, t_rt_conf conf, t_list_object sp, int deep)
 {
 	t_color3	ambient;
@@ -120,6 +129,7 @@ int	hit_sphere(t_ray *ray, t_rt_conf conf, t_list_object sp, int deep)
 		get_texture_img(ray, conf, circuit);
 	else*/
 		ray->rec.intersec_normal = vunit(vminus(ray->rec.intersec_point, sp.origin));
+	in_object_check(ray);
 	if (deep == 0)
 	{
 		mirror_ray(ray);
