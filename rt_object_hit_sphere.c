@@ -6,7 +6,7 @@
 /*   By: jkong <jkong@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/10 21:08:50 by jkong             #+#    #+#             */
-/*   Updated: 2022/08/16 08:07:50 by jkong            ###   ########.fr       */
+/*   Updated: 2022/08/17 12:40:12 by jkong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,10 @@ static int	_find_solution(t_list_object *self, t_ray *ray, double *out)
 	if (discriminant < 0)
 		return (0);
 	x = second_qe_half(second, -discriminant);
-	if (x < ray->t_min || x >= ray->t_max)
+	if (x <= ray->t_min || x >= ray->t_max)
 	{
 		x = second_qe_half(second, +discriminant);
-		if (x < ray->t_min || x >= ray->t_max)
+		if (x <= ray->t_min || x >= ray->t_max)
 			return (0);
 	}
 	*out = x;

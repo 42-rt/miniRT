@@ -6,7 +6,7 @@
 /*   By: jkong <jkong@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/10 21:08:50 by jkong             #+#    #+#             */
-/*   Updated: 2022/08/16 15:16:40 by jkong            ###   ########.fr       */
+/*   Updated: 2022/08/17 12:40:08 by jkong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static int	_find_solution(t_list_object *self, t_ray *ray, double *out)
 		return (0);
 	vec = vec3_sub(self->origin, ray->origin);
 	x = vec3_dot(self->direction, vec) / cosine;
-	if (x < ray->t_min || x >= ray->t_max)
+	if (x <= ray->t_min || x >= ray->t_max)
 		return (0);
 	*out = x;
 	return (1);
@@ -38,7 +38,7 @@ int	plane_hit(void *this_ptr, t_ray *ray, t_hit *out)
 		return (0);
 	out->t = t;
 	out->collision = vec3_add(ray->origin, vec3_mul(t, ray->direction));
-	out->normal = self->direction;
+	out->normal = vec3_unit(self->direction);
 	if (!(vec3_dot(ray->direction, out->normal) < 0))
 		out->normal = vec3_neg(out->normal);
 	out->obj = self;

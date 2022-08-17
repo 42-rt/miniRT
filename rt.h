@@ -6,7 +6,7 @@
 /*   By: jkong <jkong@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 15:16:26 by jkong             #+#    #+#             */
-/*   Updated: 2022/08/16 15:50:32 by jkong            ###   ########.fr       */
+/*   Updated: 2022/08/17 16:27:37 by jkong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define RT_H
 
 # ifndef MIN_RAY_LENGTH
-#  define MIN_RAY_LENGTH 1
+#  define MIN_RAY_LENGTH 1.0e-8
 # endif
 
 # ifndef MAX_RAY_LENGTH
@@ -154,6 +154,8 @@ void	camera_init(t_rt_conf *conf, t_camera *out);
 void	ray_from_camera(t_camera *cam, double x, double y, t_ray *out);
 void	ray_to_light(t_pt3 pt, t_list_light *light, t_ray *out);
 int		ray_try_doing_hit(t_list_object *world, t_ray *ray, t_hit *hit);
+
+t_vec3	ray_color(t_rt *unit, t_ray *ray, int depth);
 
 void	fill_image(t_rt *unit, unsigned char byte);
 void	put_pixel(t_rt *unit, int x, int y, int color);

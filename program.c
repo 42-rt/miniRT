@@ -6,7 +6,7 @@
 /*   By: jkong <jkong@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 15:15:51 by jkong             #+#    #+#             */
-/*   Updated: 2022/08/16 16:21:42 by jkong            ###   ########.fr       */
+/*   Updated: 2022/08/17 16:26:39 by jkong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,24 @@
 #include "safe_mem.h"
 #include "safe_io.h"
 
-#include <math.h>
 #include "mlx.h"
 
 static int	_rgb_to_int(t_rgb rgb)
 {
 	int	r;
 
+	if (rgb.x < 0)
+		rgb.x = 0;
+	if (rgb.y < 0)
+		rgb.y = 0;
+	if (rgb.z < 0)
+		rgb.z = 0;
+	if (rgb.x > 255)
+		rgb.x = 255;
+	if (rgb.y > 255)
+		rgb.y = 255;
+	if (rgb.z > 255)
+		rgb.z = 255;
 	r = 0;
 	r <<= 8;
 	r |= (int)rgb.x & 0xFF;
@@ -29,59 +40,6 @@ static int	_rgb_to_int(t_rgb rgb)
 	r <<= 8;
 	r |= (int)rgb.z & 0xFF;
 	return (r);
-}
-
-int	ray_color(t_rt *unit, t_ray *ray, int depth)
-{
-	t_hit	hit;
-	t_rgb	color;
-
-	if (depth <= 0)
-		return (0);
-	if (ray_try_doing_hit(unit->conf.objects, ray, &hit))
-	{
-		color = hit.obj->color;
-		//Ambient
-		color = vec3_mul_v(vec3_div(255 / unit->conf.ambient.ratio, unit->conf.ambient.color), color);
-		//Indirect (Reflection, Refraction)
-		//TODO: 
-		for (t_list_light *l = unit->conf.lights; l != NULL; l = l->next)
-		{
-			t_ray	shadow;
-			t_hit	shadow_hit;
-
-			ray_to_light(hit.collision, l, &shadow);
-			if (!ray_try_doing_hit(unit->conf.objects, &shadow, &shadow_hit))
-			{
-				//Diffuse
-				double	diffuse;
-
-				diffuse = vec3_dot(shadow.direction, hit.normal);
-				if (diffuse > 0)
-					color = vec3_add(color, vec3_mul(l->bright * diffuse, l->color));
-
-				//Specular
-				double	specular;
-				t_vec3	reflect;
-
-				reflect = vec3_sub(vec3_mul(2 * vec3_dot(shadow.direction, hit.normal), hit.normal), shadow.direction);
-				specular = vec3_dot(reflect, vec3_neg(ray->direction));
-				if (specular > 0)
-				{
-					specular = pow(specular, 32);
-					color = vec3_add(color, vec3_mul(l->bright * specular, l->color));
-				}
-			}
-		}
-		if (color.x > 255)
-			color.x = 255;
-		if (color.y > 255)
-			color.y = 255;
-		if (color.z > 255)
-			color.z = 255;
-		return (_rgb_to_int(color));
-	}
-	return (0x00AACCDD);
 }
 
 static void	_draw_test(t_rt *unit)
@@ -95,7 +53,7 @@ static void	_draw_test(t_rt *unit)
 	for (int y = 0; y < height; y++)
 	{
 		ray_from_camera(&unit->camera, x, y, &ray);
-		int color = ray_color(unit, &ray, 10);
+		int color = _rgb_to_int(ray_color(unit, &ray, 10));
 		put_pixel(unit, x, y, color);
 	}
 	refresh_window(unit);
