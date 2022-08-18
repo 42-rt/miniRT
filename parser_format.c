@@ -6,7 +6,7 @@
 /*   By: jkong <jkong@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/04 15:51:39 by jkong             #+#    #+#             */
-/*   Updated: 2022/08/05 20:19:26 by jkong            ###   ########.fr       */
+/*   Updated: 2022/08/18 10:58:16 by jkong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,6 @@ t_entry	*get_child(t_entry *parent, const char *key, t_entry **out)
 
 int	get_string(t_entry *ent, const char *key, char **out)
 {
-	*out = NULL;
 	if (get_child(ent, key, &ent))
 	{
 		*out = ent->value;
@@ -45,7 +44,6 @@ int	get_string(t_entry *ent, const char *key, char **out)
 
 int	get_int(t_entry *ent, const char *key, int *out)
 {
-	*out = 0;
 	if (get_child(ent, key, &ent))
 		return (try_atoi(ent->value, out));
 	return (0);
@@ -53,7 +51,6 @@ int	get_int(t_entry *ent, const char *key, int *out)
 
 int	get_double(t_entry *ent, const char *key, double *out)
 {
-	*out = 0.;
 	if (get_child(ent, key, &ent))
 		return (try_atof(ent->value, out));
 	return (0);

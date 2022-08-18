@@ -6,7 +6,7 @@
 /*   By: jkong <jkong@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/12 23:15:02 by jkong             #+#    #+#             */
-/*   Updated: 2022/08/18 10:44:22 by jkong            ###   ########.fr       */
+/*   Updated: 2022/08/18 11:14:51 by jkong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,7 @@ static t_rgb	_apply_phong(t_list_light *l, t_ray *ray, t_hit *hit,
 {
 	t_rgb	color;
 	double	diffuse;
+	t_vec3	reflect;
 	double	specular;
 
 	color = (t_rgb){0., 0., 0.};
@@ -74,8 +75,8 @@ static t_rgb	_apply_phong(t_list_light *l, t_ray *ray, t_hit *hit,
 	if (diffuse > 0)
 		color = vec3_add(color, vec3_mul(
 					hit->obj->material.rd * l->bright * diffuse, l->color));
-	specular = vec3_dot(_reflect(shadow->direction, hit->normal),
-			vec3_neg(ray->direction));
+	reflect = _reflect(shadow->direction, hit->normal);
+	specular = vec3_dot(reflect, ray->direction);
 	if (specular > 0)
 	{
 		specular = pow(specular, hit->obj->material.s);
