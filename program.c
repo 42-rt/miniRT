@@ -6,7 +6,7 @@
 /*   By: jkong <jkong@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 15:15:51 by jkong             #+#    #+#             */
-/*   Updated: 2022/08/17 22:31:21 by jkong            ###   ########.fr       */
+/*   Updated: 2022/08/18 16:07:40 by jkong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 
 #include "mlx.h"
 
-void	draw_test(t_rt *unit);
+void	run_draw_task(t_rt *unit);
 
 static int	_create_window(t_rt *unit)
 {
@@ -31,7 +31,7 @@ static int	_create_window(t_rt *unit)
 	if (!unit->img_ptr)
 		return (0);
 	camera_init(&unit->conf, &unit->camera);
-	draw_test(unit);
+	run_draw_task(unit);
 	set_hook(unit);
 	return (1);
 }

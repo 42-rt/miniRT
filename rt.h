@@ -6,15 +6,15 @@
 /*   By: jkong <jkong@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 15:16:26 by jkong             #+#    #+#             */
-/*   Updated: 2022/08/18 15:54:46 by jkong            ###   ########.fr       */
+/*   Updated: 2022/08/18 16:04:20 by jkong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef RT_H
 # define RT_H
 
-# ifndef TASK_CAP
-#  define TASK_CAP 8
+# ifndef TASK_CAPACITY
+#  define TASK_CAPACITY 8
 # endif
 
 # ifndef RAY_DEPTH

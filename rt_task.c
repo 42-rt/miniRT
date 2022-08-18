@@ -6,7 +6,7 @@
 /*   By: jkong <jkong@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/09 14:16:07 by jkong             #+#    #+#             */
-/*   Updated: 2022/08/18 15:54:38 by jkong            ###   ########.fr       */
+/*   Updated: 2022/08/18 16:07:30 by jkong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,31 +65,45 @@ static void	*_task(void *args)
 	return (NULL);
 }
 
-void	draw_test(t_rt *unit)
+static void	_task_pool(t_rt *unit, pthread_mutex_t *mutex, t_task *pool)
+{
+	const int	total = unit->win_size_x * unit->win_size_y;
+	int			i;
+
+	i = 0;
+	while (i < TASK_CAPACITY)
+	{
+		pool[i].min = total * i / TASK_CAPACITY;
+		pool[i].max = total * (i + 1) / TASK_CAPACITY;
+		pool[i].size_of_line = unit->win_size_x;
+		pool[i].unit = unit;
+		pool[i].mutex = mutex;
+		if (pthread_create(&pool[i].thread, NULL, &_task, &pool[i]) != 0)
+			exit(EXIT_FAILURE);
+		i++;
+	}
+}
+
+void	run_draw_task(t_rt *unit)
 {
 	pthread_mutex_t	mutex;
 	t_task			*pool;
 	int				i;
 
 	fill_image(unit, 0x42);
+	pool = calloc_safe(TASK_CAPACITY, sizeof(*pool));
 	ft_memset(&mutex, 0, sizeof(mutex));
-	pthread_mutex_init(&mutex, NULL);
-	pool = calloc_safe(TASK_CAP, sizeof(*pool));
+	if (pthread_mutex_init(&mutex, NULL) != 0)
+		exit(EXIT_FAILURE);
+	_task_pool(unit, &mutex, pool);
 	i = 0;
-	while (i < TASK_CAP)
+	while (i < TASK_CAPACITY)
 	{
-		pool[i].min = unit->win_size_x * unit->win_size_y * i / TASK_CAP;
-		pool[i].max = unit->win_size_x * unit->win_size_y * (i + 1) / TASK_CAP;
-		pool[i].size_of_line = unit->win_size_x;
-		pool[i].unit = unit;
-		pool[i].mutex = &mutex;
-		pthread_create(&pool[i].thread, NULL, &_task, &pool[i]);
-		i++;
+		if (pthread_join(pool[i++].thread, NULL) != 0)
+			exit(EXIT_FAILURE);
 	}
-	i = 0;
-	while (i < TASK_CAP)
-		pthread_join(pool[i++].thread, NULL);
-	pthread_mutex_destroy(&mutex);
+	if (pthread_mutex_destroy(&mutex) != 0)
+		exit(EXIT_FAILURE);
 	free(pool);
 	refresh_window(unit);
 }
