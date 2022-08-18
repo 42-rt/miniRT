@@ -6,7 +6,7 @@
 /*   By: jkong <jkong@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/10 21:08:50 by jkong             #+#    #+#             */
-/*   Updated: 2022/08/17 14:50:15 by jkong            ###   ########.fr       */
+/*   Updated: 2022/08/18 10:42:52 by jkong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,8 @@ int	cylinder_hit(void *this_ptr, t_ray *ray, t_hit *out)
 
 	if (_fill_record_limit(self, ray, out))
 	{
-		if (!(vec3_dot(ray->direction, out->normal) < 0))
+		out->f = vec3_dot(ray->direction, out->normal) < 0;
+		if (!out->f)
 			out->normal = vec3_neg(out->normal);
 		out->obj = self;
 		return (1);

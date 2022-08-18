@@ -6,7 +6,7 @@
 /*   By: jkong <jkong@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/10 21:08:50 by jkong             #+#    #+#             */
-/*   Updated: 2022/08/17 12:40:12 by jkong            ###   ########.fr       */
+/*   Updated: 2022/08/18 10:43:01 by jkong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,8 @@ int	sphere_hit(void *this_ptr, t_ray *ray, t_hit *out)
 	out->t = t;
 	out->collision = vec3_add(ray->origin, vec3_mul(t, ray->direction));
 	out->normal = vec3_div(self->width, vec3_sub(out->collision, self->origin));
-	if (!(vec3_dot(ray->direction, out->normal) < 0))
+	out->f = vec3_dot(ray->direction, out->normal) < 0;
+	if (!out->f)
 		out->normal = vec3_neg(out->normal);
 	out->obj = self;
 	return (1);

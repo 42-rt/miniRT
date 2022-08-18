@@ -6,7 +6,7 @@
 /*   By: jkong <jkong@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/10 21:08:50 by jkong             #+#    #+#             */
-/*   Updated: 2022/08/17 12:40:08 by jkong            ###   ########.fr       */
+/*   Updated: 2022/08/18 10:42:56 by jkong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,8 @@ int	plane_hit(void *this_ptr, t_ray *ray, t_hit *out)
 	out->t = t;
 	out->collision = vec3_add(ray->origin, vec3_mul(t, ray->direction));
 	out->normal = vec3_unit(self->direction);
-	if (!(vec3_dot(ray->direction, out->normal) < 0))
+	out->f = vec3_dot(ray->direction, out->normal) < 0;
+	if (!out->f)
 		out->normal = vec3_neg(out->normal);
 	out->obj = self;
 	return (1);

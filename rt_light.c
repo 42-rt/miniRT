@@ -6,7 +6,7 @@
 /*   By: jkong <jkong@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/12 23:15:02 by jkong             #+#    #+#             */
-/*   Updated: 2022/08/17 22:42:07 by jkong            ###   ########.fr       */
+/*   Updated: 2022/08/18 10:44:22 by jkong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,15 +16,17 @@
 
 static t_vec3	_reflect(t_vec3 ray, t_vec3 normal)
 {
-	return (vec3_sub(vec3_mul(2 * vec3_dot(ray, normal), normal), ray));
+	return (vec3_sub(ray, vec3_mul(2 * vec3_dot(ray, normal), normal)));
 }
 
-static t_vec3	_refract(t_vec3 ray, t_vec3 normal, double e)
+static t_vec3	_refract(t_vec3 ray, t_vec3 normal, double e, int f)
 {
 	double	cosine;
 	t_vec3	perp;
 	t_vec3	parallel;
 
+	if (f)
+		e = 1. / e;
 	cosine = vec3_dot(vec3_neg(ray), normal);
 	if (cosine > 1)
 		cosine = 1;
@@ -53,7 +55,7 @@ static t_rgb	_get_ambient(t_rt *unit, t_ray *ray, t_hit *hit, int depth)
 	if (hit->obj->material.lens)
 	{
 		ray_next(hit->collision, _refract(ray->direction, hit->normal,
-				hit->obj->material.e), &next_ray);
+				hit->obj->material.e, hit->f), &next_ray);
 		color = vec3_add(color, vec3_mul_v(vec3_div(255, hit->obj->material.al),
 					ray_color(unit, &next_ray, depth - 1)));
 	}
@@ -105,5 +107,5 @@ t_vec3	ray_color(t_rt *unit, t_ray *ray, int depth)
 		}
 		return (color);
 	}
-	return ((t_vec3){255 * 0.5, 255 * 0.6, 255 * 0.8});
+	return ((t_vec3){255, 255, 255});
 }
