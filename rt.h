@@ -6,12 +6,16 @@
 /*   By: jkong <jkong@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 15:16:26 by jkong             #+#    #+#             */
-/*   Updated: 2022/08/18 13:16:57 by jkong            ###   ########.fr       */
+/*   Updated: 2022/08/18 15:54:46 by jkong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef RT_H
 # define RT_H
+
+# ifndef TASK_CAP
+#  define TASK_CAP 8
+# endif
 
 # ifndef RAY_DEPTH
 #  define RAY_DEPTH 50
@@ -168,6 +172,16 @@ typedef struct s_rt
 	t_input_sys	input;
 	int			update_posted;
 }	t_rt;
+
+typedef struct s_task
+{
+	pthread_t		thread;
+	pthread_mutex_t	*mutex;
+	t_rt			*unit;
+	int				size_of_line;
+	int				min;
+	int				max;
+}	t_task;
 
 void	camera_init(t_rt_conf *conf, t_camera *out);
 void	ray_from_camera(t_camera *cam, double x, double y, t_ray *out);

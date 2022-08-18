@@ -6,7 +6,7 @@
 /*   By: jkong <jkong@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/13 18:13:08 by jkong             #+#    #+#             */
-/*   Updated: 2022/08/15 01:00:07 by jkong            ###   ########.fr       */
+/*   Updated: 2022/08/18 14:45:48 by jkong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ t_vec3	vec3_sub(t_vec3 lhs, t_vec3 rhs)
 
 t_vec3	vec3_div(double lhs, t_vec3 rhs)
 {
-	return (vec3_mul(1 / lhs, rhs));
+	return (vec3_mul(1. / lhs, rhs));
 }
 
 double	vec3_len(t_vec3 vec)

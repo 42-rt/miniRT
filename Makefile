@@ -60,7 +60,7 @@ else
 endif
 MLX_NAME = lib$(MLX).$(MLX_TYPE)
 
-LDFLAGS += -lm
+LDFLAGS += -lm -pthread
 CFLAGS += -I$(MLX_DIR)
 LDFLAGS += -L$(MLX_DIR) -l$(MLX) $(MLX_DEP)
 

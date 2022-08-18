@@ -29,7 +29,7 @@ static int	_expose_hook(void *param)
 
 static int	_close_hook(void *param)
 {
-	(void)param;
+	(void)&param;
 	exit(EXIT_SUCCESS);
 	return (0);
 }

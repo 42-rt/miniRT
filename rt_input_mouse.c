@@ -62,8 +62,8 @@ static int	_mouse_up_hook(int button, int x, int y, void *param)
 	t_rt *const	unit = param;
 	const int	flag = _get_mouse_flag(button);
 
-	(void)x;
-	(void)y;
+	(void)&x;
+	(void)&y;
 	if (flag != MLX_NO_MOD)
 		reset_flag(&unit->input.pressed, flag);
 	return (0);
