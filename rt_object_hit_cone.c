@@ -6,7 +6,7 @@
 /*   By: jkong <jkong@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/10 21:08:50 by jkong             #+#    #+#             */
-/*   Updated: 2022/08/18 10:42:38 by jkong            ###   ########.fr       */
+/*   Updated: 2022/08/18 12:04:25 by jkong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,27 +15,26 @@
 static t_vec3	_get_polynomial(t_list_object *self, t_ray *ray)
 {
 	t_vec3	v[5];
-	double	w_sq;
-	double	h_sq;
-	double	cos_sq;
-	double	sin_sq;
+	double	d[6];
 
 	v[0] = self->direction;
 	v[1] = ray->direction;
 	v[2] = vec3_sub(ray->origin, self->origin);
 	v[3] = vec3_sub(v[1], vec3_mul(vec3_dot(v[1], v[0]), v[0]));
 	v[4] = vec3_sub(v[2], vec3_mul(vec3_dot(v[2], v[0]), v[0]));
-	w_sq = self->width * self->width;
-	h_sq = self->height * self->height;
-	cos_sq = h_sq / (w_sq + h_sq);
-	sin_sq = w_sq / (w_sq + h_sq);
+	d[0] = self->width * self->width;
+	d[1] = self->height * self->height;
+	d[2] = d[1] / (d[0] + d[1]);
+	d[3] = d[0] / (d[0] + d[1]);
+	d[4] = vec3_dot(v[1], v[0]);
+	d[5] = vec3_dot(v[2], v[0]);
 	return ((t_vec3){
-		cos_sq * vec3_dot(v[3], v[3])
-		- sin_sq * vec3_dot(v[1], v[0]) * vec3_dot(v[1], v[0]),
-		cos_sq * vec3_dot(v[3], v[4])
-		- sin_sq * vec3_dot(v[1], v[0]) * vec3_dot(v[2], v[0]),
-		cos_sq * vec3_dot(v[4], v[4])
-		- sin_sq * vec3_dot(v[2], v[0]) * vec3_dot(v[2], v[0])
+		d[2] * vec3_len_sq(v[3])
+		- d[3] * d[4] * d[4],
+		d[2] * vec3_dot(v[3], v[4])
+		- d[3] * d[4] * d[5],
+		d[2] * vec3_len_sq(v[4])
+		- d[3] * d[5] * d[5]
 	});
 }
 

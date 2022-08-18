@@ -6,7 +6,7 @@
 /*   By: jkong <jkong@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/10 21:08:50 by jkong             #+#    #+#             */
-/*   Updated: 2022/08/18 10:43:01 by jkong            ###   ########.fr       */
+/*   Updated: 2022/08/18 12:00:11 by jkong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,9 @@ static int	_find_solution(t_list_object *self, t_ray *ray, double *out)
 
 	vec = vec3_sub(ray->origin, self->origin);
 	second = (t_vec3){
-		vec3_dot(ray->direction, ray->direction),
+		vec3_len_sq(ray->direction),
 		vec3_dot(ray->direction, vec),
-		vec3_dot(vec, vec) - self->width * self->width
+		vec3_len_sq(vec) - self->width * self->width
 	};
 	discriminant = second_df_half(second);
 	if (discriminant < 0)
