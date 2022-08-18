@@ -1,70 +1,4828 @@
 #
-# Comment
+# This file is a randomly generated world.
 #
 
-name { scene_name_or_title }
-window_size { 1080 800 }
-ambient_lighting { # Inner comment
-	ratio { 0.2 }
+name { random_world }
+window_size { 1200 675 }
+ambient_lighting {
+	ratio { 0.5 }
 	color { 255 255 255 }
 }
 camera {
-	origin { 200.0 0.0 0.0 }
-	direction { 0 0 -1.0 }
-	fov { 70 }
+	origin { 26 4 6 }
+	direction { -13 -2 -3 }
+	fov { 40 }
 }
 
 lights {
-	light1 {
-		origin { 0.0 0.0 20.6 }
-		bright { 0.6 }
-		color { 10 0 255 }
+	light_0 {
+		origin { -130 2 3 }
+		bright { 0.4 }
+		color { 255 255 255 }
 	}
-	light2 {
-		origin { 20.6 0.0 0.0 }
-		bright { 0.8 }
-		color { 255 0 10 }
+	light_1 {
+		origin { 260 2 3 }
+		bright { 0.3 }
+		color { 255 255 255 }
 	}
 }
 objects {
-	sphere1 {
+	sphere_0 {
 		type { sphere }
-		origin { 0.0 0.0 20.6 }
-		width { 100.0 } # radius
-		color { 255 0 0 }
+		origin { 0 -1000 0 } # center
+		width { 1000 } # radius
+		color { 127.5 127.5 127.5 }
+		material {
+			shininess { 64 }
+		}
 	}
-	sphere2 {
+	sphere_1 {
 		type { sphere }
-		origin { 20.6 0.0 0.0 }
-		width { 50.0 } # radius
-		color { 0 0 255 }
+		origin { -10.8816 0.2 -10.32 } # center
+		width { 0.2 } # radius
+		color { 5.50214 92.2276 37.9282 }
+		material {
+			shininess { 64 }
+		}
 	}
-	plane {
-		type { plane }
-		origin { 0.0 0.0 -10.0 }
-		direction { 0 0 1.0 }
-		color { 0 0 255 }
+	sphere_2 {
+		type { sphere }
+		origin { -10.6548 0.2 -9.53253 } # center
+		width { 0.2 } # radius
+		color { 255 255 255 }
+		material {
+			shininess { 64 }
+			ambient-reflection { 0.001 }
+			diffuse-reflection { 0.01 }
+			specular-reflection { 0.26485 }
+			mirror { 1 }
+			mirror-attenuation { 233.448 131.908 134.316 }
+		}
 	}
-	cylinder {
-		type { cylinder }
-		origin { 50.0 0.0 20.6 }
-		direction { 0 0 1.0 }
-		width { 14.2 } # radius
-		height { 21.42 }
-		color { 10 0 255 }
+	sphere_3 {
+		type { sphere }
+		origin { -10.9931 0.2 -8.65493 } # center
+		width { 0.2 } # radius
+		color { 10.039 99.0533 148.187 }
+		material {
+			shininess { 64 }
+		}
 	}
-	cone {
-		type { second-cone }
-		#...
+	sphere_4 {
+		type { sphere }
+		origin { -10.9172 0.2 -7.41147 } # center
+		width { 0.2 } # radius
+		color { 80.8538 46.9275 11.018 }
+		material {
+			shininess { 64 }
+		}
 	}
-	hyperboloid {
-		type { second-hyperboloid }
-		#...
+	sphere_5 {
+		type { sphere }
+		origin { -10.7046 0.2 -6.43063 } # center
+		width { 0.2 } # radius
+		color { 47.65 248.305 67.324 }
+		material {
+			shininess { 64 }
+		}
 	}
-	paraboloid {
-		type { second-paraboloid }
-		#...
+	sphere_6 {
+		type { sphere }
+		origin { -10.4136 0.2 -5.93458 } # center
+		width { 0.2 } # radius
+		color { 70.2914 172.921 33.222 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_7 {
+		type { sphere }
+		origin { -10.7526 0.2 -4.67666 } # center
+		width { 0.2 } # radius
+		color { 38.6044 7.51373 207.077 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_8 {
+		type { sphere }
+		origin { -10.5353 0.2 -3.71287 } # center
+		width { 0.2 } # radius
+		color { 22.8278 119.384 5.00512 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_9 {
+		type { sphere }
+		origin { -10.6543 0.2 -2.75063 } # center
+		width { 0.2 } # radius
+		color { 219.27 6.76562 90.1889 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_10 {
+		type { sphere }
+		origin { -10.255 0.2 -1.88717 } # center
+		width { 0.2 } # radius
+		color { 2.5473 129.249 160.608 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_11 {
+		type { sphere }
+		origin { -10.2003 0.2 -0.790125 } # center
+		width { 0.2 } # radius
+		color { 255 255 255 }
+		material {
+			shininess { 64 }
+			ambient-reflection { 0.001 }
+			diffuse-reflection { 0.01 }
+			specular-reflection { 1.0 }
+			lens { 1 }
+			lens-attenuation { 255 255 255 }
+			permittivity { 1.5 }
+		}
+	}
+	sphere_12 {
+		type { sphere }
+		origin { -10.6841 0.2 0.461946 } # center
+		width { 0.2 } # radius
+		color { 126.844 58.0985 43.6499 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_13 {
+		type { sphere }
+		origin { -10.5789 0.2 1.25849 } # center
+		width { 0.2 } # radius
+		color { 36.4882 1.29566 77.9078 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_14 {
+		type { sphere }
+		origin { -10.1402 0.2 2.67346 } # center
+		width { 0.2 } # radius
+		color { 119.08 36.2893 33.8991 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_15 {
+		type { sphere }
+		origin { -10.8826 0.2 3.08189 } # center
+		width { 0.2 } # radius
+		color { 1.88188 0.54294 99.084 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_16 {
+		type { sphere }
+		origin { -10.8372 0.2 4.28579 } # center
+		width { 0.2 } # radius
+		color { 154.109 64.1513 14.8636 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_17 {
+		type { sphere }
+		origin { -10.8672 0.2 5.52847 } # center
+		width { 0.2 } # radius
+		color { 119.917 22.2935 239.562 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_18 {
+		type { sphere }
+		origin { -10.8724 0.2 6.50841 } # center
+		width { 0.2 } # radius
+		color { 61.791 15.6998 23.6368 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_19 {
+		type { sphere }
+		origin { -10.4337 0.2 7.11404 } # center
+		width { 0.2 } # radius
+		color { 41.159 75.5224 79.7252 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_20 {
+		type { sphere }
+		origin { -10.9745 0.2 8.81151 } # center
+		width { 0.2 } # radius
+		color { 44.6243 4.75104 213.981 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_21 {
+		type { sphere }
+		origin { -10.854 0.2 9.06396 } # center
+		width { 0.2 } # radius
+		color { 72.9597 29.3808 12.0421 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_22 {
+		type { sphere }
+		origin { -10.2719 0.2 10.8385 } # center
+		width { 0.2 } # radius
+		color { 151.035 13.729 149.184 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_23 {
+		type { sphere }
+		origin { -9.54464 0.2 -10.4596 } # center
+		width { 0.2 } # radius
+		color { 198.339 121.954 51.7849 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_24 {
+		type { sphere }
+		origin { -9.37992 0.2 -9.36801 } # center
+		width { 0.2 } # radius
+		color { 255 255 255 }
+		material {
+			shininess { 64 }
+			ambient-reflection { 0.001 }
+			diffuse-reflection { 0.01 }
+			specular-reflection { 0.144658 }
+			mirror { 1 }
+			mirror-attenuation { 253.361 249.188 236.037 }
+		}
+	}
+	sphere_25 {
+		type { sphere }
+		origin { -9.53701 0.2 -8.90691 } # center
+		width { 0.2 } # radius
+		color { 46.4581 107.319 194.302 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_26 {
+		type { sphere }
+		origin { -9.27935 0.2 -7.36412 } # center
+		width { 0.2 } # radius
+		color { 99.2948 2.25572 14.7298 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_27 {
+		type { sphere }
+		origin { -9.55995 0.2 -6.39909 } # center
+		width { 0.2 } # radius
+		color { 150.597 45.2899 127.143 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_28 {
+		type { sphere }
+		origin { -9.59469 0.2 -5.10957 } # center
+		width { 0.2 } # radius
+		color { 28.286 100.259 35.4031 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_29 {
+		type { sphere }
+		origin { -9.27402 0.2 -4.67136 } # center
+		width { 0.2 } # radius
+		color { 34.0069 157.031 0.0233073 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_30 {
+		type { sphere }
+		origin { -9.30398 0.2 -3.3454 } # center
+		width { 0.2 } # radius
+		color { 55.3911 21.8644 145.567 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_31 {
+		type { sphere }
+		origin { -9.25416 0.2 -2.91491 } # center
+		width { 0.2 } # radius
+		color { 4.45734 41.6035 13.0136 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_32 {
+		type { sphere }
+		origin { -9.14306 0.2 -1.14721 } # center
+		width { 0.2 } # radius
+		color { 28.2367 53.3317 138.355 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_33 {
+		type { sphere }
+		origin { -9.74606 0.2 -0.825429 } # center
+		width { 0.2 } # radius
+		color { 0.704252 40.097 34.2127 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_34 {
+		type { sphere }
+		origin { -9.45909 0.2 0.159192 } # center
+		width { 0.2 } # radius
+		color { 54.3219 9.3957 25.6049 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_35 {
+		type { sphere }
+		origin { -9.42875 0.2 1.62641 } # center
+		width { 0.2 } # radius
+		color { 135.689 112.46 10.8366 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_36 {
+		type { sphere }
+		origin { -9.79569 0.2 2.2869 } # center
+		width { 0.2 } # radius
+		color { 93.8908 16.5877 114.338 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_37 {
+		type { sphere }
+		origin { -9.36731 0.2 3.12874 } # center
+		width { 0.2 } # radius
+		color { 33.5312 68.9128 162.104 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_38 {
+		type { sphere }
+		origin { -9.8782 0.2 4.47569 } # center
+		width { 0.2 } # radius
+		color { 34.1397 38.8187 48.9111 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_39 {
+		type { sphere }
+		origin { -9.59782 0.2 5.42831 } # center
+		width { 0.2 } # radius
+		color { 36.5664 18.0843 13.4069 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_40 {
+		type { sphere }
+		origin { -9.53746 0.2 6.65575 } # center
+		width { 0.2 } # radius
+		color { 172.798 77.4677 54.0908 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_41 {
+		type { sphere }
+		origin { -9.40478 0.2 7.36165 } # center
+		width { 0.2 } # radius
+		color { 103.489 86.4901 20.7748 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_42 {
+		type { sphere }
+		origin { -9.25369 0.2 8.01346 } # center
+		width { 0.2 } # radius
+		color { 64.1791 43.7138 135.099 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_43 {
+		type { sphere }
+		origin { -9.24042 0.2 9.62462 } # center
+		width { 0.2 } # radius
+		color { 18.6817 147.301 3.98601 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_44 {
+		type { sphere }
+		origin { -9.47582 0.2 10.6765 } # center
+		width { 0.2 } # radius
+		color { 190.607 30.3668 0.3032 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_45 {
+		type { sphere }
+		origin { -8.92807 0.2 -10.8532 } # center
+		width { 0.2 } # radius
+		color { 100.527 1.2662 111.345 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_46 {
+		type { sphere }
+		origin { -8.93984 0.2 -9.51038 } # center
+		width { 0.2 } # radius
+		color { 62.2984 36.2714 69.7766 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_47 {
+		type { sphere }
+		origin { -8.74774 0.2 -8.26566 } # center
+		width { 0.2 } # radius
+		color { 0.886491 18.1599 41.2043 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_48 {
+		type { sphere }
+		origin { -8.80138 0.2 -7.95025 } # center
+		width { 0.2 } # radius
+		color { 5.34993 2.06812 88.1834 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_49 {
+		type { sphere }
+		origin { -8.53201 0.2 -6.59816 } # center
+		width { 0.2 } # radius
+		color { 26.6634 42.1287 144.808 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_50 {
+		type { sphere }
+		origin { -8.94827 0.2 -5.11181 } # center
+		width { 0.2 } # radius
+		color { 4.06016 0.159568 106.905 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_51 {
+		type { sphere }
+		origin { -8.33494 0.2 -4.3886 } # center
+		width { 0.2 } # radius
+		color { 133.104 1.70858 10.9749 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_52 {
+		type { sphere }
+		origin { -8.45315 0.2 -3.88666 } # center
+		width { 0.2 } # radius
+		color { 118.155 237.013 23.5744 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_53 {
+		type { sphere }
+		origin { -8.6181 0.2 -2.26826 } # center
+		width { 0.2 } # radius
+		color { 159.1 28.1817 51.1311 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_54 {
+		type { sphere }
+		origin { -8.89509 0.2 -1.81139 } # center
+		width { 0.2 } # radius
+		color { 5.10102 83.5978 0.669561 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_55 {
+		type { sphere }
+		origin { -8.38133 0.2 -0.662221 } # center
+		width { 0.2 } # radius
+		color { 6.31921 2.53333 122.673 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_56 {
+		type { sphere }
+		origin { -8.15937 0.2 0.22514 } # center
+		width { 0.2 } # radius
+		color { 68.7159 131.776 86.9046 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_57 {
+		type { sphere }
+		origin { -8.96727 0.2 1.20751 } # center
+		width { 0.2 } # radius
+		color { 34.854 53.2918 37.4111 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_58 {
+		type { sphere }
+		origin { -8.41229 0.2 2.14933 } # center
+		width { 0.2 } # radius
+		color { 125.611 5.09003 11.5302 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_59 {
+		type { sphere }
+		origin { -8.44106 0.2 3.82262 } # center
+		width { 0.2 } # radius
+		color { 2.27229 8.12687 81.2945 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_60 {
+		type { sphere }
+		origin { -8.30525 0.2 4.05882 } # center
+		width { 0.2 } # radius
+		color { 37.1542 111.117 88.6533 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_61 {
+		type { sphere }
+		origin { -8.84576 0.2 5.33527 } # center
+		width { 0.2 } # radius
+		color { 16.8544 30.4714 34.2194 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_62 {
+		type { sphere }
+		origin { -8.53406 0.2 6.09467 } # center
+		width { 0.2 } # radius
+		color { 70.2237 67.0615 62.3449 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_63 {
+		type { sphere }
+		origin { -8.31758 0.2 7.75294 } # center
+		width { 0.2 } # radius
+		color { 255 255 255 }
+		material {
+			shininess { 64 }
+			ambient-reflection { 0.001 }
+			diffuse-reflection { 0.01 }
+			specular-reflection { 0.302801 }
+			mirror { 1 }
+			mirror-attenuation { 216.723 177.105 246.743 }
+		}
+	}
+	sphere_64 {
+		type { sphere }
+		origin { -8.51445 0.2 8.40957 } # center
+		width { 0.2 } # radius
+		color { 43.1829 28.9627 6.13924 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_65 {
+		type { sphere }
+		origin { -8.80525 0.2 9.72182 } # center
+		width { 0.2 } # radius
+		color { 32.7837 121.357 58.0662 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_66 {
+		type { sphere }
+		origin { -8.9271 0.2 10.4138 } # center
+		width { 0.2 } # radius
+		color { 0.191728 53.9729 83.2805 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_67 {
+		type { sphere }
+		origin { -7.83186 0.2 -10.1329 } # center
+		width { 0.2 } # radius
+		color { 5.85008 122.984 15.3921 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_68 {
+		type { sphere }
+		origin { -7.73678 0.2 -9.54131 } # center
+		width { 0.2 } # radius
+		color { 69.375 170.649 117.03 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_69 {
+		type { sphere }
+		origin { -7.96272 0.2 -8.86202 } # center
+		width { 0.2 } # radius
+		color { 181.743 3.47125 27.0887 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_70 {
+		type { sphere }
+		origin { -7.37028 0.2 -7.36418 } # center
+		width { 0.2 } # radius
+		color { 47.7237 13.3937 42.2068 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_71 {
+		type { sphere }
+		origin { -7.57745 0.2 -6.22493 } # center
+		width { 0.2 } # radius
+		color { 130.522 3.58633 6.57671 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_72 {
+		type { sphere }
+		origin { -7.2594 0.2 -5.70338 } # center
+		width { 0.2 } # radius
+		color { 23.8839 135.081 106.174 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_73 {
+		type { sphere }
+		origin { -7.21924 0.2 -4.71956 } # center
+		width { 0.2 } # radius
+		color { 255 255 255 }
+		material {
+			shininess { 64 }
+			ambient-reflection { 0.001 }
+			diffuse-reflection { 0.01 }
+			specular-reflection { 0.234037 }
+			mirror { 1 }
+			mirror-attenuation { 146.42 254.694 209.039 }
+		}
+	}
+	sphere_74 {
+		type { sphere }
+		origin { -7.3783 0.2 -3.26613 } # center
+		width { 0.2 } # radius
+		color { 255 255 255 }
+		material {
+			shininess { 64 }
+			ambient-reflection { 0.001 }
+			diffuse-reflection { 0.01 }
+			specular-reflection { 0.472625 }
+			mirror { 1 }
+			mirror-attenuation { 196.546 200.533 147.8 }
+		}
+	}
+	sphere_75 {
+		type { sphere }
+		origin { -7.86013 0.2 -2.96303 } # center
+		width { 0.2 } # radius
+		color { 255 255 255 }
+		material {
+			shininess { 64 }
+			ambient-reflection { 0.001 }
+			diffuse-reflection { 0.01 }
+			specular-reflection { 0.259387 }
+			mirror { 1 }
+			mirror-attenuation { 171.311 141.527 139.809 }
+		}
+	}
+	sphere_76 {
+		type { sphere }
+		origin { -7.49466 0.2 -1.22881 } # center
+		width { 0.2 } # radius
+		color { 92.0652 3.92161 36.089 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_77 {
+		type { sphere }
+		origin { -7.68872 0.2 -0.940339 } # center
+		width { 0.2 } # radius
+		color { 13.639 137.646 9.45692 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_78 {
+		type { sphere }
+		origin { -7.37799 0.2 0.686109 } # center
+		width { 0.2 } # radius
+		color { 168.434 18.3315 64.7397 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_79 {
+		type { sphere }
+		origin { -7.25187 0.2 1.82731 } # center
+		width { 0.2 } # radius
+		color { 75.3 29.7945 129.268 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_80 {
+		type { sphere }
+		origin { -7.75407 0.2 2.47828 } # center
+		width { 0.2 } # radius
+		color { 97.7477 103.885 16.5958 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_81 {
+		type { sphere }
+		origin { -7.48558 0.2 3.53 } # center
+		width { 0.2 } # radius
+		color { 82.3039 1.22069 6.61107 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_82 {
+		type { sphere }
+		origin { -7.71142 0.2 4.03155 } # center
+		width { 0.2 } # radius
+		color { 34.4956 16.3212 59.6792 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_83 {
+		type { sphere }
+		origin { -7.30517 0.2 5.46183 } # center
+		width { 0.2 } # radius
+		color { 255 255 255 }
+		material {
+			shininess { 64 }
+			ambient-reflection { 0.001 }
+			diffuse-reflection { 0.01 }
+			specular-reflection { 0.203769 }
+			mirror { 1 }
+			mirror-attenuation { 189.552 210.391 216.367 }
+		}
+	}
+	sphere_84 {
+		type { sphere }
+		origin { -7.5682 0.2 6.63941 } # center
+		width { 0.2 } # radius
+		color { 38.1559 49.6192 81.9141 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_85 {
+		type { sphere }
+		origin { -7.78814 0.2 7.37214 } # center
+		width { 0.2 } # radius
+		color { 255 255 255 }
+		material {
+			shininess { 64 }
+			ambient-reflection { 0.001 }
+			diffuse-reflection { 0.01 }
+			specular-reflection { 0.340746 }
+			mirror { 1 }
+			mirror-attenuation { 203.678 227.333 244.832 }
+		}
+	}
+	sphere_86 {
+		type { sphere }
+		origin { -7.52533 0.2 8.20724 } # center
+		width { 0.2 } # radius
+		color { 255 255 255 }
+		material {
+			shininess { 64 }
+			ambient-reflection { 0.001 }
+			diffuse-reflection { 0.01 }
+			specular-reflection { 0.325757 }
+			mirror { 1 }
+			mirror-attenuation { 145.82 242.189 159.556 }
+		}
+	}
+	sphere_87 {
+		type { sphere }
+		origin { -7.15766 0.2 9.24782 } # center
+		width { 0.2 } # radius
+		color { 110.986 8.74502 101.149 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_88 {
+		type { sphere }
+		origin { -7.60716 0.2 10.097 } # center
+		width { 0.2 } # radius
+		color { 67.3215 7.56496 85.2495 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_89 {
+		type { sphere }
+		origin { -6.70232 0.2 -10.95 } # center
+		width { 0.2 } # radius
+		color { 16.7318 120.574 44.6423 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_90 {
+		type { sphere }
+		origin { -6.66934 0.2 -9.27558 } # center
+		width { 0.2 } # radius
+		color { 6.17333 19.0484 5.60231 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_91 {
+		type { sphere }
+		origin { -6.61828 0.2 -8.62898 } # center
+		width { 0.2 } # radius
+		color { 255 255 255 }
+		material {
+			shininess { 64 }
+			ambient-reflection { 0.001 }
+			diffuse-reflection { 0.01 }
+			specular-reflection { 0.407208 }
+			mirror { 1 }
+			mirror-attenuation { 210.54 166.812 135.168 }
+		}
+	}
+	sphere_92 {
+		type { sphere }
+		origin { -6.17246 0.2 -7.1889 } # center
+		width { 0.2 } # radius
+		color { 255 255 255 }
+		material {
+			shininess { 64 }
+			ambient-reflection { 0.001 }
+			diffuse-reflection { 0.01 }
+			specular-reflection { 0.0157019 }
+			mirror { 1 }
+			mirror-attenuation { 225.681 149.277 200.486 }
+		}
+	}
+	sphere_93 {
+		type { sphere }
+		origin { -6.53001 0.2 -6.22454 } # center
+		width { 0.2 } # radius
+		color { 255 255 255 }
+		material {
+			shininess { 64 }
+			ambient-reflection { 0.001 }
+			diffuse-reflection { 0.01 }
+			specular-reflection { 0.194586 }
+			mirror { 1 }
+			mirror-attenuation { 162.843 238.36 202.325 }
+		}
+	}
+	sphere_94 {
+		type { sphere }
+		origin { -6.5269 0.2 -5.15412 } # center
+		width { 0.2 } # radius
+		color { 255 255 255 }
+		material {
+			shininess { 64 }
+			ambient-reflection { 0.001 }
+			diffuse-reflection { 0.01 }
+			specular-reflection { 0.440392 }
+			mirror { 1 }
+			mirror-attenuation { 181.055 201.432 223.016 }
+		}
+	}
+	sphere_95 {
+		type { sphere }
+		origin { -6.82941 0.2 -4.33119 } # center
+		width { 0.2 } # radius
+		color { 130.181 197.073 6.67785 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_96 {
+		type { sphere }
+		origin { -6.85507 0.2 -3.62488 } # center
+		width { 0.2 } # radius
+		color { 19.9922 151.09 110.377 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_97 {
+		type { sphere }
+		origin { -6.19313 0.2 -2.20943 } # center
+		width { 0.2 } # radius
+		color { 47.464 19.8249 11.7185 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_98 {
+		type { sphere }
+		origin { -6.87103 0.2 -1.57012 } # center
+		width { 0.2 } # radius
+		color { 176.332 38.1629 67.9131 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_99 {
+		type { sphere }
+		origin { -6.67384 0.2 -0.226708 } # center
+		width { 0.2 } # radius
+		color { 255 255 255 }
+		material {
+			shininess { 64 }
+			ambient-reflection { 0.001 }
+			diffuse-reflection { 0.01 }
+			specular-reflection { 0.249315 }
+			mirror { 1 }
+			mirror-attenuation { 228.77 182.181 136.873 }
+		}
+	}
+	sphere_100 {
+		type { sphere }
+		origin { -6.59434 0.2 0.449692 } # center
+		width { 0.2 } # radius
+		color { 27.6154 26.1707 6.14713 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_101 {
+		type { sphere }
+		origin { -6.63264 0.2 1.21457 } # center
+		width { 0.2 } # radius
+		color { 255 255 255 }
+		material {
+			shininess { 64 }
+			ambient-reflection { 0.001 }
+			diffuse-reflection { 0.01 }
+			specular-reflection { 1.0 }
+			lens { 1 }
+			lens-attenuation { 255 255 255 }
+			permittivity { 1.5 }
+		}
+	}
+	sphere_102 {
+		type { sphere }
+		origin { -6.24987 0.2 2.17827 } # center
+		width { 0.2 } # radius
+		color { 255 255 255 }
+		material {
+			shininess { 64 }
+			ambient-reflection { 0.001 }
+			diffuse-reflection { 0.01 }
+			specular-reflection { 1.0 }
+			lens { 1 }
+			lens-attenuation { 255 255 255 }
+			permittivity { 1.5 }
+		}
+	}
+	sphere_103 {
+		type { sphere }
+		origin { -6.82332 0.2 3.30521 } # center
+		width { 0.2 } # radius
+		color { 63.5456 41.3375 57.0979 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_104 {
+		type { sphere }
+		origin { -6.61347 0.2 4.13391 } # center
+		width { 0.2 } # radius
+		color { 68.8283 215.57 145.882 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_105 {
+		type { sphere }
+		origin { -6.66318 0.2 5.00865 } # center
+		width { 0.2 } # radius
+		color { 78.8991 130.211 62.2108 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_106 {
+		type { sphere }
+		origin { -6.64945 0.2 6.30088 } # center
+		width { 0.2 } # radius
+		color { 117.944 31.5678 23.3944 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_107 {
+		type { sphere }
+		origin { -6.45798 0.2 7.00503 } # center
+		width { 0.2 } # radius
+		color { 80.8821 25.7262 38.3292 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_108 {
+		type { sphere }
+		origin { -6.88805 0.2 8.57116 } # center
+		width { 0.2 } # radius
+		color { 255 255 255 }
+		material {
+			shininess { 64 }
+			ambient-reflection { 0.001 }
+			diffuse-reflection { 0.01 }
+			specular-reflection { 0.0779365 }
+			mirror { 1 }
+			mirror-attenuation { 133.709 185.901 175.544 }
+		}
+	}
+	sphere_109 {
+		type { sphere }
+		origin { -6.40062 0.2 9.01038 } # center
+		width { 0.2 } # radius
+		color { 84.2318 45.8581 37.8774 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_110 {
+		type { sphere }
+		origin { -6.24216 0.2 10.2087 } # center
+		width { 0.2 } # radius
+		color { 8.75694 19.2745 7.22505 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_111 {
+		type { sphere }
+		origin { -5.6197 0.2 -10.2444 } # center
+		width { 0.2 } # radius
+		color { 255 255 255 }
+		material {
+			shininess { 64 }
+			ambient-reflection { 0.001 }
+			diffuse-reflection { 0.01 }
+			specular-reflection { 0.467055 }
+			mirror { 1 }
+			mirror-attenuation { 164.863 150.602 173.085 }
+		}
+	}
+	sphere_112 {
+		type { sphere }
+		origin { -5.66786 0.2 -9.58325 } # center
+		width { 0.2 } # radius
+		color { 8.08195 107.136 61.6639 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_113 {
+		type { sphere }
+		origin { -5.22225 0.2 -8.88208 } # center
+		width { 0.2 } # radius
+		color { 15.5016 111.733 208.693 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_114 {
+		type { sphere }
+		origin { -5.17067 0.2 -7.82479 } # center
+		width { 0.2 } # radius
+		color { 177.623 78.7574 59.5106 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_115 {
+		type { sphere }
+		origin { -5.4061 0.2 -6.3426 } # center
+		width { 0.2 } # radius
+		color { 255 255 255 }
+		material {
+			shininess { 64 }
+			ambient-reflection { 0.001 }
+			diffuse-reflection { 0.01 }
+			specular-reflection { 0.332074 }
+			mirror { 1 }
+			mirror-attenuation { 209.486 172.065 195.697 }
+		}
+	}
+	sphere_116 {
+		type { sphere }
+		origin { -5.21773 0.2 -5.60187 } # center
+		width { 0.2 } # radius
+		color { 27.4432 29.3494 202.986 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_117 {
+		type { sphere }
+		origin { -5.70036 0.2 -4.52644 } # center
+		width { 0.2 } # radius
+		color { 255 255 255 }
+		material {
+			shininess { 64 }
+			ambient-reflection { 0.001 }
+			diffuse-reflection { 0.01 }
+			specular-reflection { 1.0 }
+			lens { 1 }
+			lens-attenuation { 255 255 255 }
+			permittivity { 1.5 }
+		}
+	}
+	sphere_118 {
+		type { sphere }
+		origin { -5.2637 0.2 -3.1631 } # center
+		width { 0.2 } # radius
+		color { 100.869 7.81702 59.2896 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_119 {
+		type { sphere }
+		origin { -5.82344 0.2 -2.85334 } # center
+		width { 0.2 } # radius
+		color { 255 255 255 }
+		material {
+			shininess { 64 }
+			ambient-reflection { 0.001 }
+			diffuse-reflection { 0.01 }
+			specular-reflection { 0.419339 }
+			mirror { 1 }
+			mirror-attenuation { 234.09 204.307 206.963 }
+		}
+	}
+	sphere_120 {
+		type { sphere }
+		origin { -5.6476 0.2 -1.21584 } # center
+		width { 0.2 } # radius
+		color { 115.049 18.5354 0.00466249 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_121 {
+		type { sphere }
+		origin { -5.97096 0.2 -0.683747 } # center
+		width { 0.2 } # radius
+		color { 125.688 5.67001 125.565 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_122 {
+		type { sphere }
+		origin { -5.60164 0.2 0.158778 } # center
+		width { 0.2 } # radius
+		color { 13.9088 7.55113 174.852 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_123 {
+		type { sphere }
+		origin { -5.48759 0.2 1.80615 } # center
+		width { 0.2 } # radius
+		color { 53.3737 47.8387 49.0659 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_124 {
+		type { sphere }
+		origin { -5.14206 0.2 2.42926 } # center
+		width { 0.2 } # radius
+		color { 7.04567 1.71811 171.029 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_125 {
+		type { sphere }
+		origin { -5.13595 0.2 3.57724 } # center
+		width { 0.2 } # radius
+		color { 120.574 17.5442 21.5826 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_126 {
+		type { sphere }
+		origin { -5.52619 0.2 4.10656 } # center
+		width { 0.2 } # radius
+		color { 89.0507 66.7773 58.8287 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_127 {
+		type { sphere }
+		origin { -5.8889 0.2 5.65548 } # center
+		width { 0.2 } # radius
+		color { 3.72765 5.41644 40.6819 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_128 {
+		type { sphere }
+		origin { -5.29831 0.2 6.64728 } # center
+		width { 0.2 } # radius
+		color { 26.7041 43.2724 15.1436 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_129 {
+		type { sphere }
+		origin { -5.39578 0.2 7.36429 } # center
+		width { 0.2 } # radius
+		color { 98.8426 103.363 72.7254 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_130 {
+		type { sphere }
+		origin { -5.23584 0.2 8.254 } # center
+		width { 0.2 } # radius
+		color { 4.93908 43.2852 102.061 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_131 {
+		type { sphere }
+		origin { -5.85186 0.2 9.3826 } # center
+		width { 0.2 } # radius
+		color { 6.52173 50.6107 11.7339 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_132 {
+		type { sphere }
+		origin { -5.56616 0.2 10.7135 } # center
+		width { 0.2 } # radius
+		color { 24.9953 11.3528 66.8804 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_133 {
+		type { sphere }
+		origin { -4.44509 0.2 -10.4817 } # center
+		width { 0.2 } # radius
+		color { 10.3683 183.15 35.2325 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_134 {
+		type { sphere }
+		origin { -4.32683 0.2 -9.89692 } # center
+		width { 0.2 } # radius
+		color { 87.2727 35.8982 29.2206 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_135 {
+		type { sphere }
+		origin { -4.17707 0.2 -8.29308 } # center
+		width { 0.2 } # radius
+		color { 88.0693 24.1262 72.8217 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_136 {
+		type { sphere }
+		origin { -4.67403 0.2 -7.68315 } # center
+		width { 0.2 } # radius
+		color { 255 255 255 }
+		material {
+			shininess { 64 }
+			ambient-reflection { 0.001 }
+			diffuse-reflection { 0.01 }
+			specular-reflection { 0.422101 }
+			mirror { 1 }
+			mirror-attenuation { 137.784 200.416 226.49 }
+		}
+	}
+	sphere_137 {
+		type { sphere }
+		origin { -4.26441 0.2 -6.42154 } # center
+		width { 0.2 } # radius
+		color { 31.2573 82.5738 55.7495 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_138 {
+		type { sphere }
+		origin { -4.85821 0.2 -5.30122 } # center
+		width { 0.2 } # radius
+		color { 20.2131 94.9628 27.4414 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_139 {
+		type { sphere }
+		origin { -4.88004 0.2 -4.76432 } # center
+		width { 0.2 } # radius
+		color { 2.28019 23.7343 184.349 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_140 {
+		type { sphere }
+		origin { -4.82223 0.2 -3.38445 } # center
+		width { 0.2 } # radius
+		color { 2.49225 176.252 36.7324 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_141 {
+		type { sphere }
+		origin { -4.94576 0.2 -2.25325 } # center
+		width { 0.2 } # radius
+		color { 14.372 122.414 38.0082 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_142 {
+		type { sphere }
+		origin { -4.11227 0.2 -1.26893 } # center
+		width { 0.2 } # radius
+		color { 102.77 7.03996 18.4899 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_143 {
+		type { sphere }
+		origin { -4.7856 0.2 -0.354755 } # center
+		width { 0.2 } # radius
+		color { 255 255 255 }
+		material {
+			shininess { 64 }
+			ambient-reflection { 0.001 }
+			diffuse-reflection { 0.01 }
+			specular-reflection { 0.000786809 }
+			mirror { 1 }
+			mirror-attenuation { 202.688 155.874 156.54 }
+		}
+	}
+	sphere_144 {
+		type { sphere }
+		origin { -4.63121 0.2 0.839705 } # center
+		width { 0.2 } # radius
+		color { 4.92304 103.951 58.5137 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_145 {
+		type { sphere }
+		origin { -4.4384 0.2 1.58849 } # center
+		width { 0.2 } # radius
+		color { 162.19 13.7271 4.25867 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_146 {
+		type { sphere }
+		origin { -4.66076 0.2 2.10862 } # center
+		width { 0.2 } # radius
+		color { 62.1398 16.9829 132.439 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_147 {
+		type { sphere }
+		origin { -4.67367 0.2 3.09073 } # center
+		width { 0.2 } # radius
+		color { 63.1699 208.251 189.344 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_148 {
+		type { sphere }
+		origin { -4.24418 0.2 4.40385 } # center
+		width { 0.2 } # radius
+		color { 76.6619 34.2637 83.5309 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_149 {
+		type { sphere }
+		origin { -4.57951 0.2 5.3406 } # center
+		width { 0.2 } # radius
+		color { 255 255 255 }
+		material {
+			shininess { 64 }
+			ambient-reflection { 0.001 }
+			diffuse-reflection { 0.01 }
+			specular-reflection { 0.492924 }
+			mirror { 1 }
+			mirror-attenuation { 193.493 156.539 242.157 }
+		}
+	}
+	sphere_150 {
+		type { sphere }
+		origin { -4.58737 0.2 6.62022 } # center
+		width { 0.2 } # radius
+		color { 2.22376 31.7202 36.3491 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_151 {
+		type { sphere }
+		origin { -4.75262 0.2 7.64598 } # center
+		width { 0.2 } # radius
+		color { 255 255 255 }
+		material {
+			shininess { 64 }
+			ambient-reflection { 0.001 }
+			diffuse-reflection { 0.01 }
+			specular-reflection { 0.28853 }
+			mirror { 1 }
+			mirror-attenuation { 179.6 227.597 219.592 }
+		}
+	}
+	sphere_152 {
+		type { sphere }
+		origin { -4.28126 0.2 8.00025 } # center
+		width { 0.2 } # radius
+		color { 78.7963 46.7866 38.3289 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_153 {
+		type { sphere }
+		origin { -4.8758 0.2 9.35923 } # center
+		width { 0.2 } # radius
+		color { 255 255 255 }
+		material {
+			shininess { 64 }
+			ambient-reflection { 0.001 }
+			diffuse-reflection { 0.01 }
+			specular-reflection { 0.22844 }
+			mirror { 1 }
+			mirror-attenuation { 176.831 235.421 134.657 }
+		}
+	}
+	sphere_154 {
+		type { sphere }
+		origin { -4.73675 0.2 10.8657 } # center
+		width { 0.2 } # radius
+		color { 89.1946 202.945 37.6334 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_155 {
+		type { sphere }
+		origin { -3.51146 0.2 -10.7735 } # center
+		width { 0.2 } # radius
+		color { 38.441 89.2477 129.651 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_156 {
+		type { sphere }
+		origin { -3.5007 0.2 -9.868 } # center
+		width { 0.2 } # radius
+		color { 15.5984 44.6595 42.6274 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_157 {
+		type { sphere }
+		origin { -3.23982 0.2 -8.21136 } # center
+		width { 0.2 } # radius
+		color { 56.048 14.934 111.003 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_158 {
+		type { sphere }
+		origin { -3.5553 0.2 -7.44695 } # center
+		width { 0.2 } # radius
+		color { 9.35385 97.1735 22.4566 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_159 {
+		type { sphere }
+		origin { -3.84575 0.2 -6.45035 } # center
+		width { 0.2 } # radius
+		color { 40.4192 53.0007 70.0797 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_160 {
+		type { sphere }
+		origin { -3.4752 0.2 -5.62365 } # center
+		width { 0.2 } # radius
+		color { 15.9357 72.3146 92.925 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_161 {
+		type { sphere }
+		origin { -3.94578 0.2 -4.57219 } # center
+		width { 0.2 } # radius
+		color { 255 255 255 }
+		material {
+			shininess { 64 }
+			ambient-reflection { 0.001 }
+			diffuse-reflection { 0.01 }
+			specular-reflection { 1.0 }
+			lens { 1 }
+			lens-attenuation { 255 255 255 }
+			permittivity { 1.5 }
+		}
+	}
+	sphere_162 {
+		type { sphere }
+		origin { -3.10704 0.2 -3.50544 } # center
+		width { 0.2 } # radius
+		color { 10.5738 14.4417 111.186 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_163 {
+		type { sphere }
+		origin { -3.22734 0.2 -2.10254 } # center
+		width { 0.2 } # radius
+		color { 26.6498 21.0548 141.632 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_164 {
+		type { sphere }
+		origin { -3.58815 0.2 -1.85659 } # center
+		width { 0.2 } # radius
+		color { 255 255 255 }
+		material {
+			shininess { 64 }
+			ambient-reflection { 0.001 }
+			diffuse-reflection { 0.01 }
+			specular-reflection { 1.0 }
+			lens { 1 }
+			lens-attenuation { 255 255 255 }
+			permittivity { 1.5 }
+		}
+	}
+	sphere_165 {
+		type { sphere }
+		origin { -3.745 0.2 -0.124333 } # center
+		width { 0.2 } # radius
+		color { 141.138 206.316 7.48345 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_166 {
+		type { sphere }
+		origin { -3.58577 0.2 0.387742 } # center
+		width { 0.2 } # radius
+		color { 167.68 41.2411 66.006 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_167 {
+		type { sphere }
+		origin { -3.38497 0.2 1.28259 } # center
+		width { 0.2 } # radius
+		color { 7.12175 0.669946 41.4035 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_168 {
+		type { sphere }
+		origin { -3.82175 0.2 2.60145 } # center
+		width { 0.2 } # radius
+		color { 80.3115 42.3353 7.72264 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_169 {
+		type { sphere }
+		origin { -3.59939 0.2 3.133 } # center
+		width { 0.2 } # radius
+		color { 255 255 255 }
+		material {
+			shininess { 64 }
+			ambient-reflection { 0.001 }
+			diffuse-reflection { 0.01 }
+			specular-reflection { 0.330464 }
+			mirror { 1 }
+			mirror-attenuation { 210.636 247.603 240 }
+		}
+	}
+	sphere_170 {
+		type { sphere }
+		origin { -3.84669 0.2 4.01447 } # center
+		width { 0.2 } # radius
+		color { 23.6689 26.8104 22.611 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_171 {
+		type { sphere }
+		origin { -3.97296 0.2 5.79755 } # center
+		width { 0.2 } # radius
+		color { 39.0056 113.42 113.683 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_172 {
+		type { sphere }
+		origin { -3.47524 0.2 6.49402 } # center
+		width { 0.2 } # radius
+		color { 255 255 255 }
+		material {
+			shininess { 64 }
+			ambient-reflection { 0.001 }
+			diffuse-reflection { 0.01 }
+			specular-reflection { 0.0862293 }
+			mirror { 1 }
+			mirror-attenuation { 187.649 223.55 169.87 }
+		}
+	}
+	sphere_173 {
+		type { sphere }
+		origin { -3.65762 0.2 7.74535 } # center
+		width { 0.2 } # radius
+		color { 112.094 1.08489 64.8291 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_174 {
+		type { sphere }
+		origin { -3.33948 0.2 8.7556 } # center
+		width { 0.2 } # radius
+		color { 56.7641 94.9488 9.47353 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_175 {
+		type { sphere }
+		origin { -3.29608 0.2 9.23831 } # center
+		width { 0.2 } # radius
+		color { 48.7253 30.4389 63.1517 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_176 {
+		type { sphere }
+		origin { -3.83408 0.2 10.4097 } # center
+		width { 0.2 } # radius
+		color { 55.6159 1.29176 39.4913 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_177 {
+		type { sphere }
+		origin { -2.11311 0.2 -10.8738 } # center
+		width { 0.2 } # radius
+		color { 13.8536 25.3936 34.2965 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_178 {
+		type { sphere }
+		origin { -2.45792 0.2 -9.96609 } # center
+		width { 0.2 } # radius
+		color { 41.967 5.74147 35.059 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_179 {
+		type { sphere }
+		origin { -2.40725 0.2 -8.70698 } # center
+		width { 0.2 } # radius
+		color { 0.135122 237.004 8.98383 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_180 {
+		type { sphere }
+		origin { -2.11306 0.2 -7.8952 } # center
+		width { 0.2 } # radius
+		color { 2.35392 24.8624 50.9754 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_181 {
+		type { sphere }
+		origin { -2.78129 0.2 -6.74567 } # center
+		width { 0.2 } # radius
+		color { 93.9012 125.455 164.579 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_182 {
+		type { sphere }
+		origin { -2.23196 0.2 -5.31627 } # center
+		width { 0.2 } # radius
+		color { 255 255 255 }
+		material {
+			shininess { 64 }
+			ambient-reflection { 0.001 }
+			diffuse-reflection { 0.01 }
+			specular-reflection { 0.18752 }
+			mirror { 1 }
+			mirror-attenuation { 157.329 254.782 160.814 }
+		}
+	}
+	sphere_183 {
+		type { sphere }
+		origin { -2.32903 0.2 -4.10735 } # center
+		width { 0.2 } # radius
+		color { 90.6313 11.1993 29.7601 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_184 {
+		type { sphere }
+		origin { -2.54698 0.2 -3.16212 } # center
+		width { 0.2 } # radius
+		color { 255 255 255 }
+		material {
+			shininess { 64 }
+			ambient-reflection { 0.001 }
+			diffuse-reflection { 0.01 }
+			specular-reflection { 0.4877 }
+			mirror { 1 }
+			mirror-attenuation { 242 164.624 207.715 }
+		}
+	}
+	sphere_185 {
+		type { sphere }
+		origin { -2.2524 0.2 -2.95067 } # center
+		width { 0.2 } # radius
+		color { 42.0617 8.04266 101.162 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_186 {
+		type { sphere }
+		origin { -2.1273 0.2 -1.82617 } # center
+		width { 0.2 } # radius
+		color { 32.0267 12.9043 177.625 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_187 {
+		type { sphere }
+		origin { -2.36244 0.2 -0.953258 } # center
+		width { 0.2 } # radius
+		color { 60.8148 9.12951 174.33 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_188 {
+		type { sphere }
+		origin { -2.14982 0.2 0.620737 } # center
+		width { 0.2 } # radius
+		color { 65.758 21.0402 189.375 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_189 {
+		type { sphere }
+		origin { -2.64062 0.2 1.15159 } # center
+		width { 0.2 } # radius
+		color { 85.7894 14.0961 112.804 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_190 {
+		type { sphere }
+		origin { -2.40698 0.2 2.30204 } # center
+		width { 0.2 } # radius
+		color { 88.8205 2.51364 126.774 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_191 {
+		type { sphere }
+		origin { -2.51238 0.2 3.87273 } # center
+		width { 0.2 } # radius
+		color { 86.2504 82.2806 47.2499 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_192 {
+		type { sphere }
+		origin { -2.80756 0.2 4.59506 } # center
+		width { 0.2 } # radius
+		color { 31.2911 48.5187 83.5033 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_193 {
+		type { sphere }
+		origin { -2.18793 0.2 5.01949 } # center
+		width { 0.2 } # radius
+		color { 40.6311 10.9111 1.21042 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_194 {
+		type { sphere }
+		origin { -2.17068 0.2 6.09893 } # center
+		width { 0.2 } # radius
+		color { 53.2819 8.96653 55.478 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_195 {
+		type { sphere }
+		origin { -2.4968 0.2 7.84697 } # center
+		width { 0.2 } # radius
+		color { 50.4031 58.2458 2.11918 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_196 {
+		type { sphere }
+		origin { -2.50112 0.2 8.24173 } # center
+		width { 0.2 } # radius
+		color { 24.1496 10.9518 17.3171 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_197 {
+		type { sphere }
+		origin { -2.41666 0.2 9.4767 } # center
+		width { 0.2 } # radius
+		color { 1.83657 59.1098 12.8344 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_198 {
+		type { sphere }
+		origin { -2.60554 0.2 10.3178 } # center
+		width { 0.2 } # radius
+		color { 111.29 182.369 87.6434 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_199 {
+		type { sphere }
+		origin { -1.48103 0.2 -10.5033 } # center
+		width { 0.2 } # radius
+		color { 26.6518 10.669 27.6664 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_200 {
+		type { sphere }
+		origin { -1.6533 0.2 -9.66284 } # center
+		width { 0.2 } # radius
+		color { 16.5449 37.5165 172.795 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_201 {
+		type { sphere }
+		origin { -1.77433 0.2 -8.74433 } # center
+		width { 0.2 } # radius
+		color { 255 255 255 }
+		material {
+			shininess { 64 }
+			ambient-reflection { 0.001 }
+			diffuse-reflection { 0.01 }
+			specular-reflection { 1.0 }
+			lens { 1 }
+			lens-attenuation { 255 255 255 }
+			permittivity { 1.5 }
+		}
+	}
+	sphere_202 {
+		type { sphere }
+		origin { -1.35299 0.2 -7.53624 } # center
+		width { 0.2 } # radius
+		color { 51.1362 1.8307 200.454 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_203 {
+		type { sphere }
+		origin { -1.48823 0.2 -6.10191 } # center
+		width { 0.2 } # radius
+		color { 255 255 255 }
+		material {
+			shininess { 64 }
+			ambient-reflection { 0.001 }
+			diffuse-reflection { 0.01 }
+			specular-reflection { 1.0 }
+			lens { 1 }
+			lens-attenuation { 255 255 255 }
+			permittivity { 1.5 }
+		}
+	}
+	sphere_204 {
+		type { sphere }
+		origin { -1.47111 0.2 -5.27428 } # center
+		width { 0.2 } # radius
+		color { 13.543 6.36126 134.805 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_205 {
+		type { sphere }
+		origin { -1.81351 0.2 -4.49252 } # center
+		width { 0.2 } # radius
+		color { 207.161 73.5564 45.5557 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_206 {
+		type { sphere }
+		origin { -1.53058 0.2 -3.92584 } # center
+		width { 0.2 } # radius
+		color { 42.0501 34.8344 24.8634 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_207 {
+		type { sphere }
+		origin { -1.82228 0.2 -2.28625 } # center
+		width { 0.2 } # radius
+		color { 35.5722 49.713 17.6198 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_208 {
+		type { sphere }
+		origin { -1.64739 0.2 -1.21881 } # center
+		width { 0.2 } # radius
+		color { 83.7112 145.214 163.699 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_209 {
+		type { sphere }
+		origin { -1.38221 0.2 -0.242246 } # center
+		width { 0.2 } # radius
+		color { 93.7229 82.305 81.0794 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_210 {
+		type { sphere }
+		origin { -1.3783 0.2 0.73226 } # center
+		width { 0.2 } # radius
+		color { 66.6345 67.5527 64.2495 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_211 {
+		type { sphere }
+		origin { -1.58237 0.2 1.00004 } # center
+		width { 0.2 } # radius
+		color { 113.948 15.6353 106.862 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_212 {
+		type { sphere }
+		origin { -1.11621 0.2 2.25172 } # center
+		width { 0.2 } # radius
+		color { 11.8161 1.22454 4.75196 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_213 {
+		type { sphere }
+		origin { -1.7717 0.2 3.25793 } # center
+		width { 0.2 } # radius
+		color { 171.286 69.6391 107.606 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_214 {
+		type { sphere }
+		origin { -1.32283 0.2 4.61552 } # center
+		width { 0.2 } # radius
+		color { 60.4464 108.496 44.4522 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_215 {
+		type { sphere }
+		origin { -1.12421 0.2 5.82659 } # center
+		width { 0.2 } # radius
+		color { 255 255 255 }
+		material {
+			shininess { 64 }
+			ambient-reflection { 0.001 }
+			diffuse-reflection { 0.01 }
+			specular-reflection { 1.0 }
+			lens { 1 }
+			lens-attenuation { 255 255 255 }
+			permittivity { 1.5 }
+		}
+	}
+	sphere_216 {
+		type { sphere }
+		origin { -1.7634 0.2 6.35684 } # center
+		width { 0.2 } # radius
+		color { 89.405 82.2724 125.869 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_217 {
+		type { sphere }
+		origin { -1.3322 0.2 7.74654 } # center
+		width { 0.2 } # radius
+		color { 8.32713 156.719 45.6293 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_218 {
+		type { sphere }
+		origin { -1.61756 0.2 8.757 } # center
+		width { 0.2 } # radius
+		color { 152.823 192.394 41.3916 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_219 {
+		type { sphere }
+		origin { -1.25417 0.2 9.03744 } # center
+		width { 0.2 } # radius
+		color { 2.53523 22.883 181.055 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_220 {
+		type { sphere }
+		origin { -1.53922 0.2 10.6751 } # center
+		width { 0.2 } # radius
+		color { 255 255 255 }
+		material {
+			shininess { 64 }
+			ambient-reflection { 0.001 }
+			diffuse-reflection { 0.01 }
+			specular-reflection { 0.201854 }
+			mirror { 1 }
+			mirror-attenuation { 254.783 180.726 154.479 }
+		}
+	}
+	sphere_221 {
+		type { sphere }
+		origin { -0.674148 0.2 -10.9128 } # center
+		width { 0.2 } # radius
+		color { 46.7598 95.3358 171.594 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_222 {
+		type { sphere }
+		origin { -0.264303 0.2 -9.34753 } # center
+		width { 0.2 } # radius
+		color { 70.547 70.6573 149.24 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_223 {
+		type { sphere }
+		origin { -0.996218 0.2 -8.43708 } # center
+		width { 0.2 } # radius
+		color { 10.899 54.1174 78.0335 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_224 {
+		type { sphere }
+		origin { -0.767054 0.2 -7.86861 } # center
+		width { 0.2 } # radius
+		color { 13.23 134.312 35.7615 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_225 {
+		type { sphere }
+		origin { -0.340661 0.2 -6.29294 } # center
+		width { 0.2 } # radius
+		color { 47.7032 39.3067 3.86293 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_226 {
+		type { sphere }
+		origin { -0.315256 0.2 -5.80324 } # center
+		width { 0.2 } # radius
+		color { 255 255 255 }
+		material {
+			shininess { 64 }
+			ambient-reflection { 0.001 }
+			diffuse-reflection { 0.01 }
+			specular-reflection { 0.417923 }
+			mirror { 1 }
+			mirror-attenuation { 181.075 162.014 213.799 }
+		}
+	}
+	sphere_227 {
+		type { sphere }
+		origin { -0.439467 0.2 -4.42968 } # center
+		width { 0.2 } # radius
+		color { 2.04465 11.5297 99.5272 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_228 {
+		type { sphere }
+		origin { -0.423681 0.2 -3.6078 } # center
+		width { 0.2 } # radius
+		color { 4.47921 23.2345 45.8176 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_229 {
+		type { sphere }
+		origin { -0.928953 0.2 -2.31355 } # center
+		width { 0.2 } # radius
+		color { 10.3196 15.9314 44.1777 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_230 {
+		type { sphere }
+		origin { -0.291959 0.2 -1.74929 } # center
+		width { 0.2 } # radius
+		color { 255 255 255 }
+		material {
+			shininess { 64 }
+			ambient-reflection { 0.001 }
+			diffuse-reflection { 0.01 }
+			specular-reflection { 0.435188 }
+			mirror { 1 }
+			mirror-attenuation { 231.45 217.175 241.981 }
+		}
+	}
+	sphere_231 {
+		type { sphere }
+		origin { -0.836217 0.2 -0.501001 } # center
+		width { 0.2 } # radius
+		color { 131.595 21.061 26.0498 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_232 {
+		type { sphere }
+		origin { -0.278596 0.2 0.74007 } # center
+		width { 0.2 } # radius
+		color { 3.95331 167.119 74.9148 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_233 {
+		type { sphere }
+		origin { -0.680273 0.2 1.6569 } # center
+		width { 0.2 } # radius
+		color { 255 255 255 }
+		material {
+			shininess { 64 }
+			ambient-reflection { 0.001 }
+			diffuse-reflection { 0.01 }
+			specular-reflection { 1.0 }
+			lens { 1 }
+			lens-attenuation { 255 255 255 }
+			permittivity { 1.5 }
+		}
+	}
+	sphere_234 {
+		type { sphere }
+		origin { -0.209009 0.2 2.27929 } # center
+		width { 0.2 } # radius
+		color { 156.664 0.850056 43.433 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_235 {
+		type { sphere }
+		origin { -0.253602 0.2 3.5113 } # center
+		width { 0.2 } # radius
+		color { 255 255 255 }
+		material {
+			shininess { 64 }
+			ambient-reflection { 0.001 }
+			diffuse-reflection { 0.01 }
+			specular-reflection { 0.320823 }
+			mirror { 1 }
+			mirror-attenuation { 154.446 131.373 201.72 }
+		}
+	}
+	sphere_236 {
+		type { sphere }
+		origin { -0.938563 0.2 4.27677 } # center
+		width { 0.2 } # radius
+		color { 5.12143 71.1498 3.49348 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_237 {
+		type { sphere }
+		origin { -0.306465 0.2 5.33679 } # center
+		width { 0.2 } # radius
+		color { 48.0602 63.0698 85.4865 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_238 {
+		type { sphere }
+		origin { -0.535592 0.2 6.50891 } # center
+		width { 0.2 } # radius
+		color { 81.4839 129.332 33.323 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_239 {
+		type { sphere }
+		origin { -0.988785 0.2 7.39657 } # center
+		width { 0.2 } # radius
+		color { 116.475 136.971 141.935 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_240 {
+		type { sphere }
+		origin { -0.899943 0.2 8.45974 } # center
+		width { 0.2 } # radius
+		color { 66.3268 17.9777 100.841 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_241 {
+		type { sphere }
+		origin { -0.68933 0.2 9.52901 } # center
+		width { 0.2 } # radius
+		color { 4.26898 94.8323 89.4832 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_242 {
+		type { sphere }
+		origin { -0.376044 0.2 10.0312 } # center
+		width { 0.2 } # radius
+		color { 167.296 32.5555 52.4326 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_243 {
+		type { sphere }
+		origin { 0.299375 0.2 -10.41 } # center
+		width { 0.2 } # radius
+		color { 91.8662 6.38876 43.1255 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_244 {
+		type { sphere }
+		origin { 0.46621 0.2 -9.812 } # center
+		width { 0.2 } # radius
+		color { 69.0534 88.2321 16.1949 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_245 {
+		type { sphere }
+		origin { 0.731911 0.2 -8.97379 } # center
+		width { 0.2 } # radius
+		color { 87.1202 16.2523 95.458 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_246 {
+		type { sphere }
+		origin { 0.460882 0.2 -7.35115 } # center
+		width { 0.2 } # radius
+		color { 95.0875 113.336 44.4947 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_247 {
+		type { sphere }
+		origin { 0.273726 0.2 -6.38185 } # center
+		width { 0.2 } # radius
+		color { 142.939 38.8241 56.2356 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_248 {
+		type { sphere }
+		origin { 0.0211266 0.2 -5.52508 } # center
+		width { 0.2 } # radius
+		color { 149.972 16.217 69.8022 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_249 {
+		type { sphere }
+		origin { 0.73884 0.2 -4.61921 } # center
+		width { 0.2 } # radius
+		color { 12.2227 184.463 29.0044 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_250 {
+		type { sphere }
+		origin { 0.877417 0.2 -3.75197 } # center
+		width { 0.2 } # radius
+		color { 146.788 0.312673 168.572 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_251 {
+		type { sphere }
+		origin { 0.015505 0.2 -2.50753 } # center
+		width { 0.2 } # radius
+		color { 92.2342 2.3754 51.841 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_252 {
+		type { sphere }
+		origin { 0.662067 0.2 -1.33665 } # center
+		width { 0.2 } # radius
+		color { 255 255 255 }
+		material {
+			shininess { 64 }
+			ambient-reflection { 0.001 }
+			diffuse-reflection { 0.01 }
+			specular-reflection { 0.158089 }
+			mirror { 1 }
+			mirror-attenuation { 215.037 144.043 223.664 }
+		}
+	}
+	sphere_253 {
+		type { sphere }
+		origin { 0.0936879 0.2 -0.487541 } # center
+		width { 0.2 } # radius
+		color { 54.3064 47.4299 13.9321 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_254 {
+		type { sphere }
+		origin { 0.534303 0.2 0.723416 } # center
+		width { 0.2 } # radius
+		color { 6.26819 162.058 120.418 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_255 {
+		type { sphere }
+		origin { 0.298154 0.2 1.77739 } # center
+		width { 0.2 } # radius
+		color { 255 255 255 }
+		material {
+			shininess { 64 }
+			ambient-reflection { 0.001 }
+			diffuse-reflection { 0.01 }
+			specular-reflection { 1.0 }
+			lens { 1 }
+			lens-attenuation { 255 255 255 }
+			permittivity { 1.5 }
+		}
+	}
+	sphere_256 {
+		type { sphere }
+		origin { 0.425456 0.2 2.14297 } # center
+		width { 0.2 } # radius
+		color { 15.9828 144.018 1.88408 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_257 {
+		type { sphere }
+		origin { 0.214072 0.2 3.61438 } # center
+		width { 0.2 } # radius
+		color { 13.4392 52.6592 1.99595 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_258 {
+		type { sphere }
+		origin { 0.205503 0.2 4.59596 } # center
+		width { 0.2 } # radius
+		color { 255 255 255 }
+		material {
+			shininess { 64 }
+			ambient-reflection { 0.001 }
+			diffuse-reflection { 0.01 }
+			specular-reflection { 1.0 }
+			lens { 1 }
+			lens-attenuation { 255 255 255 }
+			permittivity { 1.5 }
+		}
+	}
+	sphere_259 {
+		type { sphere }
+		origin { 0.836012 0.2 5.05557 } # center
+		width { 0.2 } # radius
+		color { 77.1111 13.327 122.998 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_260 {
+		type { sphere }
+		origin { 0.480176 0.2 6.02186 } # center
+		width { 0.2 } # radius
+		color { 69.6277 72.4147 211.087 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_261 {
+		type { sphere }
+		origin { 0.782353 0.2 7.0059 } # center
+		width { 0.2 } # radius
+		color { 24.9529 65.0689 12.6897 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_262 {
+		type { sphere }
+		origin { 0.172706 0.2 8.16475 } # center
+		width { 0.2 } # radius
+		color { 45.9428 31.6912 44.3957 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_263 {
+		type { sphere }
+		origin { 0.623905 0.2 9.07411 } # center
+		width { 0.2 } # radius
+		color { 3.26655 52.4638 23.9039 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_264 {
+		type { sphere }
+		origin { 0.780012 0.2 10.2604 } # center
+		width { 0.2 } # radius
+		color { 155.198 64.9273 177.925 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_265 {
+		type { sphere }
+		origin { 1.71551 0.2 -10.2718 } # center
+		width { 0.2 } # radius
+		color { 7.8529 8.72289 56.8418 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_266 {
+		type { sphere }
+		origin { 1.39003 0.2 -9.53571 } # center
+		width { 0.2 } # radius
+		color { 50.4084 0.964154 246.203 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_267 {
+		type { sphere }
+		origin { 1.5789 0.2 -8.43537 } # center
+		width { 0.2 } # radius
+		color { 21.6383 67.5445 6.30983 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_268 {
+		type { sphere }
+		origin { 1.7852 0.2 -7.82368 } # center
+		width { 0.2 } # radius
+		color { 158.922 67.0578 126.485 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_269 {
+		type { sphere }
+		origin { 1.07582 0.2 -6.27483 } # center
+		width { 0.2 } # radius
+		color { 9.00637 70.191 95.5972 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_270 {
+		type { sphere }
+		origin { 1.80865 0.2 -5.84179 } # center
+		width { 0.2 } # radius
+		color { 52.5213 65.223 99.9866 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_271 {
+		type { sphere }
+		origin { 1.15677 0.2 -4.38346 } # center
+		width { 0.2 } # radius
+		color { 52.6651 171.795 149.163 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_272 {
+		type { sphere }
+		origin { 1.34228 0.2 -3.13337 } # center
+		width { 0.2 } # radius
+		color { 22.0731 19.9399 26.8857 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_273 {
+		type { sphere }
+		origin { 1.34209 0.2 -2.68405 } # center
+		width { 0.2 } # radius
+		color { 0.868009 7.50898 17.3858 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_274 {
+		type { sphere }
+		origin { 1.07993 0.2 -1.47838 } # center
+		width { 0.2 } # radius
+		color { 236.316 86.3781 9.71789 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_275 {
+		type { sphere }
+		origin { 1.33828 0.2 -0.768923 } # center
+		width { 0.2 } # radius
+		color { 16.7011 27.716 11.194 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_276 {
+		type { sphere }
+		origin { 1.52091 0.2 0.590086 } # center
+		width { 0.2 } # radius
+		color { 120.025 6.94194 40.2371 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_277 {
+		type { sphere }
+		origin { 1.43508 0.2 1.86091 } # center
+		width { 0.2 } # radius
+		color { 255 255 255 }
+		material {
+			shininess { 64 }
+			ambient-reflection { 0.001 }
+			diffuse-reflection { 0.01 }
+			specular-reflection { 0.216818 }
+			mirror { 1 }
+			mirror-attenuation { 139.741 203.704 143.191 }
+		}
+	}
+	sphere_278 {
+		type { sphere }
+		origin { 1.35697 0.2 2.12068 } # center
+		width { 0.2 } # radius
+		color { 43.4715 50.894 97.8959 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_279 {
+		type { sphere }
+		origin { 1.16837 0.2 3.20965 } # center
+		width { 0.2 } # radius
+		color { 19.1154 15.6996 4.75081 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_280 {
+		type { sphere }
+		origin { 1.70647 0.2 4.82532 } # center
+		width { 0.2 } # radius
+		color { 25.8602 96.6735 54.249 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_281 {
+		type { sphere }
+		origin { 1.52808 0.2 5.5335 } # center
+		width { 0.2 } # radius
+		color { 170.433 114.325 72.6074 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_282 {
+		type { sphere }
+		origin { 1.67928 0.2 6.17501 } # center
+		width { 0.2 } # radius
+		color { 22.8659 86.7011 38.525 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_283 {
+		type { sphere }
+		origin { 1.10573 0.2 7.34497 } # center
+		width { 0.2 } # radius
+		color { 2.15064 24.9487 4.16479 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_284 {
+		type { sphere }
+		origin { 1.75768 0.2 8.20087 } # center
+		width { 0.2 } # radius
+		color { 9.92244 36.8681 7.38278 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_285 {
+		type { sphere }
+		origin { 1.132 0.2 9.88216 } # center
+		width { 0.2 } # radius
+		color { 64.6987 52.27 116.478 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_286 {
+		type { sphere }
+		origin { 1.17884 0.2 10.6291 } # center
+		width { 0.2 } # radius
+		color { 3.59061 3.90097 2.23829 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_287 {
+		type { sphere }
+		origin { 2.77193 0.2 -10.7383 } # center
+		width { 0.2 } # radius
+		color { 255 255 255 }
+		material {
+			shininess { 64 }
+			ambient-reflection { 0.001 }
+			diffuse-reflection { 0.01 }
+			specular-reflection { 0.33262 }
+			mirror { 1 }
+			mirror-attenuation { 174.5 188.532 153.139 }
+		}
+	}
+	sphere_288 {
+		type { sphere }
+		origin { 2.03919 0.2 -9.31274 } # center
+		width { 0.2 } # radius
+		color { 13.6799 2.39481 41.4717 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_289 {
+		type { sphere }
+		origin { 2.78903 0.2 -8.42392 } # center
+		width { 0.2 } # radius
+		color { 12.9222 128.745 85.936 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_290 {
+		type { sphere }
+		origin { 2.48607 0.2 -7.84198 } # center
+		width { 0.2 } # radius
+		color { 242.659 6.67949 118.228 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_291 {
+		type { sphere }
+		origin { 2.84453 0.2 -6.93463 } # center
+		width { 0.2 } # radius
+		color { 98.4592 6.41439 56.21 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_292 {
+		type { sphere }
+		origin { 2.34402 0.2 -5.67032 } # center
+		width { 0.2 } # radius
+		color { 123.959 0.24064 206.606 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_293 {
+		type { sphere }
+		origin { 2.3784 0.2 -4.64627 } # center
+		width { 0.2 } # radius
+		color { 63.56 64.9133 149.416 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_294 {
+		type { sphere }
+		origin { 2.68941 0.2 -3.76263 } # center
+		width { 0.2 } # radius
+		color { 112.256 20.3696 51.1245 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_295 {
+		type { sphere }
+		origin { 2.12747 0.2 -2.57371 } # center
+		width { 0.2 } # radius
+		color { 114.362 0.157395 117.264 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_296 {
+		type { sphere }
+		origin { 2.44414 0.2 -1.10355 } # center
+		width { 0.2 } # radius
+		color { 4.84897 45.5105 91.8768 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_297 {
+		type { sphere }
+		origin { 2.37276 0.2 -0.860707 } # center
+		width { 0.2 } # radius
+		color { 255 255 255 }
+		material {
+			shininess { 64 }
+			ambient-reflection { 0.001 }
+			diffuse-reflection { 0.01 }
+			specular-reflection { 1.0 }
+			lens { 1 }
+			lens-attenuation { 255 255 255 }
+			permittivity { 1.5 }
+		}
+	}
+	sphere_298 {
+		type { sphere }
+		origin { 2.33012 0.2 0.751594 } # center
+		width { 0.2 } # radius
+		color { 123.794 2.5326 69.0435 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_299 {
+		type { sphere }
+		origin { 2.355 0.2 1.39071 } # center
+		width { 0.2 } # radius
+		color { 25.0668 38.6544 142.935 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_300 {
+		type { sphere }
+		origin { 2.22571 0.2 2.8479 } # center
+		width { 0.2 } # radius
+		color { 123.015 0.299844 63.3535 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_301 {
+		type { sphere }
+		origin { 2.81325 0.2 3.02249 } # center
+		width { 0.2 } # radius
+		color { 255 255 255 }
+		material {
+			shininess { 64 }
+			ambient-reflection { 0.001 }
+			diffuse-reflection { 0.01 }
+			specular-reflection { 1.0 }
+			lens { 1 }
+			lens-attenuation { 255 255 255 }
+			permittivity { 1.5 }
+		}
+	}
+	sphere_302 {
+		type { sphere }
+		origin { 2.05253 0.2 4.81203 } # center
+		width { 0.2 } # radius
+		color { 12.0558 39.7698 87.7809 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_303 {
+		type { sphere }
+		origin { 2.86441 0.2 5.4008 } # center
+		width { 0.2 } # radius
+		color { 159.506 58.9007 75.1003 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_304 {
+		type { sphere }
+		origin { 2.61895 0.2 6.48464 } # center
+		width { 0.2 } # radius
+		color { 10.7473 10.8507 118.935 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_305 {
+		type { sphere }
+		origin { 2.57753 0.2 7.09782 } # center
+		width { 0.2 } # radius
+		color { 109.004 2.58769 60.5533 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_306 {
+		type { sphere }
+		origin { 2.58768 0.2 8.60302 } # center
+		width { 0.2 } # radius
+		color { 27.3727 40.371 9.34396 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_307 {
+		type { sphere }
+		origin { 2.32659 0.2 9.87125 } # center
+		width { 0.2 } # radius
+		color { 40.5248 117.088 3.25832 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_308 {
+		type { sphere }
+		origin { 2.89259 0.2 10.6295 } # center
+		width { 0.2 } # radius
+		color { 0.0612751 41.1328 8.79093 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_309 {
+		type { sphere }
+		origin { 3.00001 0.2 -10.9052 } # center
+		width { 0.2 } # radius
+		color { 227.138 34.135 4.91888 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_310 {
+		type { sphere }
+		origin { 3.55119 0.2 -9.79515 } # center
+		width { 0.2 } # radius
+		color { 255 255 255 }
+		material {
+			shininess { 64 }
+			ambient-reflection { 0.001 }
+			diffuse-reflection { 0.01 }
+			specular-reflection { 0.10116 }
+			mirror { 1 }
+			mirror-attenuation { 179.004 161.505 187.386 }
+		}
+	}
+	sphere_311 {
+		type { sphere }
+		origin { 3.58122 0.2 -8.1125 } # center
+		width { 0.2 } # radius
+		color { 103.437 13.1277 29.5147 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_312 {
+		type { sphere }
+		origin { 3.01951 0.2 -7.68173 } # center
+		width { 0.2 } # radius
+		color { 255 255 255 }
+		material {
+			shininess { 64 }
+			ambient-reflection { 0.001 }
+			diffuse-reflection { 0.01 }
+			specular-reflection { 1.0 }
+			lens { 1 }
+			lens-attenuation { 255 255 255 }
+			permittivity { 1.5 }
+		}
+	}
+	sphere_313 {
+		type { sphere }
+		origin { 3.1202 0.2 -6.38139 } # center
+		width { 0.2 } # radius
+		color { 31.9282 48.2247 25.0451 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_314 {
+		type { sphere }
+		origin { 3.70611 0.2 -5.76645 } # center
+		width { 0.2 } # radius
+		color { 20.0113 30.0941 6.18021 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_315 {
+		type { sphere }
+		origin { 3.05512 0.2 -4.75091 } # center
+		width { 0.2 } # radius
+		color { 255 255 255 }
+		material {
+			shininess { 64 }
+			ambient-reflection { 0.001 }
+			diffuse-reflection { 0.01 }
+			specular-reflection { 0.476866 }
+			mirror { 1 }
+			mirror-attenuation { 206.438 202.127 172.364 }
+		}
+	}
+	sphere_316 {
+		type { sphere }
+		origin { 3.4435 0.2 -3.8682 } # center
+		width { 0.2 } # radius
+		color { 59.3205 40.408 140.527 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_317 {
+		type { sphere }
+		origin { 3.77406 0.2 -2.7978 } # center
+		width { 0.2 } # radius
+		color { 55.6373 58.9313 28.0479 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_318 {
+		type { sphere }
+		origin { 3.4632 0.2 -1.98493 } # center
+		width { 0.2 } # radius
+		color { 61.3569 69.0028 66.6285 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_319 {
+		type { sphere }
+		origin { 3.78514 0.2 -0.901367 } # center
+		width { 0.2 } # radius
+		color { 255 255 255 }
+		material {
+			shininess { 64 }
+			ambient-reflection { 0.001 }
+			diffuse-reflection { 0.01 }
+			specular-reflection { 0.0667025 }
+			mirror { 1 }
+			mirror-attenuation { 244.353 193.263 236.453 }
+		}
+	}
+	sphere_320 {
+		type { sphere }
+		origin { 3.56494 0.2 1.78326 } # center
+		width { 0.2 } # radius
+		color { 5.38433 35.1565 149.378 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_321 {
+		type { sphere }
+		origin { 3.83989 0.2 2.49495 } # center
+		width { 0.2 } # radius
+		color { 141.731 34.4326 34.8194 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_322 {
+		type { sphere }
+		origin { 3.69419 0.2 3.50136 } # center
+		width { 0.2 } # radius
+		color { 67.1708 65.1066 6.42264 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_323 {
+		type { sphere }
+		origin { 3.74861 0.2 4.70595 } # center
+		width { 0.2 } # radius
+		color { 30.0495 2.70346 68.1394 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_324 {
+		type { sphere }
+		origin { 3.2992 0.2 5.31145 } # center
+		width { 0.2 } # radius
+		color { 21.178 3.50933 188.128 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_325 {
+		type { sphere }
+		origin { 3.47039 0.2 6.20892 } # center
+		width { 0.2 } # radius
+		color { 8.68275 26.0976 45.8366 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_326 {
+		type { sphere }
+		origin { 3.47468 0.2 7.31805 } # center
+		width { 0.2 } # radius
+		color { 56.9902 37.6534 70.1778 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_327 {
+		type { sphere }
+		origin { 3.78347 0.2 8.83959 } # center
+		width { 0.2 } # radius
+		color { 56.7784 80.4169 1.48676 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_328 {
+		type { sphere }
+		origin { 3.77971 0.2 9.55032 } # center
+		width { 0.2 } # radius
+		color { 255 255 255 }
+		material {
+			shininess { 64 }
+			ambient-reflection { 0.001 }
+			diffuse-reflection { 0.01 }
+			specular-reflection { 1.0 }
+			lens { 1 }
+			lens-attenuation { 255 255 255 }
+			permittivity { 1.5 }
+		}
+	}
+	sphere_329 {
+		type { sphere }
+		origin { 3.7348 0.2 10.8267 } # center
+		width { 0.2 } # radius
+		color { 255 255 255 }
+		material {
+			shininess { 64 }
+			ambient-reflection { 0.001 }
+			diffuse-reflection { 0.01 }
+			specular-reflection { 0.0861032 }
+			mirror { 1 }
+			mirror-attenuation { 248.522 131.964 176.219 }
+		}
+	}
+	sphere_330 {
+		type { sphere }
+		origin { 4.25603 0.2 -10.7405 } # center
+		width { 0.2 } # radius
+		color { 19.3946 1.86761 0.0548254 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_331 {
+		type { sphere }
+		origin { 4.1772 0.2 -9.86403 } # center
+		width { 0.2 } # radius
+		color { 15.4365 92.6472 63.4388 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_332 {
+		type { sphere }
+		origin { 4.65696 0.2 -8.7247 } # center
+		width { 0.2 } # radius
+		color { 22.8741 221.799 16.4304 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_333 {
+		type { sphere }
+		origin { 4.56591 0.2 -7.88477 } # center
+		width { 0.2 } # radius
+		color { 143.495 155.848 0.295509 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_334 {
+		type { sphere }
+		origin { 4.20958 0.2 -6.27376 } # center
+		width { 0.2 } # radius
+		color { 6.83314 36.9756 14.1601 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_335 {
+		type { sphere }
+		origin { 4.44345 0.2 -5.87279 } # center
+		width { 0.2 } # radius
+		color { 31.104 108.915 27.5749 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_336 {
+		type { sphere }
+		origin { 4.19724 0.2 -4.73945 } # center
+		width { 0.2 } # radius
+		color { 255 255 255 }
+		material {
+			shininess { 64 }
+			ambient-reflection { 0.001 }
+			diffuse-reflection { 0.01 }
+			specular-reflection { 0.158597 }
+			mirror { 1 }
+			mirror-attenuation { 210.752 154.106 156.277 }
+		}
+	}
+	sphere_337 {
+		type { sphere }
+		origin { 4.33158 0.2 -3.99288 } # center
+		width { 0.2 } # radius
+		color { 154.249 108.856 13.0324 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_338 {
+		type { sphere }
+		origin { 4.85245 0.2 -2.90311 } # center
+		width { 0.2 } # radius
+		color { 8.15522 130.365 43.1609 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_339 {
+		type { sphere }
+		origin { 4.0062 0.2 -1.25496 } # center
+		width { 0.2 } # radius
+		color { 51.0207 3.21492 139.759 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_340 {
+		type { sphere }
+		origin { 4.77931 0.2 -0.787833 } # center
+		width { 0.2 } # radius
+		color { 10.793 32.8904 130.655 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_341 {
+		type { sphere }
+		origin { 4.14972 0.2 1.78286 } # center
+		width { 0.2 } # radius
+		color { 71.4971 145.332 154.047 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_342 {
+		type { sphere }
+		origin { 4.02368 0.2 2.24403 } # center
+		width { 0.2 } # radius
+		color { 10.8481 14.7734 106.832 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_343 {
+		type { sphere }
+		origin { 4.09202 0.2 3.30697 } # center
+		width { 0.2 } # radius
+		color { 34.1325 109.731 45.8477 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_344 {
+		type { sphere }
+		origin { 4.42686 0.2 4.38034 } # center
+		width { 0.2 } # radius
+		color { 70.9986 67.2171 10.7275 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_345 {
+		type { sphere }
+		origin { 4.42764 0.2 5.875 } # center
+		width { 0.2 } # radius
+		color { 25.4362 37.8477 130.085 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_346 {
+		type { sphere }
+		origin { 4.73532 0.2 6.60283 } # center
+		width { 0.2 } # radius
+		color { 106.836 47.1294 15.0682 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_347 {
+		type { sphere }
+		origin { 4.13094 0.2 7.27196 } # center
+		width { 0.2 } # radius
+		color { 184.172 64.891 55.348 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_348 {
+		type { sphere }
+		origin { 4.59363 0.2 8.59119 } # center
+		width { 0.2 } # radius
+		color { 33.1917 14.7614 28.1309 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_349 {
+		type { sphere }
+		origin { 4.13873 0.2 9.58661 } # center
+		width { 0.2 } # radius
+		color { 138.224 22.0192 150.612 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_350 {
+		type { sphere }
+		origin { 4.05722 0.2 10.4391 } # center
+		width { 0.2 } # radius
+		color { 39.633 44.999 193.843 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_351 {
+		type { sphere }
+		origin { 5.15737 0.2 -10.3105 } # center
+		width { 0.2 } # radius
+		color { 129.304 100.951 5.87259 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_352 {
+		type { sphere }
+		origin { 5.7042 0.2 -9.46585 } # center
+		width { 0.2 } # radius
+		color { 167.749 20.6114 3.87601 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_353 {
+		type { sphere }
+		origin { 5.00991 0.2 -8.93836 } # center
+		width { 0.2 } # radius
+		color { 5.74019 6.75502 4.7642 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_354 {
+		type { sphere }
+		origin { 5.37682 0.2 -7.26135 } # center
+		width { 0.2 } # radius
+		color { 80.047 71.9263 89.5489 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_355 {
+		type { sphere }
+		origin { 5.33266 0.2 -6.79672 } # center
+		width { 0.2 } # radius
+		color { 8.65771 141.594 2.68928 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_356 {
+		type { sphere }
+		origin { 5.1649 0.2 -5.62493 } # center
+		width { 0.2 } # radius
+		color { 32.5961 6.2473 48.8862 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_357 {
+		type { sphere }
+		origin { 5.74827 0.2 -4.58346 } # center
+		width { 0.2 } # radius
+		color { 149.626 82.3887 106.123 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_358 {
+		type { sphere }
+		origin { 5.86737 0.2 -3.46721 } # center
+		width { 0.2 } # radius
+		color { 255 255 255 }
+		material {
+			shininess { 64 }
+			ambient-reflection { 0.001 }
+			diffuse-reflection { 0.01 }
+			specular-reflection { 1.0 }
+			lens { 1 }
+			lens-attenuation { 255 255 255 }
+			permittivity { 1.5 }
+		}
+	}
+	sphere_359 {
+		type { sphere }
+		origin { 5.02412 0.2 -2.55284 } # center
+		width { 0.2 } # radius
+		color { 54.6871 95.0259 32.7243 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_360 {
+		type { sphere }
+		origin { 5.8351 0.2 -1.9934 } # center
+		width { 0.2 } # radius
+		color { 34.785 18.0701 1.41542 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_361 {
+		type { sphere }
+		origin { 5.40748 0.2 -0.573833 } # center
+		width { 0.2 } # radius
+		color { 255 255 255 }
+		material {
+			shininess { 64 }
+			ambient-reflection { 0.001 }
+			diffuse-reflection { 0.01 }
+			specular-reflection { 0.00995276 }
+			mirror { 1 }
+			mirror-attenuation { 183.488 171.489 213.307 }
+		}
+	}
+	sphere_362 {
+		type { sphere }
+		origin { 5.28169 0.2 0.366693 } # center
+		width { 0.2 } # radius
+		color { 58.8576 70.1931 118.784 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_363 {
+		type { sphere }
+		origin { 5.30058 0.2 1.13697 } # center
+		width { 0.2 } # radius
+		color { 60.5405 3.65126 16.2907 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_364 {
+		type { sphere }
+		origin { 5.55783 0.2 2.08406 } # center
+		width { 0.2 } # radius
+		color { 255 255 255 }
+		material {
+			shininess { 64 }
+			ambient-reflection { 0.001 }
+			diffuse-reflection { 0.01 }
+			specular-reflection { 0.378926 }
+			mirror { 1 }
+			mirror-attenuation { 230.011 243.477 252.305 }
+		}
+	}
+	sphere_365 {
+		type { sphere }
+		origin { 5.76442 0.2 3.15497 } # center
+		width { 0.2 } # radius
+		color { 196.09 39.1542 49.101 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_366 {
+		type { sphere }
+		origin { 5.28264 0.2 4.08041 } # center
+		width { 0.2 } # radius
+		color { 131.755 6.74715 50.3294 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_367 {
+		type { sphere }
+		origin { 5.32641 0.2 5.51775 } # center
+		width { 0.2 } # radius
+		color { 21.1744 42.1619 160.506 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_368 {
+		type { sphere }
+		origin { 5.83166 0.2 6.64884 } # center
+		width { 0.2 } # radius
+		color { 133.362 46.1604 5.48138 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_369 {
+		type { sphere }
+		origin { 5.71109 0.2 7.10819 } # center
+		width { 0.2 } # radius
+		color { 0.871754 97.9165 78.2945 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_370 {
+		type { sphere }
+		origin { 5.25245 0.2 8.39054 } # center
+		width { 0.2 } # radius
+		color { 37.0962 103.275 116.946 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_371 {
+		type { sphere }
+		origin { 5.07232 0.2 9.56339 } # center
+		width { 0.2 } # radius
+		color { 103.758 4.98755 72.5556 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_372 {
+		type { sphere }
+		origin { 5.24147 0.2 10.3305 } # center
+		width { 0.2 } # radius
+		color { 10.9703 45.7709 21.2983 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_373 {
+		type { sphere }
+		origin { 6.85953 0.2 -10.7656 } # center
+		width { 0.2 } # radius
+		color { 98.0171 9.78023 89.5725 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_374 {
+		type { sphere }
+		origin { 6.15296 0.2 -9.66966 } # center
+		width { 0.2 } # radius
+		color { 0.0336882 90.3511 60.8046 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_375 {
+		type { sphere }
+		origin { 6.19838 0.2 -8.41802 } # center
+		width { 0.2 } # radius
+		color { 255 255 255 }
+		material {
+			shininess { 64 }
+			ambient-reflection { 0.001 }
+			diffuse-reflection { 0.01 }
+			specular-reflection { 1.0 }
+			lens { 1 }
+			lens-attenuation { 255 255 255 }
+			permittivity { 1.5 }
+		}
+	}
+	sphere_376 {
+		type { sphere }
+		origin { 6.81383 0.2 -7.26992 } # center
+		width { 0.2 } # radius
+		color { 122.838 28.7538 0.693158 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_377 {
+		type { sphere }
+		origin { 6.40183 0.2 -6.19055 } # center
+		width { 0.2 } # radius
+		color { 7.11631 59.7385 7.86042 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_378 {
+		type { sphere }
+		origin { 6.05833 0.2 -5.68189 } # center
+		width { 0.2 } # radius
+		color { 255 255 255 }
+		material {
+			shininess { 64 }
+			ambient-reflection { 0.001 }
+			diffuse-reflection { 0.01 }
+			specular-reflection { 1.0 }
+			lens { 1 }
+			lens-attenuation { 255 255 255 }
+			permittivity { 1.5 }
+		}
+	}
+	sphere_379 {
+		type { sphere }
+		origin { 6.7631 0.2 -4.59555 } # center
+		width { 0.2 } # radius
+		color { 4.54774 100.944 185.394 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_380 {
+		type { sphere }
+		origin { 6.09421 0.2 -3.68192 } # center
+		width { 0.2 } # radius
+		color { 1.54242 102.235 43.0879 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_381 {
+		type { sphere }
+		origin { 6.43675 0.2 -2.96224 } # center
+		width { 0.2 } # radius
+		color { 32.9066 56.7891 109.445 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_382 {
+		type { sphere }
+		origin { 6.0999 0.2 -1.48544 } # center
+		width { 0.2 } # radius
+		color { 255 255 255 }
+		material {
+			shininess { 64 }
+			ambient-reflection { 0.001 }
+			diffuse-reflection { 0.01 }
+			specular-reflection { 1.0 }
+			lens { 1 }
+			lens-attenuation { 255 255 255 }
+			permittivity { 1.5 }
+		}
+	}
+	sphere_383 {
+		type { sphere }
+		origin { 6.647 0.2 -0.594645 } # center
+		width { 0.2 } # radius
+		color { 139.604 91.4085 153.297 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_384 {
+		type { sphere }
+		origin { 6.75855 0.2 0.47195 } # center
+		width { 0.2 } # radius
+		color { 255 255 255 }
+		material {
+			shininess { 64 }
+			ambient-reflection { 0.001 }
+			diffuse-reflection { 0.01 }
+			specular-reflection { 0.368142 }
+			mirror { 1 }
+			mirror-attenuation { 178.665 202.356 183.817 }
+		}
+	}
+	sphere_385 {
+		type { sphere }
+		origin { 6.24429 0.2 1.86347 } # center
+		width { 0.2 } # radius
+		color { 78.1703 147.873 3.94524 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_386 {
+		type { sphere }
+		origin { 6.80118 0.2 2.6161 } # center
+		width { 0.2 } # radius
+		color { 26.1802 51.5008 146.134 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_387 {
+		type { sphere }
+		origin { 6.01712 0.2 3.55185 } # center
+		width { 0.2 } # radius
+		color { 63.3819 33.5405 13.5633 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_388 {
+		type { sphere }
+		origin { 6.71163 0.2 4.30008 } # center
+		width { 0.2 } # radius
+		color { 87.2721 7.11503 0.308777 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_389 {
+		type { sphere }
+		origin { 6.38557 0.2 5.32501 } # center
+		width { 0.2 } # radius
+		color { 255 255 255 }
+		material {
+			shininess { 64 }
+			ambient-reflection { 0.001 }
+			diffuse-reflection { 0.01 }
+			specular-reflection { 0.242145 }
+			mirror { 1 }
+			mirror-attenuation { 181.921 229.193 140.165 }
+		}
+	}
+	sphere_390 {
+		type { sphere }
+		origin { 6.42698 0.2 6.51209 } # center
+		width { 0.2 } # radius
+		color { 1.28192 5.0109 53.0556 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_391 {
+		type { sphere }
+		origin { 6.17438 0.2 7.39027 } # center
+		width { 0.2 } # radius
+		color { 255 255 255 }
+		material {
+			shininess { 64 }
+			ambient-reflection { 0.001 }
+			diffuse-reflection { 0.01 }
+			specular-reflection { 0.433477 }
+			mirror { 1 }
+			mirror-attenuation { 135.106 205.414 202.973 }
+		}
+	}
+	sphere_392 {
+		type { sphere }
+		origin { 6.71878 0.2 8.73373 } # center
+		width { 0.2 } # radius
+		color { 255 255 255 }
+		material {
+			shininess { 64 }
+			ambient-reflection { 0.001 }
+			diffuse-reflection { 0.01 }
+			specular-reflection { 0.0714704 }
+			mirror { 1 }
+			mirror-attenuation { 134.167 228.92 138.471 }
+		}
+	}
+	sphere_393 {
+		type { sphere }
+		origin { 6.19401 0.2 9.06974 } # center
+		width { 0.2 } # radius
+		color { 18.338 191.669 86.07 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_394 {
+		type { sphere }
+		origin { 6.50645 0.2 10.6847 } # center
+		width { 0.2 } # radius
+		color { 255 255 255 }
+		material {
+			shininess { 64 }
+			ambient-reflection { 0.001 }
+			diffuse-reflection { 0.01 }
+			specular-reflection { 0.20838 }
+			mirror { 1 }
+			mirror-attenuation { 208.491 155.684 156.103 }
+		}
+	}
+	sphere_395 {
+		type { sphere }
+		origin { 7.09338 0.2 -10.3302 } # center
+		width { 0.2 } # radius
+		color { 13.3323 182.968 164.999 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_396 {
+		type { sphere }
+		origin { 7.86229 0.2 -9.26556 } # center
+		width { 0.2 } # radius
+		color { 3.41976 77.2456 8.30614 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_397 {
+		type { sphere }
+		origin { 7.52109 0.2 -8.11951 } # center
+		width { 0.2 } # radius
+		color { 23.5798 15.4368 203.013 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_398 {
+		type { sphere }
+		origin { 7.37254 0.2 -7.13946 } # center
+		width { 0.2 } # radius
+		color { 33.0857 29.9559 112.914 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_399 {
+		type { sphere }
+		origin { 7.81966 0.2 -6.30764 } # center
+		width { 0.2 } # radius
+		color { 44.7086 17.4533 75.1797 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_400 {
+		type { sphere }
+		origin { 7.59834 0.2 -5.44088 } # center
+		width { 0.2 } # radius
+		color { 51.5804 33.2224 188.234 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_401 {
+		type { sphere }
+		origin { 7.53765 0.2 -4.66699 } # center
+		width { 0.2 } # radius
+		color { 139.849 42.5922 32.7636 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_402 {
+		type { sphere }
+		origin { 7.64775 0.2 -3.70597 } # center
+		width { 0.2 } # radius
+		color { 27.742 24.7281 27.1527 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_403 {
+		type { sphere }
+		origin { 7.24931 0.2 -2.29075 } # center
+		width { 0.2 } # radius
+		color { 255 255 255 }
+		material {
+			shininess { 64 }
+			ambient-reflection { 0.001 }
+			diffuse-reflection { 0.01 }
+			specular-reflection { 0.37256 }
+			mirror { 1 }
+			mirror-attenuation { 238.581 214.671 228.06 }
+		}
+	}
+	sphere_404 {
+		type { sphere }
+		origin { 7.70067 0.2 -1.48771 } # center
+		width { 0.2 } # radius
+		color { 192.558 214.085 204.139 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_405 {
+		type { sphere }
+		origin { 7.77782 0.2 -0.623019 } # center
+		width { 0.2 } # radius
+		color { 115.123 6.83844 43.0014 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_406 {
+		type { sphere }
+		origin { 7.45328 0.2 0.702083 } # center
+		width { 0.2 } # radius
+		color { 0.253438 108.554 4.65535 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_407 {
+		type { sphere }
+		origin { 7.37064 0.2 1.48835 } # center
+		width { 0.2 } # radius
+		color { 255 255 255 }
+		material {
+			shininess { 64 }
+			ambient-reflection { 0.001 }
+			diffuse-reflection { 0.01 }
+			specular-reflection { 0.474341 }
+			mirror { 1 }
+			mirror-attenuation { 212.529 191.454 173.176 }
+		}
+	}
+	sphere_408 {
+		type { sphere }
+		origin { 7.29102 0.2 2.56392 } # center
+		width { 0.2 } # radius
+		color { 101.846 128.191 5.87436 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_409 {
+		type { sphere }
+		origin { 7.64223 0.2 3.24521 } # center
+		width { 0.2 } # radius
+		color { 29.0059 87.6002 137.5 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_410 {
+		type { sphere }
+		origin { 7.30627 0.2 4.4107 } # center
+		width { 0.2 } # radius
+		color { 23.8045 117.387 232.696 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_411 {
+		type { sphere }
+		origin { 7.35014 0.2 5.58515 } # center
+		width { 0.2 } # radius
+		color { 35.5865 90.887 34.0346 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_412 {
+		type { sphere }
+		origin { 7.045 0.2 6.25528 } # center
+		width { 0.2 } # radius
+		color { 29.6357 17.3745 26.2709 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_413 {
+		type { sphere }
+		origin { 7.75359 0.2 7.71684 } # center
+		width { 0.2 } # radius
+		color { 134.494 9.71909 16.3312 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_414 {
+		type { sphere }
+		origin { 7.16387 0.2 8.24113 } # center
+		width { 0.2 } # radius
+		color { 203.795 40.3588 172.437 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_415 {
+		type { sphere }
+		origin { 7.21552 0.2 9.67155 } # center
+		width { 0.2 } # radius
+		color { 24.4805 89.2393 197.002 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_416 {
+		type { sphere }
+		origin { 7.68881 0.2 10.1969 } # center
+		width { 0.2 } # radius
+		color { 74.6145 29.2145 101.049 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_417 {
+		type { sphere }
+		origin { 8.40274 0.2 -10.1057 } # center
+		width { 0.2 } # radius
+		color { 36.739 77.6133 39.6265 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_418 {
+		type { sphere }
+		origin { 8.39923 0.2 -9.61681 } # center
+		width { 0.2 } # radius
+		color { 185.284 56.8178 5.34253 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_419 {
+		type { sphere }
+		origin { 8.13143 0.2 -8.70564 } # center
+		width { 0.2 } # radius
+		color { 32.7437 127.746 37.136 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_420 {
+		type { sphere }
+		origin { 8.14258 0.2 -7.50183 } # center
+		width { 0.2 } # radius
+		color { 48.4222 37.65 213.155 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_421 {
+		type { sphere }
+		origin { 8.20267 0.2 -6.27238 } # center
+		width { 0.2 } # radius
+		color { 61.0001 6.08807 125.964 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_422 {
+		type { sphere }
+		origin { 8.2464 0.2 -5.73702 } # center
+		width { 0.2 } # radius
+		color { 11.0063 43.2974 3.44412 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_423 {
+		type { sphere }
+		origin { 8.48051 0.2 -4.69485 } # center
+		width { 0.2 } # radius
+		color { 72.5819 97.193 24.8444 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_424 {
+		type { sphere }
+		origin { 8.54783 0.2 -3.59753 } # center
+		width { 0.2 } # radius
+		color { 68.3109 110.754 3.9576 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_425 {
+		type { sphere }
+		origin { 8.48152 0.2 -2.84863 } # center
+		width { 0.2 } # radius
+		color { 170.158 54.1942 123.424 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_426 {
+		type { sphere }
+		origin { 8.27095 0.2 -1.25441 } # center
+		width { 0.2 } # radius
+		color { 255 255 255 }
+		material {
+			shininess { 64 }
+			ambient-reflection { 0.001 }
+			diffuse-reflection { 0.01 }
+			specular-reflection { 0.44136 }
+			mirror { 1 }
+			mirror-attenuation { 185.159 204.149 240.805 }
+		}
+	}
+	sphere_427 {
+		type { sphere }
+		origin { 8.45607 0.2 -0.182504 } # center
+		width { 0.2 } # radius
+		color { 255 255 255 }
+		material {
+			shininess { 64 }
+			ambient-reflection { 0.001 }
+			diffuse-reflection { 0.01 }
+			specular-reflection { 0.381781 }
+			mirror { 1 }
+			mirror-attenuation { 162.933 226.808 225.754 }
+		}
+	}
+	sphere_428 {
+		type { sphere }
+		origin { 8.86725 0.2 0.3174 } # center
+		width { 0.2 } # radius
+		color { 65.8762 148.33 118.147 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_429 {
+		type { sphere }
+		origin { 8.12067 0.2 1.4524 } # center
+		width { 0.2 } # radius
+		color { 33.3896 100.683 54.4804 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_430 {
+		type { sphere }
+		origin { 8.39856 0.2 2.73724 } # center
+		width { 0.2 } # radius
+		color { 131.097 59.8223 78.3367 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_431 {
+		type { sphere }
+		origin { 8.00509 0.2 3.08638 } # center
+		width { 0.2 } # radius
+		color { 255 255 255 }
+		material {
+			shininess { 64 }
+			ambient-reflection { 0.001 }
+			diffuse-reflection { 0.01 }
+			specular-reflection { 1.0 }
+			lens { 1 }
+			lens-attenuation { 255 255 255 }
+			permittivity { 1.5 }
+		}
+	}
+	sphere_432 {
+		type { sphere }
+		origin { 8.83023 0.2 4.03394 } # center
+		width { 0.2 } # radius
+		color { 153.678 4.75522 182.954 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_433 {
+		type { sphere }
+		origin { 8.273 0.2 5.08594 } # center
+		width { 0.2 } # radius
+		color { 195.26 10.8124 6.45196 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_434 {
+		type { sphere }
+		origin { 8.08292 0.2 6.4479 } # center
+		width { 0.2 } # radius
+		color { 255 255 255 }
+		material {
+			shininess { 64 }
+			ambient-reflection { 0.001 }
+			diffuse-reflection { 0.01 }
+			specular-reflection { 1.0 }
+			lens { 1 }
+			lens-attenuation { 255 255 255 }
+			permittivity { 1.5 }
+		}
+	}
+	sphere_435 {
+		type { sphere }
+		origin { 8.60573 0.2 7.65611 } # center
+		width { 0.2 } # radius
+		color { 64.0572 3.34124 233.458 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_436 {
+		type { sphere }
+		origin { 8.47422 0.2 8.70081 } # center
+		width { 0.2 } # radius
+		color { 11.9013 112.673 15.871 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_437 {
+		type { sphere }
+		origin { 8.45086 0.2 9.51445 } # center
+		width { 0.2 } # radius
+		color { 5.03286 23.531 9.57955 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_438 {
+		type { sphere }
+		origin { 8.53547 0.2 10.4707 } # center
+		width { 0.2 } # radius
+		color { 51.8173 10.8225 67.1442 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_439 {
+		type { sphere }
+		origin { 9.79488 0.2 -10.191 } # center
+		width { 0.2 } # radius
+		color { 25.415 118.411 4.91471 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_440 {
+		type { sphere }
+		origin { 9.25961 0.2 -9.10502 } # center
+		width { 0.2 } # radius
+		color { 15.8334 116.833 214.413 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_441 {
+		type { sphere }
+		origin { 9.19094 0.2 -8.30858 } # center
+		width { 0.2 } # radius
+		color { 219.376 3.45736 108.389 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_442 {
+		type { sphere }
+		origin { 9.22445 0.2 -7.59437 } # center
+		width { 0.2 } # radius
+		color { 57.5381 44.2813 61.1806 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_443 {
+		type { sphere }
+		origin { 9.74894 0.2 -6.10006 } # center
+		width { 0.2 } # radius
+		color { 115.121 62.9382 100.26 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_444 {
+		type { sphere }
+		origin { 9.56819 0.2 -5.38363 } # center
+		width { 0.2 } # radius
+		color { 66.4638 60.4531 131.989 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_445 {
+		type { sphere }
+		origin { 9.24829 0.2 -4.40864 } # center
+		width { 0.2 } # radius
+		color { 11.1925 78.6255 3.74962 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_446 {
+		type { sphere }
+		origin { 9.26669 0.2 -3.66809 } # center
+		width { 0.2 } # radius
+		color { 31.1157 92.6671 81.9313 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_447 {
+		type { sphere }
+		origin { 9.23082 0.2 -2.58298 } # center
+		width { 0.2 } # radius
+		color { 144.609 61.6584 5.50668 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_448 {
+		type { sphere }
+		origin { 9.4856 0.2 -1.67719 } # center
+		width { 0.2 } # radius
+		color { 255 255 255 }
+		material {
+			shininess { 64 }
+			ambient-reflection { 0.001 }
+			diffuse-reflection { 0.01 }
+			specular-reflection { 0.297871 }
+			mirror { 1 }
+			mirror-attenuation { 156.641 179.586 254.071 }
+		}
+	}
+	sphere_449 {
+		type { sphere }
+		origin { 9.78568 0.2 -0.901252 } # center
+		width { 0.2 } # radius
+		color { 6.43313 143.579 29.2818 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_450 {
+		type { sphere }
+		origin { 9.29627 0.2 0.545499 } # center
+		width { 0.2 } # radius
+		color { 12.6107 12.9204 129.49 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_451 {
+		type { sphere }
+		origin { 9.63828 0.2 1.46272 } # center
+		width { 0.2 } # radius
+		color { 9.93763 200.899 97.9091 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_452 {
+		type { sphere }
+		origin { 9.11403 0.2 2.3758 } # center
+		width { 0.2 } # radius
+		color { 10.7619 29.2611 109.821 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_453 {
+		type { sphere }
+		origin { 9.0999 0.2 3.44696 } # center
+		width { 0.2 } # radius
+		color { 158.642 23.2088 48.9278 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_454 {
+		type { sphere }
+		origin { 9.1829 0.2 4.51661 } # center
+		width { 0.2 } # radius
+		color { 53.7264 0.514541 173.828 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_455 {
+		type { sphere }
+		origin { 9.77403 0.2 5.56829 } # center
+		width { 0.2 } # radius
+		color { 2.01569 0.473901 33.6217 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_456 {
+		type { sphere }
+		origin { 9.47376 0.2 6.20693 } # center
+		width { 0.2 } # radius
+		color { 4.45832 10.6863 44.3124 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_457 {
+		type { sphere }
+		origin { 9.32181 0.2 7.52801 } # center
+		width { 0.2 } # radius
+		color { 25.5197 124.099 1.42511 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_458 {
+		type { sphere }
+		origin { 9.77262 0.2 8.20186 } # center
+		width { 0.2 } # radius
+		color { 103.925 28.6135 166.354 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_459 {
+		type { sphere }
+		origin { 9.48695 0.2 9.50617 } # center
+		width { 0.2 } # radius
+		color { 42.8487 20.2416 131.376 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_460 {
+		type { sphere }
+		origin { 9.64351 0.2 10.2287 } # center
+		width { 0.2 } # radius
+		color { 33.7555 152.111 8.47723 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_461 {
+		type { sphere }
+		origin { 10.7393 0.2 -10.1849 } # center
+		width { 0.2 } # radius
+		color { 255 255 255 }
+		material {
+			shininess { 64 }
+			ambient-reflection { 0.001 }
+			diffuse-reflection { 0.01 }
+			specular-reflection { 0.150537 }
+			mirror { 1 }
+			mirror-attenuation { 217.4 204.792 201.497 }
+		}
+	}
+	sphere_462 {
+		type { sphere }
+		origin { 10.5066 0.2 -9.64067 } # center
+		width { 0.2 } # radius
+		color { 17.8725 157.69 76.657 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_463 {
+		type { sphere }
+		origin { 10.896 0.2 -8.26966 } # center
+		width { 0.2 } # radius
+		color { 29.6689 172.002 168.637 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_464 {
+		type { sphere }
+		origin { 10.4337 0.2 -7.77794 } # center
+		width { 0.2 } # radius
+		color { 28.0558 15.2583 78.4838 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_465 {
+		type { sphere }
+		origin { 10.8529 0.2 -6.92168 } # center
+		width { 0.2 } # radius
+		color { 34.0937 193.065 2.49496 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_466 {
+		type { sphere }
+		origin { 10.3574 0.2 -5.56325 } # center
+		width { 0.2 } # radius
+		color { 66.8621 38.2833 110.886 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_467 {
+		type { sphere }
+		origin { 10.1548 0.2 -4.25263 } # center
+		width { 0.2 } # radius
+		color { 167.34 92.1007 83.3586 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_468 {
+		type { sphere }
+		origin { 10.1696 0.2 -3.75604 } # center
+		width { 0.2 } # radius
+		color { 255 255 255 }
+		material {
+			shininess { 64 }
+			ambient-reflection { 0.001 }
+			diffuse-reflection { 0.01 }
+			specular-reflection { 1.0 }
+			lens { 1 }
+			lens-attenuation { 255 255 255 }
+			permittivity { 1.5 }
+		}
+	}
+	sphere_469 {
+		type { sphere }
+		origin { 10.2365 0.2 -2.19356 } # center
+		width { 0.2 } # radius
+		color { 255 255 255 }
+		material {
+			shininess { 64 }
+			ambient-reflection { 0.001 }
+			diffuse-reflection { 0.01 }
+			specular-reflection { 0.0912824 }
+			mirror { 1 }
+			mirror-attenuation { 241.619 150.684 140.724 }
+		}
+	}
+	sphere_470 {
+		type { sphere }
+		origin { 10.359 0.2 -1.24619 } # center
+		width { 0.2 } # radius
+		color { 3.09333 166.418 104.591 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_471 {
+		type { sphere }
+		origin { 10.5461 0.2 -0.791483 } # center
+		width { 0.2 } # radius
+		color { 183.993 19.9651 27.0536 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_472 {
+		type { sphere }
+		origin { 10.3271 0.2 0.268713 } # center
+		width { 0.2 } # radius
+		color { 6.06675 11.9001 0.39581 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_473 {
+		type { sphere }
+		origin { 10.3908 0.2 1.72341 } # center
+		width { 0.2 } # radius
+		color { 64.045 91.9358 8.47525 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_474 {
+		type { sphere }
+		origin { 10.2819 0.2 2.17506 } # center
+		width { 0.2 } # radius
+		color { 33.3619 1.57431 21.196 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_475 {
+		type { sphere }
+		origin { 10.6962 0.2 3.36803 } # center
+		width { 0.2 } # radius
+		color { 124.043 18.827 0.0232648 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_476 {
+		type { sphere }
+		origin { 10.2631 0.2 4.09931 } # center
+		width { 0.2 } # radius
+		color { 28.3853 96.5458 27.7754 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_477 {
+		type { sphere }
+		origin { 10.2165 0.2 5.66329 } # center
+		width { 0.2 } # radius
+		color { 79.639 1.60373 8.2128 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_478 {
+		type { sphere }
+		origin { 10.2722 0.2 6.81467 } # center
+		width { 0.2 } # radius
+		color { 255 255 255 }
+		material {
+			shininess { 64 }
+			ambient-reflection { 0.001 }
+			diffuse-reflection { 0.01 }
+			specular-reflection { 0.149753 }
+			mirror { 1 }
+			mirror-attenuation { 183.189 236.764 151.019 }
+		}
+	}
+	sphere_479 {
+		type { sphere }
+		origin { 10.7411 0.2 7.18478 } # center
+		width { 0.2 } # radius
+		color { 255 255 255 }
+		material {
+			shininess { 64 }
+			ambient-reflection { 0.001 }
+			diffuse-reflection { 0.01 }
+			specular-reflection { 0.0360927 }
+			mirror { 1 }
+			mirror-attenuation { 204.874 181.091 174.959 }
+		}
+	}
+	sphere_480 {
+		type { sphere }
+		origin { 10.2927 0.2 8.67377 } # center
+		width { 0.2 } # radius
+		color { 61.3169 173.609 0.337753 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_481 {
+		type { sphere }
+		origin { 10.0774 0.2 9.81801 } # center
+		width { 0.2 } # radius
+		color { 100.85 2.87308 121.132 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_482 {
+		type { sphere }
+		origin { 10.2617 0.2 10.4483 } # center
+		width { 0.2 } # radius
+		color { 129.033 120.311 10.1926 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_483 {
+		type { sphere }
+		origin { 0 1 0 } # center
+		width { 1 } # radius
+		color { 255 255 255 }
+		material {
+			shininess { 64 }
+			ambient-reflection { 0.001 }
+			diffuse-reflection { 0.01 }
+			specular-reflection { 1.0 }
+			lens { 1 }
+			lens-attenuation { 255 255 255 }
+			permittivity { 1.5 }
+		}
+	}
+	sphere_484 {
+		type { sphere }
+		origin { -4 1 0 } # center
+		width { 1 } # radius
+		color { 102 51 25.5 }
+		material {
+			shininess { 64 }
+		}
+	}
+	sphere_485 {
+		type { sphere }
+		origin { 4 1 0 } # center
+		width { 1 } # radius
+		color { 255 255 255 }
+		material {
+			shininess { 64 }
+			ambient-reflection { 0.001 }
+			diffuse-reflection { 0.01 }
+			specular-reflection { 0 }
+			mirror { 1 }
+			mirror-attenuation { 178.5 153 127.5 }
+		}
 	}
 }
-
-# end Comment

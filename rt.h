@@ -6,7 +6,7 @@
 /*   By: jkong <jkong@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 15:16:26 by jkong             #+#    #+#             */
-/*   Updated: 2022/08/18 10:42:34 by jkong            ###   ########.fr       */
+/*   Updated: 2022/08/18 13:16:57 by jkong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define RT_H
 
 # ifndef RAY_DEPTH
-#  define RAY_DEPTH 10
+#  define RAY_DEPTH 50
 # endif
 
 # ifndef MIN_RAY_LENGTH
