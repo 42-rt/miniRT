@@ -3,59 +3,114 @@
 #
 
 name { scene_name_or_title }
-window_size { 1080 800 }
+window_size { 2560 1440 }
 ambient_lighting { # Inner comment
-	ratio { 0.2 }
+	ratio { 0.4 }
 	color { 255 255 255 }
 }
 camera {
-	origin { 200.0 0.0 0.0 }
+	origin { 0.0 0.0 0.0 }
 	direction { 0 0 -1.0 }
-	fov { 70 }
+	fov { 90 }
 }
 
 lights {
 	light1 {
-		origin { 0.0 0.0 20.6 }
-		bright { 0.6 }
-		color { 10 0 255 }
+		origin { -600.0 -2960.0 -3500 }
+		bright { 0.3 }
+		color { 255 0 0 }
 	}
-	light2 {
-		origin { 20.6 0.0 0.0 }
-		bright { 0.8 }
-		color { 255 0 10 }
+	light1 {
+		origin { 200.0 100 -3500 }
+		bright { 0.5 }
+		color { 250 250 250 }
+	}
+	light1 {
+		origin { 200.0 100 00 }
+		bright { 0.3 }
+		color { 250 250 250 }
 	}
 }
 objects {
 	sphere1 {
 		type { sphere }
-		origin { 0.0 0.0 20.6 }
+		origin { -960 -200 -3050 }
 		width { 100.0 } # radius
-		color { 255 0 0 }
+		color { 200 0 0 }
 	}
 	sphere2 {
 		type { sphere }
-		origin { 20.6 0.0 0.0 }
-		width { 50.0 } # radius
-		color { 0 0 255 }
+		origin { 1300 -100 -3050 }
+		width { 150.0 } # radius
+		color { 0 0 150 }
+	}
+	sphere4 {
+		type { sphere }
+		origin { 300 300 -3000 }
+		width { 250.0 } # radius
+		color { 60 40 40 }
+	}
+	sphere5 {
+		type { sphere }
+		origin { -300 -200 -3500 }
+		width { 250.0 } # radius
+		color { 20 35 70 }
+	}
+	sphere6 {
+		type { sphere }
+		origin { -300 0 -3050 }
+		width { 150.0 } # radius
+		color { 25 120 150 }
 	}
 	plane {
 		type { plane }
-		origin { 0.0 0.0 -10.0 }
-		direction { 0 0 1.0 }
-		color { 0 0 255 }
+		origin { -4000 0 0 }
+		direction { 1 0 -0.2 }
+		color { 0 0 0 }
+	}
+	plane {
+		type { plane }
+		origin { 4000 0 0 }
+		direction { 1 0 0.2 }
+		color { 0 0 0}
+	}
+	plane {
+		type { plane }
+		origin { 0 10000 0 }
+		direction { 0 -1 0.1 }
+		color { 0 0 0}
+	}
+	plane {
+		type { plane }
+		origin { 0 2000 -60000 }
+		direction { 0 0 1 }
+		color { 0 0 0}
+	}
+	plane {
+		type { plane }
+		origin { 0 -3000 0 }
+		direction { 0 1 -0.1 }
+		color { 0 0 0}
 	}
 	cylinder {
 		type { cylinder }
-		origin { 50.0 0.0 20.6 }
-		direction { 0 0 1.0 }
+		origin { -50.0 0.0 -200.6 }
+		direction { 0.8 0.6 0.5 }
 		width { 14.2 } # radius
-		height { 21.42 }
+		height { 2.142 }
 		color { 10 0 255 }
+		material {
+			constant_diffuse { 0.2 }
+			constant_specular { 0.8 }
+		}
 	}
 	cone {
 		type { second-cone }
-		#...
+		origin { 50.0 0.0 -200.6 }
+		direction { -0.8 0.6 0.5 }
+		width { 14.2 } # radius
+		height { 21.42 }
+		color { 255 128 210 }
 	}
 	hyperboloid {
 		type { second-hyperboloid }
@@ -68,3 +123,10 @@ objects {
 }
 
 # end Comment
+
+	cone {
+		type { second-cone }
+		origin { 1500 -2000 -7000 }
+		width { 1000 } # radius #temp_mirror
+		color { 0 0 0 }
+	}

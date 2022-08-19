@@ -6,7 +6,7 @@
 /*   By: schoe <schoe@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 15:15:51 by jkong             #+#    #+#             */
-/*   Updated: 2022/08/17 16:11:07 by schoe            ###   ########.fr       */
+/*   Updated: 2022/08/18 12:52:34 by schoe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,26 +16,48 @@
 
 #include "mlx.h"
 
+static int	_rgb_to_int(t_rgb rgb)
+{
+	int	r;
+
+	if (rgb.x < 0)
+		rgb.x = 0;
+	if (rgb.y < 0)
+		rgb.y = 0;
+	if (rgb.z < 0)
+		rgb.z = 0;
+	if (rgb.x > 255)
+		rgb.x = 255;
+	if (rgb.y > 255)
+		rgb.y = 255;
+	if (rgb.z > 255)
+		rgb.z = 255;
+	r = 0;
+	r <<= 8;
+	r |= (int)rgb.x & 0xFF;
+	r <<= 8;
+	r |= (int)rgb.y & 0xFF;
+	r <<= 8;
+	r |= (int)rgb.z & 0xFF;
+	return (r);
+}
+
 static void	_draw_test(t_rt *unit)
 {
 	const int	width = unit->win_size_x;
 	const int	height = unit->win_size_y;
-	t_ray	ray;
-	int		color;
+	t_ray		ray;
 
 	fill_image(unit, 0x42);
-//	texture_arr_init(unit);
+	texture_arr_init(unit);
 	for (int x = 0; x < width; x++)
 	for (int y = 0; y < height; y++)
 	{
-		ray = get_viewport_ray(unit->conf.camera, x, y);
-		if (wolrd_draw(unit->conf, &ray, 0))
-			color = create_trgb(0, ray.rec.fin_color.x, ray.rec.fin_color.y, ray.rec.fin_color.z);
-		else
-			color =  0xadd8e6;
+		ray_from_camera(&unit->camera, x, y, &ray);
+		int color = _rgb_to_int(ray_color(unit, &ray, 10));
 		put_pixel(unit, x, y, color);
 	}
-//	texture_free(unit);
+	texture_free(unit);
 	refresh_window(unit);
 }
 
@@ -51,7 +73,7 @@ static int	_create_window(t_rt *unit)
 	unit->img_ptr = mlx_new_image(unit->mlx_ptr, width, height);
 	if (!unit->img_ptr)
 		return (0);
-	cam_init(&(unit->conf.camera));
+	camera_init(&unit->conf, &unit->camera);
 	_draw_test(unit); //TODO: 
 	set_hook(unit);
 	return (1);
@@ -75,10 +97,10 @@ static int	_rt(void *mlx_ptr, t_rt *unit, char *path)
 	return (0);
 }
 
-static void	_rt_multiple(void *mlx_ptr, size_t argc, size_t begin, char *argv[])
+static void	_rt_multiple(void *mlx_ptr, int argc, int begin, char *argv[])
 {
 	t_rt	*rt_arr;
-	size_t	i;
+	int		i;
 	int		loop;
 
 	rt_arr = calloc_safe(argc - begin, sizeof(*rt_arr));
@@ -121,6 +143,6 @@ int	main(int argc, char *argv[])
 {
 	const int	result = main0(argc, argv);
 
-	system("leaks miniRT");
+	// system("leaks miniRT");
 	return (result);
 }

@@ -19,12 +19,12 @@ RM = rm -f
 OBJECTS_DIR = objs/
 
 HEADER = rt.h
-SOURCE = program.c rt_draw.c \
+SOURCE = program.c rt_ray.c rt_light.c rt_draw.c \
 			rt_parse.c rt_format.c rt_format_vector.c \
 			rt_input.c rt_input_key.c rt_input_mouse.c rt_input_move.c \
-			rt_vector.c rt_vector3.c \
-			rt_object_hit.c rt_object_hit_sphere.c \
-			schoe_temp.c vec_utils.c texture.c color.c
+			rt_vector.c rt_vector_utils.c rt_vector3.c rt_second.c \
+			rt_object_hit.c rt_object_hit_sphere.c rt_object_hit_plane.c \
+			rt_object_hit_cylinder.c rt_object_hit_cone.c texture.c color.c
 OBJECT = $(addprefix $(OBJECTS_DIR), $(SOURCE:.c=.o))
 
 HEADER_LIBFT = libft.h
@@ -64,7 +64,7 @@ LDFLAGS += -lm
 CFLAGS += -I$(MLX_DIR)
 LDFLAGS += -L$(MLX_DIR) -l$(MLX) $(MLX_DEP)
 
-C_SANITIZER_FLAGS = #address #undefined
+C_SANITIZER_FLAGS = #address undefined
 CFLAGS += $(addprefix -fsanitize=, $(C_SANITIZER_FLAGS))
 LDFLAGS += $(addprefix -fsanitize=, $(C_SANITIZER_FLAGS))
 

@@ -1,7 +1,7 @@
 #include "rt.h"
 #include <stdlib.h>
 #include "mlx.h"
-
+#include <math.h>
 void	texture_img_call(t_texture *texture, char *path, void *mlx_ptr)
 {
 	int ignore;
@@ -36,21 +36,47 @@ void	texture_arr_init(t_rt *unit)
 	texture_count = 4;
 	unit->conf.texture = (t_texture *)malloc(sizeof(t_texture) * texture_count);
 	unit->conf.texture[0].texture_max_count = texture_count;
-	texture_img_call(&unit->conf.texture[0], "./texture/Checkerboard.xpm", unit->mlx_ptr);
-	texture_img_call(&unit->conf.texture[1], "./texture/earthmap.xpm", unit->mlx_ptr);
-	texture_img_call(&unit->conf.texture[2], "./texture/1000.xpm", unit->mlx_ptr);
-	texture_img_call(&unit->conf.texture[3], "./texture/F_434.xpm", unit->mlx_ptr);
+//	texture_img_call(&unit->conf.texture[0], "./texture/Checkerboard.xpm", unit->mlx_ptr);
+	texture_img_call(&unit->conf.texture[0], "./texture/check.xpm", unit->mlx_ptr);
+	texture_img_call(&unit->conf.texture[1], "./texture/F_1000.xpm", unit->mlx_ptr);
+	texture_img_call(&unit->conf.texture[2], "./texture/F_434.xpm", unit->mlx_ptr);
+	texture_img_call(&unit->conf.texture[3], "./texture/block.xpm", unit->mlx_ptr);
 }
 
-void	get_texture_img(t_ray *ray, t_rt_conf conf, enum e_texture_type type)
+t_vec3	get_texture_normal(t_rgb color)
 {
-	int color;
+	t_rgb	bump_color;
 
-	color = conf.texture[type].texture_data[(int)ray->y % conf.texture[type].height][(int)ray->x % conf.texture[type].width];
-	ray->rec.bump_color.x = get_r(color) / 255.9900 * 0.8;
-	ray->rec.bump_color.y = get_g(color) / 255.9900;
-	ray->rec.bump_color.z = get_b(color) / 255.9900 * 0.8;
-	ray->rec.intersec_normal = (t_vec3)ray->rec.bump_color;
+	bump_color.x = color.x / 255.9900;
+	bump_color.y = color.y / 255.9900;
+	bump_color.z = color.z / 255.9900;
+	return(vec3_unit(bump_color));
+}//length에 따라 배율 조절
+
+t_rgb	get_texture_color(t_hit hit, t_rt_conf conf, enum e_texture_type type)
+{
+	int 	color;
+	t_rgb	bump_color;
+	t_pt3	z_cross;
+
+	z_cross = vec3_cross(hit.collision, (t_vec3){0, 0, 1});
+	if ((hit.collision.y < 0.0 && hit.collision.x < 0.0 && hit.collision.z < 0.0) \
+		|| (hit.collision.y < 0.0 && hit.collision.x > 0.0 && hit.collision.z > 0.0) \
+		|| (hit.collision.y > 0.0 && hit.collision.x > 0.0 && hit.collision.z < 0.0) \
+		|| (hit.collision.y > 0.0 && hit.collision.x < 0.0 && hit.collision.z > 0.0))
+	{
+		color = conf.texture[type].texture_data\
+		[conf.texture[type].height -1 -((int)(fabs(z_cross.y)) % conf.texture[type].height)]\
+		[conf.texture[type].width -1 -((int)(fabs(z_cross.x)) % conf.texture[type].width)];	
+	}
+	else
+		color = conf.texture[type].texture_data\
+		[(int)((fabs(z_cross.y))) % conf.texture[type].height]\
+		[(int)((fabs(z_cross.x))) % conf.texture[type].width];
+	bump_color.x = get_r(color);
+	bump_color.y = get_g(color);
+	bump_color.z = get_b(color);
+	return((bump_color));
 }
 
 void	texture_free(t_rt *unit)
