@@ -6,7 +6,7 @@
 /*   By: jkong <jkong@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 15:16:26 by jkong             #+#    #+#             */
-/*   Updated: 2022/08/18 16:04:20 by jkong            ###   ########.fr       */
+/*   Updated: 2022/08/19 14:33:16 by jkong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,7 @@ typedef struct s_hit
 	t_pt3			collision;
 	int				f;
 	t_vec3			normal;
+	t_vec3			uv;
 	t_list_object	*obj;
 }	t_hit;
 

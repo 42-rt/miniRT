@@ -6,7 +6,7 @@
 /*   By: jkong <jkong@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/12 23:15:02 by jkong             #+#    #+#             */
-/*   Updated: 2022/08/18 13:54:58 by jkong            ###   ########.fr       */
+/*   Updated: 2022/08/19 14:48:00 by jkong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,8 +58,8 @@ void	ray_to_light(t_pt3 pt, t_list_light *light, t_ray *out)
 {
 	t_vec3	orientation;
 
-	orientation = vec3_sub(light->origin, out->origin);
 	out->origin = pt;
+	orientation = vec3_sub(light->origin, out->origin);
 	out->direction = vec3_unit(orientation);
 	out->t_min = MIN_RAY_LENGTH;
 	out->t_max = vec3_len(orientation);

@@ -6,7 +6,7 @@
 /*   By: jkong <jkong@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/08 01:52:04 by jkong             #+#    #+#             */
-/*   Updated: 2022/08/03 18:36:12 by jkong            ###   ########.fr       */
+/*   Updated: 2022/08/19 14:28:46 by jkong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ void	parser_stack_reserve(t_parser *pst, size_t n)
 	capacity = pst->stack_capacity;
 	if (capacity == 0)
 		capacity = 1;
-	length = pst->now + 1 - pst->stack_base;
+	length = (size_t)(pst->now - pst->stack_base) + 1;
 	while (capacity < length + n)
 		capacity <<= 1;
 	if (capacity == pst->stack_capacity)
