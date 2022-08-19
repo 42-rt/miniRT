@@ -6,7 +6,7 @@
 /*   By: jkong <jkong@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/04 15:51:39 by jkong             #+#    #+#             */
-/*   Updated: 2022/08/17 22:26:25 by jkong            ###   ########.fr       */
+/*   Updated: 2022/08/19 19:52:01 by jkong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,7 @@ static t_list_object	*_make_object(enum e_object_type type, t_entry *ent)
 	get_vec3(ent, "color", &elem->color);
 	get_child(ent, "material", &chld);
 	get_material(chld, &elem->material);
+	get_int(ent, "checkerboard", &elem->checkerboard);
 	return (elem);
 }
 

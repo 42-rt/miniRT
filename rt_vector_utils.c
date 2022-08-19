@@ -6,7 +6,7 @@
 /*   By: jkong <jkong@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/13 18:13:08 by jkong             #+#    #+#             */
-/*   Updated: 2022/08/18 14:45:48 by jkong            ###   ########.fr       */
+/*   Updated: 2022/08/19 19:28:49 by jkong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,4 +32,16 @@ double	vec3_len(t_vec3 vec)
 t_vec3	vec3_unit(t_vec3 vec)
 {
 	return (vec3_mul(pow(vec3_len_sq(vec), -.5), vec));
+}
+
+t_vec3	vec3_uv(t_vec3 basis, t_vec3 *vec_u, t_vec3 *vec_v)
+{
+	if (vec3_len_sq(basis) == .0)
+		basis = (t_vec3){0, 0, -1};
+	basis = vec3_unit(basis);
+	*vec_u = vec3_cross(basis, (t_vec3){0, 1, 0});
+	if (vec3_len_sq(*vec_u) == .0)
+		*vec_u = vec3_cross(basis, (t_vec3){0, 0, -1});
+	*vec_v = vec3_cross(basis, *vec_u);
+	return (basis);
 }

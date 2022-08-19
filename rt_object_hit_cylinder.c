@@ -6,11 +6,13 @@
 /*   By: jkong <jkong@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/10 21:08:50 by jkong             #+#    #+#             */
-/*   Updated: 2022/08/18 12:02:31 by jkong            ###   ########.fr       */
+/*   Updated: 2022/08/19 19:24:06 by jkong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rt.h"
+
+#include <math.h>
 
 static t_vec3	_get_polynomial(t_list_object *self, t_ray *ray)
 {
@@ -49,6 +51,28 @@ static int	_find_solution(t_list_object *self, t_ray *ray, double *out)
 	return (1);
 }
 
+static void	_apply_normal(t_list_object *self, t_hit *hit,
+	t_vec3 dir, double h)
+{
+	t_vec3	v;
+	t_vec3	vec_u;
+	t_vec3	vec_v;
+	t_vec3	vec_w;
+	t_vec3	uvw;
+
+	v = vec3_sub(vec3_sub(hit->collision, self->origin), vec3_mul(h, dir));
+	hit->normal = vec3_div(self->width, v);
+	vec_w = vec3_uv(self->direction, &vec_u, &vec_v);
+	uvw.x = vec3_dot(vec_u, hit->normal);
+	uvw.y = vec3_dot(vec_w, hit->normal);
+	uvw.z = vec3_dot(vec_v, hit->normal);
+	hit->uv = (t_vec3){
+		.5 + atan2(uvw.x, uvw.z) / (2 * M_PI),
+		h / self->height,
+		0.
+	};
+}
+
 static int	_fill_record_limit(t_list_object *self, t_ray *ray, t_hit *out)
 {
 	t_ray	ray_temp;
@@ -72,8 +96,7 @@ static int	_fill_record_limit(t_list_object *self, t_ray *ray, t_hit *out)
 		if (h < 0 || h >= self->height)
 			return (0);
 	}
-	dir = vec3_sub(vec3_sub(out->collision, self->origin), vec3_mul(h, dir));
-	out->normal = vec3_div(self->width, dir);
+	_apply_normal(self, out, dir, h);
 	out->t = t;
 	return (1);
 }

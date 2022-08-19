@@ -6,7 +6,7 @@
 /*   By: jkong <jkong@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/12 23:15:02 by jkong             #+#    #+#             */
-/*   Updated: 2022/08/19 14:48:00 by jkong            ###   ########.fr       */
+/*   Updated: 2022/08/19 19:06:03 by jkong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,23 +16,15 @@
 
 void	camera_init(t_rt_conf *conf, t_camera *out)
 {
-	t_vec3	orientation;
 	t_vec3	horiz;
 	t_vec3	vert;
 	double	fd;
 	t_vec3	tmp;
 
-	orientation = conf->camera.direction;
-	horiz = vec3_cross(orientation, (t_vec3){0, 1, 0});
-	if (vec3_len_sq(horiz) == .0)
-		horiz = vec3_cross(orientation, (t_vec3){0, 0, -1});
-	vert = vec3_cross(orientation, horiz);
 	fd = conf->window_size.x / tan((conf->camera.fov / 180. * M_PI) / 2);
-	orientation = vec3_unit(orientation);
-	horiz = vec3_unit(horiz);
-	vert = vec3_unit(vert);
 	tmp = conf->camera.origin;
-	tmp = vec3_add(tmp, vec3_mul(fd, orientation));
+	tmp = vec3_add(tmp, vec3_mul(fd, vec3_uv(conf->camera.direction,
+					&horiz, &vert)));
 	tmp = vec3_add(tmp, vec3_mul(-conf->window_size.x / 2, horiz));
 	tmp = vec3_add(tmp, vec3_mul(-conf->window_size.y / 2, vert));
 	out->origin = conf->camera.origin;

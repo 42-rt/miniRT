@@ -6,7 +6,7 @@
 /*   By: jkong <jkong@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 15:16:26 by jkong             #+#    #+#             */
-/*   Updated: 2022/08/19 14:33:16 by jkong            ###   ########.fr       */
+/*   Updated: 2022/08/19 19:43:51 by jkong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -138,6 +138,7 @@ struct s_list_object
 	double				width;
 	double				height;
 	t_rgb				color;
+	int					checkerboard;
 	t_ray_hit_func		*on_hit;
 	t_material			material;
 };
@@ -213,6 +214,7 @@ t_vec3	vec3_sub(t_vec3 lhs, t_vec3 rhs);
 t_vec3	vec3_div(double lhs, t_vec3 rhs);
 double	vec3_len(t_vec3 vec);
 t_vec3	vec3_unit(t_vec3 vec);
+t_vec3	vec3_uv(t_vec3 basis, t_vec3 *vec_u, t_vec3 *vec_v);
 
 double	vec3_dot(t_vec3 lhs, t_vec3 rhs);
 t_vec3	vec3_cross(t_vec3 lhs, t_vec3 rhs);
