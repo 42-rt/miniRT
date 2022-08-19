@@ -6,7 +6,7 @@
 /*   By: jkong <jkong@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 15:16:26 by jkong             #+#    #+#             */
-/*   Updated: 2022/08/19 19:43:51 by jkong            ###   ########.fr       */
+/*   Updated: 2022/08/20 00:54:33 by jkong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -129,6 +129,17 @@ typedef struct s_material
 	double	e;
 }	t_material;
 
+typedef struct s_additional
+{
+	int		checkerboard;
+	double	checkerboard_horizontal;
+	double	checkerboard_vertical;
+	t_vec3	checkerboard_r;
+	t_vec3	checkerboard_g;
+	t_vec3	checkerboard_b;
+	int		bumpmap;
+}	t_additional;
+
 struct s_list_object
 {
 	t_list_object		*next;
@@ -138,9 +149,9 @@ struct s_list_object
 	double				width;
 	double				height;
 	t_rgb				color;
-	int					checkerboard;
 	t_ray_hit_func		*on_hit;
 	t_material			material;
+	t_additional		additional;
 };
 
 typedef struct s_rt_conf

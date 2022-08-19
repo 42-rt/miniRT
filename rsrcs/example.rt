@@ -5,7 +5,7 @@
 name { random_world }
 window_size { 1200 675 }
 ambient_lighting {
-	ratio { 0.8 }
+	ratio { 0.6 }
 	color { 255 255 255 }
 }
 camera {
@@ -16,24 +16,52 @@ camera {
 
 lights {
 	light_0 {
-		origin { -130 2 3 }
+		origin { 200 130 -300 }
 		bright { 0.4 }
 		color { 255 255 255 }
 	}
 	light_1 {
-		origin { 260 2 3 }
-		bright { 0.5 }
+		origin { 200 260 300 }
+		bright { 0.2 }
 		color { 255 128 128 }
 	}
 }
 objects {
+	# sphere_minus1 {
+	# 	type { sphere }
+	# 	origin { 0 0 0 }
+	# 	direction { 0 -1 0 }
+	# 	width { 27 }
+	# 	color { 0 125 0 }
+	# 	material {
+	# 		shininess { 64 }
+	# 	}
+	# 	additional {
+	# 		checkerboard { 1 }
+	# 		checkerboard-horizontal { 16 }
+	# 		checkerboard-vertical { 16 }
+	# 		checkerboard-r { 255 0 63 }
+	# 		checkerboard-g { 127.5 127.5 63 }
+	# 		checkerboard-b { 0 255 63 }
+	# 	}
+	# }
 	sphere_0 {
-		type { sphere }
-		origin { 0 -1000 0 } # center
-		width { 1000 } # radius
+		type { plane }
+		origin { -25 0 -25 }
+		direction { 0 -1 0 }
+		width { 50 }
+		height { 50 }
 		color { 127.5 127.5 127.5 }
 		material {
 			shininess { 64 }
+		}
+		additional {
+			checkerboard { 1 }
+			checkerboard-horizontal { 16 }
+			checkerboard-vertical { 16 }
+			checkerboard-r { 255 0 63 }
+			checkerboard-g { 127.5 127.5 63 }
+			checkerboard-b { 0 255 63 }
 		}
 	}
 	sphere_1 {

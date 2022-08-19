@@ -6,7 +6,7 @@
 /*   By: jkong <jkong@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/12 23:15:02 by jkong             #+#    #+#             */
-/*   Updated: 2022/08/19 19:49:33 by jkong            ###   ########.fr       */
+/*   Updated: 2022/08/20 00:56:49 by jkong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ static t_rgb	_get_ambient(t_rt *unit, t_ray *ray, t_hit *hit, int depth)
 	t_ray	next_ray;
 
 	color = hit->obj->color;
-	if (hit->obj->checkerboard != 0)
+	if (hit->obj->additional.checkerboard != 0)
 		color = checkerboard_color(hit->obj, hit->uv, color);
 	amb = vec3_mul(hit->obj->material.ra * unit->conf.ambient.ratio,
 			unit->conf.ambient.color);
@@ -90,6 +90,8 @@ static t_rgb	_apply_phong(t_list_light *l, t_ray *ray, t_hit *hit,
 	return (color);
 }
 
+t_vec3	bump_normal(t_list_object *obj, t_vec3 uv, t_vec3 normal);
+
 t_vec3	ray_color(t_rt *unit, t_ray *ray, int depth)
 {
 	t_hit			hit;
@@ -101,6 +103,8 @@ t_vec3	ray_color(t_rt *unit, t_ray *ray, int depth)
 		return ((t_vec3){0., 0., 0.});
 	if (ray_try_doing_hit(unit->conf.objects, ray, &hit))
 	{
+		if (hit.obj->additional.bumpmap != 0)
+			hit.normal = bump_normal(hit.obj, hit.uv, hit.normal);
 		color = _get_ambient(unit, ray, &hit, depth);
 		it = unit->conf.lights;
 		while (it)

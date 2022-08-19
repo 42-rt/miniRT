@@ -6,7 +6,7 @@
 /*   By: jkong <jkong@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/04 15:51:39 by jkong             #+#    #+#             */
-/*   Updated: 2022/08/19 19:52:01 by jkong            ###   ########.fr       */
+/*   Updated: 2022/08/20 00:46:53 by jkong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,10 +55,22 @@ static void	get_material(t_entry *ent, t_material *mat)
 	get_double(ent, "permittivity", &mat->e);
 }
 
+static void	get_additional(t_entry *ent, t_additional *add)
+{
+	ft_memset(add, 0, sizeof(*add));
+	if (!ent)
+		return ;
+	get_int(ent, "checkerboard", &add->checkerboard);
+	get_double(ent, "checkerboard-horizontal", &add->checkerboard_horizontal);
+	get_double(ent, "checkerboard-vertical", &add->checkerboard_vertical);
+	get_vec3(ent, "checkerboard-r", &add->checkerboard_r);
+	get_vec3(ent, "checkerboard-g", &add->checkerboard_g);
+	get_vec3(ent, "checkerboard-b", &add->checkerboard_b);
+}
+
 static t_list_object	*_make_object(enum e_object_type type, t_entry *ent)
 {
 	t_list_object	*elem;
-	t_entry			*chld;
 
 	elem = calloc_safe(1, sizeof(*elem));
 	elem->type = type;
@@ -68,9 +80,8 @@ static t_list_object	*_make_object(enum e_object_type type, t_entry *ent)
 	get_double(ent, "width", &elem->width);
 	get_double(ent, "height", &elem->height);
 	get_vec3(ent, "color", &elem->color);
-	get_child(ent, "material", &chld);
-	get_material(chld, &elem->material);
-	get_int(ent, "checkerboard", &elem->checkerboard);
+	get_material(get_child(ent, "material", NULL), &elem->material);
+	get_additional(get_child(ent, "additional", NULL), &elem->additional);
 	return (elem);
 }
 

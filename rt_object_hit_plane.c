@@ -6,7 +6,7 @@
 /*   By: jkong <jkong@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/10 21:08:50 by jkong             #+#    #+#             */
-/*   Updated: 2022/08/19 19:07:49 by jkong            ###   ########.fr       */
+/*   Updated: 2022/08/20 01:35:37 by jkong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,13 +42,20 @@ static int	_calc_uv(t_list_object *self, t_hit *hit, t_vec3 *out)
 	vec3_uv(self->direction, &vec_u, &vec_v);
 	vec = vec3_sub(hit->collision, self->origin);
 	x = vec3_dot(vec_u, vec);
-	if (self->width != 0. && (x < 0 || x >= self->width))
-		return (0);
 	y = vec3_dot(vec_v, vec);
-	if (self->height != 0. && (y < 0 || y >= self->height))
-		return (0);
+	if (self->width != 0. && self->height != 0.)
+	{
+		if (x < 0 || x >= self->width || y < 0 || y >= self->height)
+			return (0);
+		out->y = modf(y / self->height, &out->z);
+	}
+	else if (self->width != 0.)
+	{
+		if (x * x + y * y > self->width)
+			return (0);
+		out->y = modf(y / self->width, &out->z);
+	}
 	out->x = modf(x / self->width, &out->z);
-	out->y = modf(y / self->height, &out->z);
 	out->z = 0.;
 	return (1);
 }
