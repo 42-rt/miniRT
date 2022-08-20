@@ -6,7 +6,7 @@
 /*   By: jkong <jkong@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 15:15:51 by jkong             #+#    #+#             */
-/*   Updated: 2022/08/18 16:07:40 by jkong            ###   ########.fr       */
+/*   Updated: 2022/08/20 11:39:21 by jkong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,18 +18,28 @@
 
 void	run_draw_task(t_rt *unit);
 
-static int	_create_window(t_rt *unit)
+static int	_create_window(t_rt *unit, int width, int height)
 {
-	const int	width = unit->win_size_x;
-	const int	height = unit->win_size_y;
-	char *const	title = unit->conf.name;
+	char *const		title = unit->conf.name;
+	t_list_image	*it;
 
 	unit->win_ptr = mlx_new_window(unit->mlx_ptr, width, height, title);
 	if (!unit->win_ptr)
 		return (0);
-	unit->img_ptr = mlx_new_image(unit->mlx_ptr, width, height);
-	if (!unit->img_ptr)
+	unit->img.ptr = mlx_new_image(unit->mlx_ptr, width, height);
+	if (!unit->img.ptr)
 		return (0);
+	unit->img.width = width;
+	unit->img.height = height;
+	it = unit->conf.images;
+	while (it)
+	{
+		it->img.ptr = mlx_xpm_file_to_image(unit->mlx_ptr, it->path,
+				&it->img.width, &it->img.height);
+		if (!it->img.ptr)
+			return (0);
+		it = it->next;
+	}
 	camera_init(&unit->conf, &unit->camera);
 	run_draw_task(unit);
 	set_hook(unit);
@@ -38,13 +48,18 @@ static int	_create_window(t_rt *unit)
 
 static int	_rt(void *mlx_ptr, t_rt *unit, char *path)
 {
+	int	width;
+	int	height;
+
 	unit->mlx_ptr = mlx_ptr;
 	unit->entry = calloc_safe(1, sizeof(*unit->entry));
 	if (try_eval(path, &unit->entry) && get_conf(unit->entry, &unit->conf))
 	{
-		unit->win_size_x = (int)unit->conf.window_size.x;
-		unit->win_size_y = (int)unit->conf.window_size.y;
-		if (_create_window(unit))
+		width = (int)unit->conf.window_size.x;
+		height = (int)unit->conf.window_size.y;
+		unit->win_size_x = width;
+		unit->win_size_y = height;
+		if (_create_window(unit, width, height))
 			return (1);
 		else
 			puterr_safe("MLX Error\n");
@@ -52,6 +67,23 @@ static int	_rt(void *mlx_ptr, t_rt *unit, char *path)
 	else
 		puterr_safe("Error\n");
 	return (0);
+}
+
+static void	_rt_destroy(t_rt *unit)
+{
+	t_list_image	*it;
+
+	if (unit->img.ptr)
+		mlx_destroy_image(unit->mlx_ptr, unit->img.ptr);
+	it = unit->conf.images;
+	while (it)
+	{
+		if (it->img.ptr)
+			mlx_destroy_image(unit->mlx_ptr, it->img.ptr);
+		it = it->next;
+	}
+	dispose_conf(&unit->conf);
+	dispose_entry(unit->entry);
 }
 
 static void	_rt_multiple(void *mlx_ptr, int argc, int begin, char *argv[])
@@ -71,16 +103,11 @@ static void	_rt_multiple(void *mlx_ptr, int argc, int begin, char *argv[])
 	if (loop)
 		mlx_loop(mlx_ptr);
 	while (--i >= 0)
-	{
-		if (rt_arr[i].img_ptr)
-			mlx_destroy_image(rt_arr[i].mlx_ptr, rt_arr[i].img_ptr);
-		dispose_conf(&rt_arr[i].conf);
-		dispose_entry(rt_arr[i].entry);
-	}
+		_rt_destroy(&rt_arr[i]);
 	free(rt_arr);
 }
 
-int	main0(int argc, char *argv[])
+int	main(int argc, char *argv[])
 {
 	void		*mlx_ptr;
 
@@ -94,12 +121,4 @@ int	main0(int argc, char *argv[])
 		return (EXIT_FAILURE);
 	_rt_multiple(mlx_ptr, argc, 1, argv);
 	return (EXIT_SUCCESS);
-}
-
-int	main(int argc, char *argv[])
-{
-	const int	result = main0(argc, argv);
-
-	system("leaks miniRT");
-	return (result);
 }

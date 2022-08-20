@@ -6,7 +6,7 @@
 /*   By: jkong <jkong@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/09 14:16:07 by jkong             #+#    #+#             */
-/*   Updated: 2022/08/18 16:07:30 by jkong            ###   ########.fr       */
+/*   Updated: 2022/08/20 10:17:20 by jkong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ static void	*_task(void *args)
 			i % self->size_of_line, i / self->size_of_line, &ray);
 		color = _rgb_to_int(ray_color(self->unit, &ray, RAY_DEPTH));
 		pthread_mutex_lock(self->mutex);
-		put_pixel(self->unit,
+		put_pixel(&self->unit->img,
 			i % self->size_of_line, i / self->size_of_line, color);
 		pthread_mutex_unlock(self->mutex);
 		i++;
@@ -84,13 +84,19 @@ static void	_task_pool(t_rt *unit, pthread_mutex_t *mutex, t_task *pool)
 	}
 }
 
+static void	_refresh_window(t_rt *unit)
+{
+	mlx_clear_window(unit->mlx_ptr, unit->win_ptr);
+	mlx_put_image_to_window(unit->mlx_ptr, unit->win_ptr, unit->img.ptr, 0, 0);
+}
+
 void	run_draw_task(t_rt *unit)
 {
 	pthread_mutex_t	mutex;
 	t_task			*pool;
 	int				i;
 
-	fill_image(unit, 0x42);
+	fill_image(&unit->img, 0x42);
 	pool = calloc_safe(TASK_CAPACITY, sizeof(*pool));
 	ft_memset(&mutex, 0, sizeof(mutex));
 	if (pthread_mutex_init(&mutex, NULL) != 0)
@@ -105,5 +111,5 @@ void	run_draw_task(t_rt *unit)
 	if (pthread_mutex_destroy(&mutex) != 0)
 		exit(EXIT_FAILURE);
 	free(pool);
-	refresh_window(unit);
+	_refresh_window(unit);
 }

@@ -6,7 +6,7 @@
 /*   By: jkong <jkong@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 15:16:26 by jkong             #+#    #+#             */
-/*   Updated: 2022/08/20 00:54:33 by jkong            ###   ########.fr       */
+/*   Updated: 2022/08/20 11:09:35 by jkong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,13 @@ enum e_bit_map_constant
 	BIT_COUNT = 8
 };
 
+typedef struct s_image
+{
+	void	*ptr;
+	int		width;
+	int		height;
+}	t_image;
+
 typedef struct s_camera
 {
 	t_pt3	origin;
@@ -59,6 +66,7 @@ typedef struct s_camera
 
 typedef struct s_list_light		t_list_light;
 typedef struct s_list_object	t_list_object;
+typedef struct s_list_image		t_list_image;
 
 typedef struct s_ray
 {
@@ -138,6 +146,9 @@ typedef struct s_additional
 	t_vec3	checkerboard_g;
 	t_vec3	checkerboard_b;
 	int		bumpmap;
+	char	*bumpmap_image_key;
+	double	bumpmap_width;
+	double	bumpmap_height;
 }	t_additional;
 
 struct s_list_object
@@ -154,6 +165,14 @@ struct s_list_object
 	t_additional		additional;
 };
 
+struct s_list_image
+{
+	t_list_image	*next;
+	char			*key;
+	char			*path;
+	t_image			img;
+};
+
 typedef struct s_rt_conf
 {
 	char			*name;
@@ -162,6 +181,7 @@ typedef struct s_rt_conf
 	t_camera_conf	camera;
 	t_list_light	*lights;
 	t_list_object	*objects;
+	t_list_image	*images;
 }	t_rt_conf;
 
 typedef struct s_input_sys
@@ -180,7 +200,7 @@ typedef struct s_rt
 	int			win_size_x;
 	int			win_size_y;
 	void		*win_ptr;
-	void		*img_ptr;
+	t_image		img;
 	t_camera	camera;
 	t_input_sys	input;
 	int			update_posted;
@@ -204,9 +224,12 @@ int		ray_try_doing_hit(t_list_object *world, t_ray *ray, t_hit *hit);
 
 t_vec3	ray_color(t_rt *unit, t_ray *ray, int depth);
 
-void	fill_image(t_rt *unit, unsigned char byte);
-void	put_pixel(t_rt *unit, int x, int y, int color);
-void	refresh_window(t_rt *unit);
+void	fill_image(t_image *image, unsigned char byte);
+int		get_pixel(t_image *image, int x, int y, int *pcolor);
+void	put_pixel(t_image *image, int x, int y, int color);
+
+void	fill_image(t_image *image, unsigned char byte);
+void	put_pixel(t_image *image, int x, int y, int color);
 
 void	set_hook(t_rt *unit);
 

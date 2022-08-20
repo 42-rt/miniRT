@@ -19,9 +19,9 @@ RM = rm -f
 OBJECTS_DIR = objs/
 
 HEADER = rt.h
-SOURCE = program.c rt_ray.c rt_light.c rt_task.c rt_draw.c \
+SOURCE = program.c rt_ray.c rt_light.c rt_pixel.c rt_task.c \
 			rt_light_additional.c \
-			rt_parse.c rt_format.c rt_format_object.c rt_format_vector.c \
+			rt_eval.c rt_format.c rt_format_object.c rt_format_vector.c \
 			rt_input.c rt_input_key.c rt_input_mouse.c rt_input_move.c \
 			rt_vector.c rt_vector_utils.c rt_vector3.c rt_second.c \
 			rt_object_hit.c rt_object_hit_sphere.c rt_object_hit_plane.c \

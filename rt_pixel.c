@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rt_draw.c                                          :+:      :+:    :+:   */
+/*   rt_pixel.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jkong <jkong@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/09 14:16:07 by jkong             #+#    #+#             */
-/*   Updated: 2022/08/09 17:31:27 by jkong            ###   ########.fr       */
+/*   Updated: 2022/08/20 10:16:42 by jkong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,17 +49,17 @@ static t_pixel	_make_pixel(int color, int endian)
 	return (result);
 }
 
-void	fill_image(t_rt *unit, unsigned char byte)
+void	fill_image(t_image *image, unsigned char byte)
 {
 	char	*ptr;
 	int		size_of_line;
 	int		ignore;
 
-	ptr = mlx_get_data_addr(unit->img_ptr, &ignore, &size_of_line, &ignore);
-	ft_memset(ptr, byte, size_of_line * unit->win_size_y);
+	ptr = mlx_get_data_addr(image->ptr, &ignore, &size_of_line, &ignore);
+	ft_memset(ptr, byte, size_of_line * image->height);
 }
 
-void	put_pixel(t_rt *unit, int x, int y, int color)
+int	get_pixel(t_image *image, int x, int y, int *pcolor)
 {
 	char	*ptr;
 	int		bpp;
@@ -67,19 +67,33 @@ void	put_pixel(t_rt *unit, int x, int y, int color)
 	int		endian;
 	t_pixel	pixel;
 
-	if (x < 0 || x >= unit->win_size_x)
+	if (x < 0 || x >= image->width)
+		return (0);
+	if (y < 0 || y >= image->height)
+		return (0);
+	ptr = mlx_get_data_addr(image->ptr, &bpp, &size_of_line, &endian);
+	if (bpp != sizeof(t_pixel) * BIT_COUNT)
+		exit(EXIT_FAILURE);
+	pixel = *_get_data_pos(ptr, x, y, size_of_line);
+	*pcolor = _make_pixel(pixel, endian);
+	return (1);
+}
+
+void	put_pixel(t_image *image, int x, int y, int color)
+{
+	char	*ptr;
+	int		bpp;
+	int		size_of_line;
+	int		endian;
+	t_pixel	pixel;
+
+	if (x < 0 || x >= image->width)
 		return ;
-	if (y < 0 || y >= unit->win_size_y)
+	if (y < 0 || y >= image->height)
 		return ;
-	ptr = mlx_get_data_addr(unit->img_ptr, &bpp, &size_of_line, &endian);
+	ptr = mlx_get_data_addr(image->ptr, &bpp, &size_of_line, &endian);
 	if (bpp != sizeof(t_pixel) * BIT_COUNT)
 		exit(EXIT_FAILURE);
 	pixel = _make_pixel(color, endian);
 	*_get_data_pos(ptr, x, y, size_of_line) = pixel;
-}
-
-void	refresh_window(t_rt *unit)
-{
-	mlx_clear_window(unit->mlx_ptr, unit->win_ptr);
-	mlx_put_image_to_window(unit->mlx_ptr, unit->win_ptr, unit->img_ptr, 0, 0);
 }

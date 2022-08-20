@@ -6,7 +6,7 @@
 /*   By: jkong <jkong@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/04 15:51:39 by jkong             #+#    #+#             */
-/*   Updated: 2022/08/20 00:46:53 by jkong            ###   ########.fr       */
+/*   Updated: 2022/08/20 12:00:24 by jkong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,10 @@ static void	get_additional(t_entry *ent, t_additional *add)
 	get_vec3(ent, "checkerboard-r", &add->checkerboard_r);
 	get_vec3(ent, "checkerboard-g", &add->checkerboard_g);
 	get_vec3(ent, "checkerboard-b", &add->checkerboard_b);
+	get_int(ent, "bumpmap", &add->bumpmap);
+	get_string(ent, "bumpmap-image", &add->bumpmap_image_key);
+	get_double(ent, "bumpmap-width", &add->bumpmap_width);
+	get_double(ent, "bumpmap-height", &add->bumpmap_height);
 }
 
 static t_list_object	*_make_object(enum e_object_type type, t_entry *ent)
@@ -90,17 +94,18 @@ int	get_objects(t_entry *ent, const char *key, t_list_object **out)
 	char				*str;
 	enum e_object_type	type;
 
-	if (!get_child(ent, key, &ent))
-		return (0);
-	while (ent)
+	if (get_child(ent, key, &ent))
 	{
-		if (!get_string(ent->child, "type", &str))
-			return (0);
-		type = _to_object_type(str);
-		if (type == OBJ_INVALID)
-			return (0);
-		list_append((void *)out, (void *)_make_object(type, ent->child));
-		ent = ent->next;
+		while (ent)
+		{
+			if (!get_string(ent->child, "type", &str))
+				return (0);
+			type = _to_object_type(str);
+			if (type == OBJ_INVALID)
+				return (0);
+			list_append((void *)out, (void *)_make_object(type, ent->child));
+			ent = ent->next;
+		}
 	}
 	return (1);
 }

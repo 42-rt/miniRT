@@ -6,7 +6,7 @@
 /*   By: jkong <jkong@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/12 23:15:02 by jkong             #+#    #+#             */
-/*   Updated: 2022/08/20 00:56:49 by jkong            ###   ########.fr       */
+/*   Updated: 2022/08/20 11:47:13 by jkong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,8 @@ static t_rgb	_apply_phong(t_list_light *l, t_ray *ray, t_hit *hit,
 	return (color);
 }
 
-t_vec3	bump_normal(t_list_object *obj, t_vec3 uv, t_vec3 normal);
+t_vec3	bump_normal(t_list_object *obj, t_vec3 uv, t_vec3 normal,
+					t_list_image *image_list);
 
 t_vec3	ray_color(t_rt *unit, t_ray *ray, int depth)
 {
@@ -104,7 +105,8 @@ t_vec3	ray_color(t_rt *unit, t_ray *ray, int depth)
 	if (ray_try_doing_hit(unit->conf.objects, ray, &hit))
 	{
 		if (hit.obj->additional.bumpmap != 0)
-			hit.normal = bump_normal(hit.obj, hit.uv, hit.normal);
+			hit.normal = bump_normal(hit.obj, hit.uv, hit.normal,
+					unit->conf.images);
 		color = _get_ambient(unit, ray, &hit, depth);
 		it = unit->conf.lights;
 		while (it)
