@@ -52,7 +52,7 @@ static int	_mouse_down_hook(int button, int x, int y, void *param)
 		if (button == MLX_MB_WHEEL_UP)
 			re |= _on_mouse_vertical_wheel(unit, 1);
 		if (re)
-			unit->update_posted = 1;
+			set_flag(&unit->update_posted, 0);
 	}
 	return (0);
 }

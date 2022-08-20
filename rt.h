@@ -6,7 +6,7 @@
 /*   By: jkong <jkong@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 15:16:26 by jkong             #+#    #+#             */
-/*   Updated: 2022/08/20 11:09:35 by jkong            ###   ########.fr       */
+/*   Updated: 2022/08/20 15:14:26 by jkong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -140,6 +140,7 @@ typedef struct s_material
 typedef struct s_additional
 {
 	int		checkerboard;
+	char	*checkerboard_image_key;
 	double	checkerboard_horizontal;
 	double	checkerboard_vertical;
 	t_vec3	checkerboard_r;
@@ -147,8 +148,8 @@ typedef struct s_additional
 	t_vec3	checkerboard_b;
 	int		bumpmap;
 	char	*bumpmap_image_key;
-	double	bumpmap_width;
-	double	bumpmap_height;
+	double	bumpmap_horizontal;
+	double	bumpmap_vertical;
 }	t_additional;
 
 struct s_list_object
@@ -206,6 +207,12 @@ typedef struct s_rt
 	int			update_posted;
 }	t_rt;
 
+typedef struct s_array_rt
+{
+	int		len;
+	t_rt	*arr;
+}	t_array_rt;
+
 typedef struct s_task
 {
 	pthread_t		thread;
@@ -232,6 +239,7 @@ void	fill_image(t_image *image, unsigned char byte);
 void	put_pixel(t_image *image, int x, int y, int color);
 
 void	set_hook(t_rt *unit);
+void	set_global_hook(void *mlx_ptr, const t_array_rt *arr);
 
 double	second_df(t_vec3 vec);
 double	second_df_half(t_vec3 vec);

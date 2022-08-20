@@ -6,7 +6,7 @@
 /*   By: jkong <jkong@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/12 23:15:02 by jkong             #+#    #+#             */
-/*   Updated: 2022/08/20 11:47:13 by jkong            ###   ########.fr       */
+/*   Updated: 2022/08/20 14:59:27 by jkong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,8 @@ static t_vec3	_refract(t_vec3 ray, t_vec3 normal, double e, int f)
 	return (vec3_sub(perp, parallel));
 }
 
-t_rgb	checkerboard_color(t_list_object *obj, t_vec3 uv, t_rgb color);
+t_rgb	checkerboard_color(t_list_object *obj, t_vec3 uv, t_rgb color,
+					t_list_image *image_list);
 
 static t_rgb	_get_ambient(t_rt *unit, t_ray *ray, t_hit *hit, int depth)
 {
@@ -45,7 +46,7 @@ static t_rgb	_get_ambient(t_rt *unit, t_ray *ray, t_hit *hit, int depth)
 
 	color = hit->obj->color;
 	if (hit->obj->additional.checkerboard != 0)
-		color = checkerboard_color(hit->obj, hit->uv, color);
+		color = checkerboard_color(hit->obj, hit->uv, color, unit->conf.images);
 	amb = vec3_mul(hit->obj->material.ra * unit->conf.ambient.ratio,
 			unit->conf.ambient.color);
 	color = vec3_mul_v(vec3_div(255, amb), color);

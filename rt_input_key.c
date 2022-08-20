@@ -31,7 +31,7 @@ static void	_on_key(t_rt *unit, int flag, int keycode)
 	if (has_flag(flag, MLX_MOD_LCMD) && keycode == kVK_ANSI_C)
 	{
 		(void)&unit;
-		unit->update_posted = 1;
+		set_flag(&unit->update_posted, 0);
 	}
 }
 

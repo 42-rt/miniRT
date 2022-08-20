@@ -6,17 +6,16 @@
 /*   By: jkong <jkong@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 15:15:51 by jkong             #+#    #+#             */
-/*   Updated: 2022/08/20 11:39:21 by jkong            ###   ########.fr       */
+/*   Updated: 2022/08/20 14:53:02 by jkong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rt.h"
 #include "safe_mem.h"
 #include "safe_io.h"
+#include "util_flag.h"
 
 #include "mlx.h"
-
-void	run_draw_task(t_rt *unit);
 
 static int	_create_window(t_rt *unit, int width, int height)
 {
@@ -41,7 +40,7 @@ static int	_create_window(t_rt *unit, int width, int height)
 		it = it->next;
 	}
 	camera_init(&unit->conf, &unit->camera);
-	run_draw_task(unit);
+	set_flag(&unit->update_posted, 1);
 	set_hook(unit);
 	return (1);
 }
@@ -88,20 +87,24 @@ static void	_rt_destroy(t_rt *unit)
 
 static void	_rt_multiple(void *mlx_ptr, int argc, int begin, char *argv[])
 {
-	t_rt	*rt_arr;
-	int		i;
-	int		loop;
+	const int			len = argc - begin;
+	t_rt *const			rt_arr = calloc_safe(len, sizeof(*rt_arr));
+	const t_array_rt	arr = {len, rt_arr};
+	int					i;
+	int					loop;
 
-	rt_arr = calloc_safe(argc - begin, sizeof(*rt_arr));
 	i = 0;
 	loop = 0;
-	while (i < argc - begin)
+	while (i < len)
 	{
 		loop |= _rt(mlx_ptr, &rt_arr[i], argv[begin + i]);
 		i++;
 	}
 	if (loop)
+	{
+		set_global_hook(mlx_ptr, &arr);
 		mlx_loop(mlx_ptr);
+	}
 	while (--i >= 0)
 		_rt_destroy(&rt_arr[i]);
 	free(rt_arr);

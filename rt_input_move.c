@@ -56,7 +56,7 @@ static int	_mouse_move_hook(int x, int y, void *param)
 	if (has_flag(unit->input.pressed, MLX_MOD_MOUSE_RIGHT))
 		re |= _on_mouse_right(unit, x - latest_x, y - latest_y);
 	if (re)
-		unit->update_posted = 1;
+		set_flag(&unit->update_posted, 0);
 	unit->input.latest_x = x;
 	unit->input.latest_y = y;
 	return (0);

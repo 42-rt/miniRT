@@ -6,7 +6,7 @@
 /*   By: jkong <jkong@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/04 15:51:39 by jkong             #+#    #+#             */
-/*   Updated: 2022/08/20 12:00:24 by jkong            ###   ########.fr       */
+/*   Updated: 2022/08/20 15:14:30 by jkong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,9 +58,15 @@ static void	get_material(t_entry *ent, t_material *mat)
 static void	get_additional(t_entry *ent, t_additional *add)
 {
 	ft_memset(add, 0, sizeof(*add));
+	add->checkerboard_horizontal = 1.;
+	add->checkerboard_vertical = 1.;
+	add->bumpmap_image_key = "default";
+	add->bumpmap_horizontal = 1.;
+	add->bumpmap_vertical = 1.;
 	if (!ent)
 		return ;
 	get_int(ent, "checkerboard", &add->checkerboard);
+	get_string(ent, "checkerboard-image", &add->checkerboard_image_key);
 	get_double(ent, "checkerboard-horizontal", &add->checkerboard_horizontal);
 	get_double(ent, "checkerboard-vertical", &add->checkerboard_vertical);
 	get_vec3(ent, "checkerboard-r", &add->checkerboard_r);
@@ -68,8 +74,8 @@ static void	get_additional(t_entry *ent, t_additional *add)
 	get_vec3(ent, "checkerboard-b", &add->checkerboard_b);
 	get_int(ent, "bumpmap", &add->bumpmap);
 	get_string(ent, "bumpmap-image", &add->bumpmap_image_key);
-	get_double(ent, "bumpmap-width", &add->bumpmap_width);
-	get_double(ent, "bumpmap-height", &add->bumpmap_height);
+	get_double(ent, "bumpmap-horizontal", &add->bumpmap_horizontal);
+	get_double(ent, "bumpmap-vertical", &add->bumpmap_vertical);
 }
 
 static t_list_object	*_make_object(enum e_object_type type, t_entry *ent)
