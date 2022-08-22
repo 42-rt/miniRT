@@ -61,6 +61,7 @@ void	checkerboard_color(t_list_object *obj, t_vec3 uv, t_rgb *color,
 			return ;
 		}
 	}
+	uv.z = 1.;
 	color->x = vec3_dot(uv, obj->additional.checkerboard_r);
 	color->y = vec3_dot(uv, obj->additional.checkerboard_g);
 	color->z = vec3_dot(uv, obj->additional.checkerboard_b);
