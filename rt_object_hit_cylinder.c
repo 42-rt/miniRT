@@ -6,7 +6,7 @@
 /*   By: jkong <jkong@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/10 21:08:50 by jkong             #+#    #+#             */
-/*   Updated: 2022/08/19 19:24:06 by jkong            ###   ########.fr       */
+/*   Updated: 2022/08/22 08:34:18 by jkong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ static t_vec3	_get_polynomial(t_list_object *self, t_ray *ray)
 {
 	t_vec3	v[5];
 
-	v[0] = self->direction;
+	v[0] = vec3_unit(self->direction);
 	v[1] = ray->direction;
 	v[2] = vec3_sub(ray->origin, self->origin);
 	v[3] = vec3_sub(v[1], vec3_mul(vec3_dot(v[1], v[0]), v[0]));

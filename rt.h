@@ -6,7 +6,7 @@
 /*   By: jkong <jkong@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 15:16:26 by jkong             #+#    #+#             */
-/*   Updated: 2022/08/20 15:14:26 by jkong            ###   ########.fr       */
+/*   Updated: 2022/08/22 08:16:56 by jkong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,10 @@
 
 # ifndef MAX_RAY_LENGTH
 #  define MAX_RAY_LENGTH 1.0e8
+# endif
+
+# ifndef DEFAULT_SIZE
+#  define DEFAULT_SIZE 16
 # endif
 
 # include <unistd.h>

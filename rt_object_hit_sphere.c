@@ -6,7 +6,7 @@
 /*   By: jkong <jkong@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/10 21:08:50 by jkong             #+#    #+#             */
-/*   Updated: 2022/08/19 19:28:14 by jkong            ###   ########.fr       */
+/*   Updated: 2022/08/22 07:49:04 by jkong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ static int	_find_solution(t_list_object *self, t_ray *ray, double *out)
 	return (1);
 }
 
-static t_vec3	_calc_uv(t_list_object *self, t_vec3 normal)
+static void	_calc_uv(t_list_object *self, t_vec3 normal, t_vec3 *out)
 {
 	t_vec3	vec_u;
 	t_vec3	vec_v;
@@ -52,11 +52,11 @@ static t_vec3	_calc_uv(t_list_object *self, t_vec3 normal)
 	uvw.x = vec3_dot(vec_u, normal);
 	uvw.y = vec3_dot(vec_w, normal);
 	uvw.z = vec3_dot(vec_v, normal);
-	return ((t_vec3){
+	*out = (t_vec3){
 		.5 + atan2(uvw.x, uvw.z) / (2 * M_PI),
 		.5 + asin(uvw.y) / M_PI,
 		0.
-	});
+	};
 }
 
 int	sphere_hit(void *this_ptr, t_ray *ray, t_hit *out)
@@ -74,7 +74,7 @@ int	sphere_hit(void *this_ptr, t_ray *ray, t_hit *out)
 	out->f = vec3_dot(ray->direction, out->normal) < 0;
 	if (!out->f)
 		out->normal = vec3_neg(out->normal);
-	out->uv = _calc_uv(self, vec);
+	_calc_uv(self, vec, &out->uv);
 	out->obj = self;
 	return (1);
 }
